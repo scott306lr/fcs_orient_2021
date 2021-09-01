@@ -1,0 +1,9 @@
+{
+  "name": "fcs_2021_backend",
+  "version": "0.0.1",
+  "description": "backend using socket.io for fcs 2021",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.1.3"
+  }
+}

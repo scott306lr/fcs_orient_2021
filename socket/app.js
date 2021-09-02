@@ -27,8 +27,9 @@ const io = socketio(server)
 // updates when there's new announcements.
 // updates the whole team when there's new task / answered
 
-const Teams = [...Array(TEAM_COUNT).keys()].map(x => ++x)
+const Teams = [...Array(TEAM_COUNT).keys()].map(x => ++x) // [1, 2, 3, 4, 5, 6]
 console.log(Teams)
+
 // // connect client and join client to correct team. 
 // io.on('connect', connect)
 

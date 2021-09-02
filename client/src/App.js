@@ -34,7 +34,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          {user ? <Home /> : <Login />}
+          {/* {user ? <Home /> : <Login />} */}
+          <Home />
         </Route>
         <Route path="/login/:rid">
           {user ? <Redirect to="/" /> : <Login />}

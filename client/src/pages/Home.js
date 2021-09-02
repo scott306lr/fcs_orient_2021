@@ -1,7 +1,9 @@
+import Member from "../layers/Member";
+
 export default function Home() {
   return (
     <div>
-      Home
+      <Member />
     </div>
   );
 }

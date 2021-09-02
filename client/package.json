@@ -12,6 +12,7 @@
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
     "socket.io-client": "^4.2.0",
+    "tailwindcss": "^2.2.9",
     "timeago.js": "^4.0.2",
     "web-vitals": "^1.1.2"
   },

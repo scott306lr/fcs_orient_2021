@@ -1,5 +1,6 @@
 import Tasks from "./Tasks";
 import Scores from "./Scores";
+import Map from "../components/Map";
 
 export default function Member() {
   return (
@@ -9,7 +10,9 @@ export default function Member() {
         <button>Chatroom</button>
         <button>Scoreboard</button>
       </div>
+      <Map />
       <Tasks />
+      <Scores />
     </div>
   );
 }

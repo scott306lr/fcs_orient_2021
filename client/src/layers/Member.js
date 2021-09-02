@@ -1,4 +1,5 @@
 import Tasks from "./Tasks";
+import Scores from "./Scores";
 
 export default function Member() {
   return (
@@ -9,6 +10,7 @@ export default function Member() {
         <button>Scoreboard</button>
       </div>
       <Tasks />
+      <Scores />
     </div>
   );
 }

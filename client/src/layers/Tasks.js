@@ -1,4 +1,4 @@
-import Task from "../components/task";
+import Task from "../components/Task";
 
 export default function Tasks(props) {
 

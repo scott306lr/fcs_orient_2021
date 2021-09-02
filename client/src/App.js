@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
+import Chatroom from './layers/Chatroom';
 
 /*
  * Frontend flow: 
@@ -32,6 +33,7 @@ function App() {
   const {user} = useContext(AuthContext)
   return (
     <Router>
+      <Chatroom />
       <Switch>
         <Route exact path="/">
           {/* {user ? <Home /> : <Login />} */}

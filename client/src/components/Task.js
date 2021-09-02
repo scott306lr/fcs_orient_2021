@@ -8,7 +8,7 @@ export default function Task(props) {
   return (
     <div>
         <h3>{task.name}</h3>
-        <p>{task.info}</p>
+        {props.open ? <p>{task.info}</p>: ""}
     </div>
   );
 }

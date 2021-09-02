@@ -27,7 +27,7 @@ export default function Tasks(props) {
   const itemList = taskList.map((taskJSON) => {
     return (
       <div class = "task" onClick={() => setOpen(taskJSON.taskID)}>
-        <Task name = {taskJSON.name} open = {opened === taskJSON.taskID}/>
+        <Task id = {taskJSON.taskID} open = {opened === taskJSON.taskID}/>
       </div>
     );
   });

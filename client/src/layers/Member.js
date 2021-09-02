@@ -10,7 +10,6 @@ export default function Member() {
         <button>Scoreboard</button>
       </div>
       <Tasks />
-      <Scores />
     </div>
   );
 }

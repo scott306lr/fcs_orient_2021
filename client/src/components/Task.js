@@ -6,14 +6,22 @@ export default function Task(props) {
   const task = {
     id: props.id,
     name: "Task",
-    info: "This is a question."
+    info: "This is a question.",
+    answer: "This is the answer."
   };
 
+  // const task = getAPI();
+
   function answerCheck(answerText) {
-    if (answerText === "This is the answer.")
+    if (answerText === task.answer) {
       alert('YES!');
-    else
+      function scoreRenew() {
+    
+      }
+      scoreRenew();
+    } else {
       alert ('NO');
+    }
   }
 
   const completeTask = (

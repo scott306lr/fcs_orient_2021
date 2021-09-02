@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Task from "../components/Task";
 
 export default function Tasks(props) {
-  const [opened, setOpen] = useState("");
+  const [opened, setOpen] = useState(-1);
   const taskList = [
     {
       taskID: 1,
@@ -26,8 +26,8 @@ export default function Tasks(props) {
 
   const itemList = taskList.map((taskJSON) => {
     return (
-      <div class = "task" onClick={() => setOpen(taskID)}>
-        <Task name = {taskJSON.name} open = {opened = taskID}/>
+      <div class = "task" onClick={() => setOpen(taskJSON.taskID)}>
+        <Task name = {taskJSON.name} open = {opened === taskJSON.taskID}/>
       </div>
     );
   });

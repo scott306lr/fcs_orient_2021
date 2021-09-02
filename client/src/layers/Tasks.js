@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import React, { useState } from 'react';
->>>>>>> cd129864e43a9be4040bbd9dde23466e83761e0e
 import Task from "../components/Task";
 
 export default function Tasks(props) {

@@ -8,6 +8,7 @@ export default function Chatroom() {
   useEffect(() => {
     socket.current.emit("connection")
   }, [])
+  
   return (
     <div>
       Chatroom

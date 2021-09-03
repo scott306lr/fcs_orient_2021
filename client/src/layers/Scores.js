@@ -39,7 +39,7 @@ export default function Score(props) {
         );
     });
     return (
-        <div class="m-4">
+        <div class={props.opened ? "m-4 w-1/2": "m-4"}>
             <h2>計分榜</h2>
             <div id="scoreList" class="space-y-4">
                 {iterTeam}

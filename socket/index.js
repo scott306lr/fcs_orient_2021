@@ -30,7 +30,7 @@ io.on("connection", (socket) => {
   })
 
   socket.on("send message", ({ payload }) => {
-    io.emit("recieve message", payload);
+    socket.broadcast.emit("recieve message", payload);
   });
 
 

@@ -4,41 +4,41 @@ import Chatbox from "../components/Chatbox";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
+const msgJSON = [
+  {
+    time: "21:02",
+    name: "AA",
+    role: "Admin",
+    team: 1,
+    text: "Hello!"
+  },
+  {
+    time: "21:03",
+    name: "BB",
+    role: "Member",
+    team: 5,
+    text: "Hi!"
+  },
+  {
+    time: "21:03",
+    name: "CC",
+    role: "Member",
+    team: 3,
+    text: "wwwwwww"
+  },
+];
 
 export default function Chatroom() {
   const {user} = useContext(AuthContext)
   const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(msgJSON);
   const socket = useRef();
-
-  const msgJSON = [
-    {
-      time: "21:02",
-      name: "AA",
-      role: "Admin",
-      team: 1,
-      text: "Hello!"
-    },
-    {
-      time: "21:03",
-      name: "BB",
-      role: "Member",
-      team: 5,
-      text: "Hi!"
-    },
-    {
-      time: "21:03",
-      name: "CC",
-      role: "Member",
-      team: 3,
-      text: "wwwwwww"
-    },
-  ];
+  
 
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
-    socket.current.on("got message", (payload) => {
-      setMessages(messages => [...messages, payload]);
+    socket.current.on("recieve message", (payload) => {
+      setMessages( (messages) => [...messages, payload]);
     })
   }, []);
 
@@ -56,26 +56,28 @@ export default function Chatroom() {
     console.log(payload);
     socket.current.emit("send message", {payload});
 
-    try {
-      const res = await axios.post("/messages", payload);
-      setMessages(messages => [...messages, payload]);
-      setNewMessage("");
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await axios.post("/messages", payload);
+    //   setMessages(messages => [...messages, payload]);
+    //   setNewMessage("");
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    setMessages(messages => [...messages, payload]);
+    setNewMessage("");
   };
 
-  const MessageList = msgJSON.map((msg) => {
+  const MessageList = messages.map((msg) => {
     return (
-      <li>
+      <div>
         <Chatbox message={msg}/>
-      </li>
+      </div>
     );
   });
 
   return (
     <div>
-      <ul> { MessageList } </ul>
+      { MessageList }
       <textarea
         className="chatMessageInput"
         placeholder="write something..."

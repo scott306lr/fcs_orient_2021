@@ -3,7 +3,7 @@ const AuthReducer = (state, action) => {
     case "LOGIN_START":
       return{
         user:null,
-        isFetching: false,
+        isFetching: true,
         error: false,
       };
 

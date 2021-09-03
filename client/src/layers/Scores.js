@@ -29,18 +29,18 @@ export default function Score(props) {
     ];
     const iterTeam = teamList.map((teamJSON) => {
         return (
-            <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-                <div class="md:flex">
+            <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden">
+                {/* <div class="md:flex"> */}
                     <div class="p-8">
                         <Scoreboard team={teamJSON.teamID} gold={teamJSON.gold} silver={teamJSON.silver} bronze={teamJSON.bronze} iron={teamJSON.iron} score={teamJSON.score}/>
                     </div>
-                </div>
+                {/* </div> */}
             </div>                
         );
     });
     return (
         <div class="m-4">
-            <h3>計分榜</h3>
+            <h2>計分榜</h2>
             <div id="scoreList" class="space-y-4">
                 {iterTeam}
             </div>

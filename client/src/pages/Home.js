@@ -7,19 +7,26 @@ export default function Home() {
   const [chatOpen, setChat] = useState(false);
   const [scoreOpen, setScore] = useState(false);
 
+  function switchChat(status) {
+    setChat(status);
+  }
+  function switchScore(status) {
+    setScore(status);
+  }
+
   return (
     <div>
-      <h1>FCS ORIENTING 2021</h1>
+      <h1 class="text-center">FCS ORIENTING 2021</h1>
       <div id = "topBar">
-        <button onClick = {() => setChat(!chatOpen)}>Chatroom</button>
-        <button onClick = {() => setScore(!scoreOpen)}>Scoreboard</button>
+        <button onClick = {() => switchChat(!chatOpen)}>Chatroom</button>
+        <button onClick = {() => switchScore(!scoreOpen)}>Scoreboard</button>
       </div>
       <Member />
       <div id = "chatCollapse">
-        <Chatroom />
+        <Chatroom opened = {chatOpen} onChange = {switchChat}/>
       </div>
       <div id = "scoreCollapse">
-        <Score />
+        <Score opened = {scoreOpen} onChange = {switchScore}/>
       </div>
     </div>
   );

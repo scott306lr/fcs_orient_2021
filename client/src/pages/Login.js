@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
   const rid = useRef();
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const { isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -33,7 +33,11 @@ export default function Login() {
             "Log In"
           )}
         </button>
+
+        
       </form>
+
+      {error ? error : ""}
     </div>
   );
 }

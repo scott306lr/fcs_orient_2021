@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { io, Socket } from "socket.io-client";
+//import { io, Socket } from "socket.io-client";
 import Chatbox from "../components/Chatbox";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
@@ -39,7 +39,7 @@ export default function Chatroom() {
     socket.on("recieve message", (payload) => {
       setMessages( (messages) => [...messages, payload]);
     })
-  }, []);
+  }, [socket, messages]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

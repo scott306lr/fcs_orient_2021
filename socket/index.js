@@ -23,10 +23,10 @@ io.on("connection", (socket) => {
     socket.join(team);
     console.log(`ID: ${socket.id} joined team ${team}`)
   });
-
-  socket.on("answer correct", ({ team, score, task }) => {
-    io.emit.to(team).emit("update task", task);
-    io.emit("update score", score);
+  
+  socket.on("answered correct", (team, doneTask, newTasks) => {
+    io.emit("update score", doneTask);
+    io.to(team).emit("update tasks", newTasks);
   })
 
   socket.on("send message", ({ payload }) => {

@@ -1,24 +1,75 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import axios from "axios";
+
+const task = {
+  id: 5,
+  name: "Task",
+  info: "This is a question.",
+  answer: "This is the answer."
+};
+
+const doneTask = {
+  time: "01:01",
+  taskid: 3,
+  who: "LR",
+  team: 1,
+  score: 4,
+}
+
+const newTasks = [
+  {
+    taskID: 6,
+    name: "Question 6",
+    type: 1,
+    done: false 
+  },
+  {
+    taskID: 7,
+    name: "Question 7",
+    type: 1,
+    done: false 
+  },
+  {
+    taskID: 8,
+    name: "Question 8",
+    type: 1,
+    done: false 
+  }
+];
+
+
 export default function Task(props) {
+  const {socket, user} = useContext(AuthContext);
+  const answerText = useRef();
+  
 
-  const [answerText, setAnswer] = useState("");
+  const answerCheck = async () => {
+    if (answerText.current.value === task.answer) {
+      // const currentTime = new Date();
+      // const doneTask = {
+      //   time: currentTime,
+      //   taskid: props.id,
+      //   who: user.name,
+      //   team: user.team,
+      //   score: props.score,
+      // };
+      // const newTasks = getNewTasks();
 
-  const task = {
-    id: props.id,
-    name: "Task",
-    info: "This is a question.",
-    answer: "This is the answer."
-  };
+      // const scoreRenew = async () => {
+      //   try{
+      //     await axios.post("/answer", doneTask);
+      //   }catch(err){
+      //     console.log(err);
+      //     return;
+      //   }
+      //   socket.emit("answered correct", user.team, doneTask, newTasks);
+      // }
 
-  // const task = getAPI();
-
-  function answerCheck(answerText) {
-    if (answerText === task.answer) {
+      // scoreRenew();
+      socket.emit("answered correct", user.team, doneTask, newTasks);
+      answerText.current.value = "";
       alert('YES!');
-      function scoreRenew() {
-    
-      }
-      scoreRenew();
     } else {
       alert ('NO');
     }
@@ -29,8 +80,8 @@ export default function Task(props) {
       <p>{task.info}</p>
       <img src = {`../assets/tasks/${task.id}.jpg`} alt = "Task Image"/>
       <br />
-      <input placeholder="請輸入答案" value={answerText} onChange={e => setAnswer(e.target.value)}/>
-      <button onClick = {() => answerCheck(answerText)}>上傳</button>
+      <input placeholder="請輸入答案" ref={answerText}/>
+      <button onClick = {() => answerCheck()}>上傳</button>
     </div>
   );
 

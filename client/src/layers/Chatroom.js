@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { io, Socket } from "socket.io-client";
+import Chatbox from "../components/Chatbox";
 
 
 export default function Chatroom() {
@@ -30,7 +31,8 @@ export default function Chatroom() {
       role: "Member",
       team: 5,
       text: "Hi!"
-    },{
+    },
+    {
       time: "21:03",
       name: "CC",
       role: "Member",
@@ -42,7 +44,7 @@ export default function Chatroom() {
   const MessageList = msgJSON.map((msg) => {
     return (
       <li>
-        --{msg.role}-- {msg.name}: {msg.text}
+        <Chatbox message={msg}/>
       </li>
     );
   });

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Member from "../layers/Member";
 import Chatroom from "../layers/Chatroom";
+import Score from "../layers/Scores";
 
 export default function Home() {
   const [chatOpen, setChat] = useState(false);
@@ -14,7 +15,12 @@ export default function Home() {
         <button onClick = {() => setScore(!scoreOpen)}>Scoreboard</button>
       </div>
       <Member />
-      <Chatroom />
+      <div id = "chatCollapse">
+        <Chatroom />
+      </div>
+      <div id = "scoreCollapse">
+        <Score />
+      </div>
     </div>
   );
 }

@@ -7,7 +7,6 @@ export default function Member() {
     <div>
       <Map />
       <Tasks />
-      <Scores />
     </div>
   );
 }

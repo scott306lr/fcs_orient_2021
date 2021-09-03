@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>FCS ORIENTING 2021</h1>
+      <h1 class="text-center">FCS ORIENTING 2021</h1>
       <div id = "topBar">
         <button onClick = {() => switchChat(!chatOpen)}>Chatroom</button>
         <button onClick = {() => switchScore(!scoreOpen)}>Scoreboard</button>

@@ -29,16 +29,15 @@ import Chatroom from './layers/Chatroom';
 
 
 function App() {
-
   const {user} = useContext(AuthContext)
   return (
     <Router>
       
       <Switch>
         <Route exact path="/">
-          {/* {user ? <Home /> : <Login />} */}
-          <Chatroom />
-          <Home />
+          {user ? <Home /> : <Login />}
+          {/* <Chatroom />
+          <Home /> */}
         </Route>
         <Route path="/login/:rid">
           {user ? <Redirect to="/" /> : <Login />}

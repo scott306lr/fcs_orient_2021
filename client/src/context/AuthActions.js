@@ -11,3 +11,8 @@ export const LoginFailure = (error) => ({
   type: "LOGIN_FAILURE",
   payload: error,
 });
+
+export const SocketConnect = (socket) => ({
+  type: "SOCKET_CONNECT",
+  payload: socket,
+});

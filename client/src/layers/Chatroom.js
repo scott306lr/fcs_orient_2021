@@ -29,22 +29,22 @@ const msgJSON = [
 ];
 
 export default function Chatroom() {
-  const {user} = useContext(AuthContext)
+  const {socket, user} = useContext(AuthContext)
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState(msgJSON);
-  const socket = useRef();
+  //const socket = useRef();
   
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
-    socket.current.on("recieve message", (payload) => {
+    socket.on("recieve message", (payload) => {
       setMessages( (messages) => [...messages, payload]);
     })
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (newMessage === "") return;
+    
     const currentTime = new Date();
     const payload = {
       time: currentTime,
@@ -54,7 +54,7 @@ export default function Chatroom() {
       text: newMessage,
     };
     console.log(payload);
-    socket.current.emit("send message", {payload});
+    socket.emit("send message", {payload});
 
     // try {
     //   const res = await axios.post("/messages", payload);

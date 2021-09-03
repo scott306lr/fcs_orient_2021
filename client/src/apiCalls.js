@@ -1,4 +1,7 @@
+import {LoginStart, LoginSuccess, LoginFailure, SocketConnect} from "./context/AuthActions"
+import { io, Socket } from "socket.io-client";
 import axios from "axios"
+
 
 export const loginCall = async (rid, dispatch) => {
   // dispatch({ type: "LOGIN_START" });
@@ -13,11 +16,18 @@ export const loginCall = async (rid, dispatch) => {
     name: "UDCHEN",
     rid: "AABBCCDD",
     role: "ADMIN",
-    group: "3",
+    team: "3",
   };
 
-  dispatch({ type: "LOGIN_START" });
-  setTimeout(function(){
-    dispatch({ type: "LOGIN_SUCCESS", payload: user });
+  dispatch(LoginStart());
+  setTimeout( function(){
+    
+    const socket = io("ws://localhost:8900");
+    dispatch(SocketConnect(socket));
+
+    socket.emit("join team", user.team);
+    dispatch(LoginSuccess(user));
+
+    
   }, 1000);
 }

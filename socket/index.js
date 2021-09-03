@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
 
   socket.on("join team", (team) => {
     socket.join(team);
-    console.log(`${socket} joined team ${team}`)
+    console.log(`ID: ${socket.id} joined team ${team}`)
   });
 
   socket.on("answer correct", ({ team, score, task }) => {

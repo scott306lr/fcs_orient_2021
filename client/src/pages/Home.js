@@ -14,12 +14,7 @@ export default function Home() {
     setChat(status);
   }
   function switchScore(status) {
-    document.getElementById("scoreCollapse").style.const user = {
-      name: "UDCHEN",
-      rid: "AABBCCDD",
-      role: "ADMIN",
-      team: "3",
-    };width = status ? "100%": "50%";
+    document.getElementById("scoreCollapse").style.width = status ? "100%": "50%";
     setScore(status);
   }
 

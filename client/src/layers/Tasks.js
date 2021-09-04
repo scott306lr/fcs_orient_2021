@@ -47,14 +47,14 @@ export default function Tasks(props) {
     );
   });
 
-  function switchTaskState(status) {
+  function switchTasksState(status) {
     setTasksOpen(status);
   }
 
   return (
     <div id = "map8Tasks">
       <Map />
-      <button onClick = {() => setTasksState(true)}>TASKS</button>
+      <button class = "absolute bottom-0" onClick = {() => switchTasksState(true)}>TASKS</button>
       <div id = "taskList">
         {itemList}
       </div>

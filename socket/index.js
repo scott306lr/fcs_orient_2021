@@ -27,6 +27,7 @@ io.on("connection", (socket) => {
   socket.on("answered correct", (team, doneTask, newTasks) => {
     io.emit("update score", doneTask);
     io.to(team).emit("update tasks", newTasks);
+    console.log(`${team} answered correct`);
   })
 
   socket.on("send message", ({ payload }) => {
@@ -38,21 +39,25 @@ io.on("connection", (socket) => {
   socket.on("start game", () => {
     GameStatus.in_game = true;
     io.emit("status update", GameStatus)
+    console.log(`start game!`);
   })
 
-  socket.on("end game", () => {
+  socket.on("stop game", () => {
     GameStatus.in_game = false;
     io.emit("status update", GameStatus)
+    console.log(`stop game!`);
   })
 
   socket.on("freeze board", () => {
     GameStatus.board_freeze = true;
     io.emit("status update", GameStatus)
+    console.log(`freeze board!`);
   })
 
   socket.on("unfreeze board", () => {
     GameStatus.board_freeze = false;
     io.emit("board unfreezed")
+    console.log(`unfreeze board!`);
   })
 })
 

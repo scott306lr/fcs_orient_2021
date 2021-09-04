@@ -18,5 +18,4 @@ npm start
 - Modify **tableName** and **path**
 ```
 mongoimport --collection='tableName' --file='path' --jsonArray
-
 ```

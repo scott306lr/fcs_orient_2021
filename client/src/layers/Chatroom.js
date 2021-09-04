@@ -84,7 +84,7 @@ export default function Chatroom() {
         onChange={(e) => setNewMessage(e.target.value)}
         value={newMessage}
       ></textarea>
-      <button className="chatSubmitButton" onClick={handleSubmit}>
+      <button className="chatSubmitButton" onClick={handleSubmit} class="btn">
         Send
       </button>
     </div>

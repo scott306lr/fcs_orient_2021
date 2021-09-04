@@ -21,10 +21,10 @@ export default function Home() {
   return (
     <div>
       <Admin />
-      <h1 class="text-center">FCS ORIENTING 2021</h1>
-      <div id = "topBar">
-        <button onClick = {() => switchChat(true)}>Chatroom</button>
-        <button onClick = {() => switchScore(true)}>Scoreboard</button>
+      <h1 class="text-center text-2xl">FCS ORIENTING 2021</h1>
+      <div id = "topBar" class="flex justify-between">
+        <button onClick = {() => switchChat(true)} class="btn">Chatroom</button>
+        <button onClick = {() => switchScore(true)} class="btn">Scoreboard</button>
       </div>
       <button onClick = {() => {
         if (chatOpen)

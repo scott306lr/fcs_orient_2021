@@ -13,7 +13,7 @@ router.get("/",async(req,res)=>{
 })
 
 // add a new donetask
-router.post("/create",async(req,res)=>{
+router.post("/",async(req,res)=>{
     const newPost = new DoneTask({
         tid: req.body.tid,
         time: req.body.time,

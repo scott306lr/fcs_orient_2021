@@ -13,7 +13,7 @@ router.get("/:tid",async(req,res)=>{
 })
 
 // add a new task
-router.post("/create",async(req,res)=>{
+router.post("/",async(req,res)=>{
     const newPost = new Task({
         tid: req.body.tid,
         name: req.body.name,

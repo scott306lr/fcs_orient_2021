@@ -13,7 +13,7 @@ router.get("/:id",async(req,res)=>{
 })
 
 // add a new user
-router.post("/create",async(req,res)=>{
+router.post("/",async(req,res)=>{
     const newPost = new User({
         // uid: req.body.uid,
         name: req.body.name,

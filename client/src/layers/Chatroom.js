@@ -37,17 +37,17 @@ export default function Chatroom() {
   useEffect( async () => {
     try {
       const res = await axios.get("/message");
-      setMessages(res.data);
+      setMessages(res.data.reverse());
     } catch (err) {
       console.log(err);
     }
   }, [])
 
   useEffect(() => {
-    socket.on("recieve message", (payload) => {
-      setMessages( (messages) => [...messages, payload]);
+    socket.on("recieve message", (newMessage) => {
+      setMessages( (prev) => [...prev, newMessage]);
     })
-  }, [socket, messages]);
+  }, [socket]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,15 +62,15 @@ export default function Chatroom() {
       content: newMessage.current.value,
     };
     console.log(payload);
-    socket.emit("send message", {payload});
-
+    
     try {
-      const res = await axios.post("/message", payload);
+      await axios.post("/message", payload);
     } catch (err) {
       console.log(err);
       return
     }
 
+    socket.emit("send message", {payload});
     setMessages([...messages, payload]);
     newMessage.current.value = "";
   };

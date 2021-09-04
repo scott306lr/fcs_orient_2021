@@ -13,7 +13,7 @@ router.get("/",async(req,res)=>{
 })
 
 // add a new message
-router.post("/create",async(req,res)=>{
+router.post("/",async(req,res)=>{
     const newPost = new Message({
         time: req.body.time,
         name: req.body.name,

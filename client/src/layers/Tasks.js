@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import Task from "../components/Task";
+import Map from "../components/Map";
 import { AuthContext } from '../context/AuthContext';
-import axios from "axios"
+import axios from "axios";
 
 const taskJSON = [
   {
@@ -47,8 +48,11 @@ export default function Tasks(props) {
   });
 
   return (
-    <div id = "taskList">
-        {itemList}
+    <div id = "map8Tasks">
+      <Map />
+      <div id = "taskList">
+          {itemList}
+      </div>
     </div>
   );
 }

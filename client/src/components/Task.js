@@ -41,6 +41,7 @@ const newTasks = [
 
 export default function Task(props) {
   const {socket, user} = useContext(AuthContext);
+  const [taskOpen, setTaskOpen] = useState(false);
   const answerText = useRef();
   
 
@@ -87,8 +88,8 @@ export default function Task(props) {
 
   return (
     <div>
-        <h3>{task.name}</h3>
-        {props.open ? completeTask: ""}
+        <h3 onClick = {() => setTaskOpen(!taskOpen)}>{task.name}</h3>
+        {taskOpen ? completeTask: ""}
     </div>
   );
 }

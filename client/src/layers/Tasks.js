@@ -28,7 +28,7 @@ const taskJSON = [
 export default function Tasks(props) {
   const {socket, user} = useContext(AuthContext);
   const [tasks, setTasks] = useState(taskJSON);
-  const [opened, setOpen] = useState(-1);
+  const [tasksOpen, setTasksOpen] = useState(false);
 
   useEffect(() => {
     socket.on("update tasks", (newTasks) => {
@@ -41,17 +41,22 @@ export default function Tasks(props) {
   
   const itemList = tasks.map((task) => {
     return (
-      <div class = "task" onClick={() => setOpen(task.taskID)}>
-        <Task id = {task.taskID} open = {opened === task.taskID}/>
+      <div class = "task">
+        <Task id = {task.taskID}/>
       </div>
     );
   });
 
+  function switchTaskState(status) {
+    setTasksOpen(status);
+  }
+
   return (
     <div id = "map8Tasks">
       <Map />
+      <button onClick = {() => setTasksState(true)}>TASKS</button>
       <div id = "taskList">
-          {itemList}
+        {itemList}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export default function Chatroom(props) {
                     rounded-md
                     bg-green-300
                     focus:shadow-lg"
-        >{props.message.text}</div>
+        >{props.message.content}</div>
       </div>
     </div>
   );

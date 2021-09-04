@@ -10,30 +10,38 @@ const msgJSON = [
     name: "AA",
     role: "Admin",
     team: 1,
-    text: "Hello!"
+    content: "Hello!"
   },
   {
     time: "21:03",
     name: "BB",
     role: "Member",
     team: 5,
-    text: "Hi!"
+    content: "Hi!"
   },
   {
     time: "21:03",
     name: "CC",
     role: "Member",
     team: 3,
-    text: "wwwwwww"
+    content: "wwwwwww"
   },
 ];
 
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
-  const [newMessage, setNewMessage] = useState("");
+  const newMessage = useRef();
   const [messages, setMessages] = useState(msgJSON);
   //const socket = useRef();
   
+  useEffect( async () => {
+    try {
+      const res = await axios.get("/message");
+      setMessages(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [])
 
   useEffect(() => {
     socket.on("recieve message", (payload) => {
@@ -43,7 +51,7 @@ export default function Chatroom() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newMessage === "") return;
+    if (newMessage.current.value === "") return;
     
     const currentTime = new Date();
     const payload = {
@@ -51,20 +59,20 @@ export default function Chatroom() {
       name: user.name,
       role: user.role,
       team: user.team,
-      text: newMessage,
+      content: newMessage.current.value,
     };
     console.log(payload);
     socket.emit("send message", {payload});
 
-    // try {
-    //   const res = await axios.post("/messages", payload);
-    //   setMessages(messages => [...messages, payload]);
-    //   setNewMessage("");
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    setMessages(messages => [...messages, payload]);
-    setNewMessage("");
+    try {
+      const res = await axios.post("/message", payload);
+    } catch (err) {
+      console.log(err);
+      return
+    }
+
+    setMessages([...messages, payload]);
+    newMessage.current.value = "";
   };
 
   const MessageList = messages.map((msg) => {
@@ -82,8 +90,7 @@ export default function Chatroom() {
         <textarea
           className="chatMessageInput"
           placeholder="write something..."
-          onChange={(e) => setNewMessage(e.target.value)}
-          value={newMessage}
+          ref={newMessage}
           class="h-auto resize-none flex-grow ml-4 rounded-md"
         ></textarea>
         <button className="chatSubmitButton" onClick={handleSubmit} class="h-auto btn mr-4">

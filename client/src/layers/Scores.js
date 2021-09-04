@@ -75,12 +75,12 @@ export default function Score(props) {
     })
   }, [socket]);
 
-  const iterTeam = teamList.map((teamJSON) => {
+  const iterTeam = teams.map((teamJSON) => {
     return (
       <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl">
         {/* <div class="md:flex"> */}
           <div class="p-8">
-            <Scoreboard team={teamJSON.team} gold={teamJSON.gold} silver={teamJSON.silver} bronze={teamJSON.bronze} iron={teamJSON.iron} score={teamJSON.score}/>
+            <Scoreboard team={teamJSON.teamID} gold={teamJSON.gold} silver={teamJSON.silver} bronze={teamJSON.bronze} iron={teamJSON.iron} score={teamJSON.score}/>
           </div>
         {/* </div> */}
       </div>                

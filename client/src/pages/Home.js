@@ -14,7 +14,7 @@ export default function Home() {
     setChat(status);
   }
   function switchScore(status) {
-    document.getElementById("scoreCollapse").style.width = status ? "100%": "50%";
+    document.getElementById("scoreCollapse").style.width = status ? "100%": "0%";
     setScore(status);
   }
 
@@ -26,17 +26,19 @@ export default function Home() {
         <button onClick = {() => switchChat(true)}>Chatroom</button>
         <button onClick = {() => switchScore(true)}>Scoreboard</button>
       </div>
-      <Member />
       <button onClick = {() => {
-        switchChat(false);
-        switchScore(false);
+        if (chatOpen)
+          switchChat(false);
+        if (scoreOpen)
+          switchScore(false);
       }}>
         X
       </button>
-      <div id = "chatCollapse" class = "transition-all duration-500 left-0">
+      <Member />
+      <div id = "chatCollapse" class = "transition-all duration-500 absolute left-0 w-0 h-1/2 bottom-0">
         <Chatroom opened = {chatOpen} onChange = {switchChat}/>
       </div>
-      <div id = "scoreCollapse" class = "transition-all duration-500 relative right-0">
+      <div id = "scoreCollapse" class = "transition-all duration-500 absolute right-0 w-0 h-1/2 bottom-0">
         <Score opened = {scoreOpen} onChange = {switchScore}/>
       </div>
     </div>

@@ -76,7 +76,7 @@ export default function Chatroom() {
   });
 
   return (
-    <div>
+    <div class = "w-full overflow-hidden">
       { MessageList }
       <textarea
         className="chatMessageInput"

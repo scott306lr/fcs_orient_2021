@@ -93,7 +93,7 @@ export default function Score(props) {
   });
   
   return (
-    <div class="m-4 w-full overflow-hidden">
+    <div class="p-4 w-full overflow-hidden">
       <h2>計分榜</h2>
       <div id="scoreList" class="space-y-4">
         {iterTeam}

@@ -69,24 +69,27 @@ export default function Chatroom() {
 
   const MessageList = messages.map((msg) => {
     return (
-      <div>
+      <div class="overflow-y-auto block">
         <Chatbox message={msg}/>
       </div>
     );
   });
 
   return (
-    <div class = "w-full overflow-hidden">
+    <div class = "h-screen overflow-hidden bg-blue-400">
       { MessageList }
-      <textarea
-        className="chatMessageInput"
-        placeholder="write something..."
-        onChange={(e) => setNewMessage(e.target.value)}
-        value={newMessage}
-      ></textarea>
-      <button className="chatSubmitButton" onClick={handleSubmit} class="btn">
-        Send
-      </button>
+      <div class="absolute w-full flex mt-4 items-center inset-x-0 bottom-0 bg-green-200 block">
+        <textarea
+          className="chatMessageInput"
+          placeholder="write something..."
+          onChange={(e) => setNewMessage(e.target.value)}
+          value={newMessage}
+          class="h-auto resize-none flex-grow ml-4 rounded-md"
+        ></textarea>
+        <button className="chatSubmitButton" onClick={handleSubmit} class="h-auto btn mr-4">
+          Send
+        </button>
+      </div>
     </div>
   );
 }

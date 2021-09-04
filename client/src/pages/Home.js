@@ -2,6 +2,7 @@ import { useState } from "react";
 import Member from "../layers/Member";
 import Chatroom from "../layers/Chatroom";
 import Score from "../layers/Scores";
+import Admin from "../layers/Admin"
 
 export default function Home() {
   const [chatOpen, setChat] = useState(false);
@@ -19,6 +20,7 @@ export default function Home() {
 
   return (
     <div>
+      <Admin />
       <h1 class="text-center">FCS ORIENTING 2021</h1>
       <div id = "topBar">
         <button onClick = {() => switchChat(true)}>Chatroom</button>

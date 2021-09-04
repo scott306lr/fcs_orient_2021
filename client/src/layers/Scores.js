@@ -3,48 +3,13 @@ import Scoreboard from "../components/Scoreboard";
 import { AuthContext } from "../context/AuthContext";
 
 const teamsJSON = [
-  {teamID: 1, name: "haha1"}, 
-  {teamID: 2, name: "haha2"},
-  {teamID: 3, name: "haha3"},
-  {teamID: 4, name: "haha4"},
-  {teamID: 5, name: "haha5"},
-  {teamID: 6, name: "haha6"},
+  {teamID: 1, name: "haha1", gold: "3", silver: "7", bronze: "3", iron: "2", score:"41"}, 
+  {teamID: 2, name: "haha2", gold: "1", silver: "7", bronze: "3", iron: "2", score:"33"},
+  {teamID: 3, name: "haha3", gold: "2", silver: "7", bronze: "3", iron: "4", score:"31"},
+  {teamID: 4, name: "haha4", gold: "1", silver: "1", bronze: "1", iron: "1", score:"10"},
+  {teamID: 5, name: "haha5", gold: "2", silver: "2", bronze: "3", iron: "4", score:"50"},
+  {teamID: 6, name: "haha6", gold: "8", silver: "8", bronze: "8", iron: "8", score:"80"},
 ]
-
-const teamListJSON = [
-  {
-    team: 1,
-    gold: 1,
-    silver: 1,
-    bronze: 1,
-    iron: 1,
-    score: 10,
-  },
-  {
-    team: 2,
-    gold: 1,
-    silver: 1,
-    bronze: 1,
-    iron: 1,
-    score: 10,
-  },
-  {
-    team: 3,
-    gold: 2,
-    silver: 2,
-    bronze: 2,
-    iron: 2,
-    score: 10,
-  },
-  {
-    team: 4,
-    gold: 3,
-    silver: 3,
-    bronze: 3,
-    iron: 3,
-    score: 10,
-  },
-];
 
 const tasksDoneJSON = [
   {
@@ -101,15 +66,14 @@ const tasksDoneJSON = [
 export default function Score(props) {
 
   const {socket, user} = useContext(AuthContext);
-  const [tasksDone, setTasksDone] = useState(tasksDoneJSON);
-  const [teamList, setTeamList] = useState(teamListJSON);
+  const [teams, setTeams] = useState(teamsJSON);
 
   useEffect(() => {
-    socket.on("update tasks", (newTasks) => {
-      setTasksDone([...tasksDone, ...newTasks]);
-      setTeamList([]);
+    socket.on("update score", () => {
+      //setTeams(axios);
+      console.log("updating score!");
     })
-  }, [socket, teamList]);
+  }, [socket]);
 
   const iterTeam = teamList.map((teamJSON) => {
     return (

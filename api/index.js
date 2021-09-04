@@ -31,6 +31,6 @@ app.use("/api/doneTask", doneTaskRouter);
 const teamTaskRouter = require("./routes/teamTask");
 app.use("/api/teamTask", teamTaskRouter);
 
-app.listen(8080,()=>{
+app.listen(8000,()=>{
     console.log("Backend server is running");
 })

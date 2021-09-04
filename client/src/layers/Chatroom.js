@@ -30,8 +30,9 @@ const msgJSON = [
 
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
-  const newMessage = useRef();
   const [messages, setMessages] = useState(msgJSON);
+  const newMessage = useRef();
+  const scrollRef = useRef();
   //const socket = useRef();
   
   useEffect( async () => {
@@ -48,6 +49,10 @@ export default function Chatroom() {
       setMessages( (prev) => [...prev, newMessage]);
     })
   }, [socket]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,7 +82,7 @@ export default function Chatroom() {
 
   const MessageList = messages.map((msg) => {
     return (
-      <div class="overflow-y-auto block">
+      <div class="overflow-y-auto block" ref={scrollRef}>
         <Chatbox message={msg}/>
       </div>
     );

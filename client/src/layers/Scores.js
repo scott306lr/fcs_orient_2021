@@ -1,33 +1,52 @@
+import { useContext, useEffect, useState } from "react";
 import Scoreboard from "../components/Scoreboard";
+import { AuthContext } from "../context/AuthContext";
 
-const teamList = [
-    {
-        teamID: "一小",
-        gold: 1,
-        silver: 1,
-        bronze: 1,
-        iron: 1,
-        score: 10,
-    },
-    {
-        teamID: "team2",
-        gold: 2,
-        silver: 2,
-        bronze: 2,
-        iron: 2,
-        score: 10,
-    },
-    {
-        teamID: "team3",
-        gold: 3,
-        silver: 3,
-        bronze: 3,
-        iron: 3,
-        score: 10,
-    },
+const teamsJSON = [
+  {teamID: 1, name: "haha1"}, 
+  {teamID: 2, name: "haha2"},
+  {teamID: 3, name: "haha3"},
+  {teamID: 4, name: "haha4"},
+  {teamID: 5, name: "haha5"},
+  {teamID: 6, name: "haha6"},
+]
+
+const teamListJSON = [
+  {
+    team: 1,
+    gold: 1,
+    silver: 1,
+    bronze: 1,
+    iron: 1,
+    score: 10,
+  },
+  {
+    team: 2,
+    gold: 1,
+    silver: 1,
+    bronze: 1,
+    iron: 1,
+    score: 10,
+  },
+  {
+    team: 3,
+    gold: 2,
+    silver: 2,
+    bronze: 2,
+    iron: 2,
+    score: 10,
+  },
+  {
+    team: 4,
+    gold: 3,
+    silver: 3,
+    bronze: 3,
+    iron: 3,
+    score: 10,
+  },
 ];
 
-const taskDone = [
+const tasksDoneJSON = [
   {
     time:"21:34",
     who:"LR",
@@ -80,12 +99,24 @@ const taskDone = [
 ]
 
 export default function Score(props) {
+
+  const {socket, user} = useContext(AuthContext);
+  const [tasksDone, setTasksDone] = useState(tasksDoneJSON);
+  const [teamList, setTeamList] = useState(teamListJSON);
+
+  useEffect(() => {
+    socket.on("update tasks", (newTasks) => {
+      setTasksDone([...tasksDone, ...newTasks]);
+      setTeamList([]);
+    })
+  }, [socket, teamList]);
+
   const iterTeam = teamList.map((teamJSON) => {
     return (
       <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl">
         {/* <div class="md:flex"> */}
           <div class="p-8">
-            <Scoreboard team={teamJSON.teamID} gold={teamJSON.gold} silver={teamJSON.silver} bronze={teamJSON.bronze} iron={teamJSON.iron} score={teamJSON.score}/>
+            <Scoreboard team={teamJSON.team} gold={teamJSON.gold} silver={teamJSON.silver} bronze={teamJSON.bronze} iron={teamJSON.iron} score={teamJSON.score}/>
           </div>
         {/* </div> */}
       </div>                

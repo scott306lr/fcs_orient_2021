@@ -82,7 +82,7 @@ const taskDone = [
 export default function Score(props) {
   const iterTeam = teamList.map((teamJSON) => {
     return (
-      <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden">
+      <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl">
         {/* <div class="md:flex"> */}
           <div class="p-8">
             <Scoreboard team={teamJSON.teamID} gold={teamJSON.gold} silver={teamJSON.silver} bronze={teamJSON.bronze} iron={teamJSON.iron} score={teamJSON.score}/>
@@ -91,10 +91,11 @@ export default function Score(props) {
       </div>                
     );
   });
+  
   return (
-    <div class={props.opened ? "m-4 w-1/2": "m-4"}>
+    <div class="m-4 w-full overflow-hidden">
       <h2>計分榜</h2>
-      <div class="space-y-4">
+      <div id="scoreList" class="space-y-4">
         {iterTeam}
       </div>
     </div>

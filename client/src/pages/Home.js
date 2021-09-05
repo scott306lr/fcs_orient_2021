@@ -52,7 +52,7 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" class = "flex flex-col h-screen">
+    <div id = "app" class = "flex flex-col h-screen relative">
       <h1 class="text-center text-2xl">FCS ORIENTING 2021</h1>
       <div id = "messageBar" class = "index-ce"></div>  
       <div id = "topBar" class="flex justify-between">

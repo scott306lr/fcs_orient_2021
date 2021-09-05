@@ -8,9 +8,9 @@ export default function Tasks(props) {
   const {socket, user} = useContext(AuthContext);
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
+  useEffect( async () => {
     try {
-      const res = await axios.get(`/teamTask/${user.teamId}`);
+      const res = await axios.get(`/teamTask/${user.teamId}`)
       setTasks(res.data.reverse());
     } catch (err) {
       console.log(err);
@@ -18,7 +18,7 @@ export default function Tasks(props) {
   }, []);
 
   useEffect(() => {
-    socket.on("update tasks", (newTasks) => {
+    socket.on("update tasks", async (newTasks) => {
       try {
         const res = await axios.get(`/teamTask/${user.teamId}`);
         setTasks((prev) => [...prev, ...newTasks]);
@@ -40,7 +40,7 @@ export default function Tasks(props) {
   return (
     <div id = "map8Tasks">
       <Map />
-      <button class = "absolute bottom-0" onClick = {() => switchTasksState(true)}>TASKS</button>
+      <button class = "absolute bottom-0" onClick = {() => console.log(true)}>TASKS</button>
       <div id = "taskList">
         {itemList}
       </div>

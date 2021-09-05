@@ -83,7 +83,7 @@ export default function Chatroom() {
 
   const MessageList = messages.map((msg) => {
     return (
-      <div class="overflow-y-auto block" ref={scrollRef}>
+      <div class="overflow-y-auto" ref={scrollRef}>
         <Chatbox message={msg}/>
       </div>
     );
@@ -94,7 +94,7 @@ export default function Chatroom() {
       <Announce />
       <div class = "h-screen overflow-hidden bg-blue-400">
         { MessageList }
-        <div class="absolute w-full flex mt-4 items-center inset-x-0 bottom-0 bg-green-200 block">
+        <div class="absolute w-full flex p-2 mt-4 items-center inset-x-0 bottom-0 bg-green-200">
           <textarea
             className="chatMessageInput"
             placeholder="write something..."

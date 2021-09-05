@@ -25,12 +25,15 @@ io.on("connection", (socket) => {
   });
   
   socket.on("answered correct", (team, doneTask, newTasks) => {
-    io.emit("update score", doneTask);
+    io.emit("update score");
+    io.emit("update record", doneTask);
     io.to(team).emit("update tasks", newTasks);
     console.log(`${team} answered correct`);
   })
 
   socket.on("send message", ({ payload }) => {
+    console.log("broadcasting message:")
+    console.log(payload)
     socket.broadcast.emit("recieve message", payload);
   });
 

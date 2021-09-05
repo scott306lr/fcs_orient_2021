@@ -12,3 +12,10 @@ npm install express mongoose dotenv helmet morgan nodemon
 ```
 npm start
 ```
+
+### Import multiple documents contained in a JSON array
+- Run this outside the mongo shell
+- Modify **tableName** and **path**
+```
+mongoimport --collection='tableName' --file='path' --jsonArray
+```

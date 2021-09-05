@@ -30,24 +30,29 @@ const msgJSON = [
 
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
-  const newMessage = useRef();
   const [messages, setMessages] = useState(msgJSON);
+  const newMessage = useRef();
+  const scrollRef = useRef();
   //const socket = useRef();
   
   useEffect( async () => {
     try {
       const res = await axios.get("/message");
-      setMessages(res.data);
+      setMessages(res.data.reverse());
     } catch (err) {
       console.log(err);
     }
   }, [])
 
   useEffect(() => {
-    socket.on("recieve message", (payload) => {
-      setMessages( (messages) => [...messages, payload]);
+    socket.on("recieve message", (newMessage) => {
+      setMessages( (prev) => [...prev, newMessage]);
     })
-  }, [socket, messages]);
+  }, [socket]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,22 +67,22 @@ export default function Chatroom() {
       content: newMessage.current.value,
     };
     console.log(payload);
-    socket.emit("send message", {payload});
-
+    
     try {
-      const res = await axios.post("/message", payload);
+      await axios.post("/message", payload);
     } catch (err) {
       console.log(err);
       return
     }
 
+    socket.emit("send message", {payload});
     setMessages([...messages, payload]);
     newMessage.current.value = "";
   };
 
   const MessageList = messages.map((msg) => {
     return (
-      <div class="overflow-y-auto block">
+      <div class="overflow-y-auto block" ref={scrollRef}>
         <Chatbox message={msg}/>
       </div>
     );

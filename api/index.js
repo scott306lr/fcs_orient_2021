@@ -33,6 +33,6 @@ app.use("/api/teamTask", teamTaskRouter);
 const teamRouter = require("./routes/team");
 app.use("/api/team", teamRouter);
 
-app.listen(8080,()=>{
+app.listen(8000,()=>{
     console.log("Backend server is running");
 })

@@ -35,7 +35,6 @@ export default function Announce(props) {
   return (
     <div>
       {/* <Chatbox message={arriveMessage}/> */}
-      hello
     </div>
   );
 }

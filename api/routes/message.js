@@ -18,7 +18,7 @@ router.post("/",async(req,res)=>{
         time: req.body.time,
         name: req.body.name,
         role: req.body.role,
-        team: req.body.team,
+        teamId: req.body.teamId,
         content: req.body.content,
     });
     try{

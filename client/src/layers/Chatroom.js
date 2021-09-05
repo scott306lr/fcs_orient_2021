@@ -93,6 +93,7 @@ export default function Chatroom() {
     <>
       <Announce />
       <div class = "h-screen bg-blue-400">
+        <h1 class="text-xl bg-green-200 text-center">聊天室</h1>
         <div class = "relative h-4/5 overflow-auto">
           { MessageList }
         </div>

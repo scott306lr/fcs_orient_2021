@@ -92,12 +92,12 @@ export default function Chatroom() {
   return (
     <>
       <Announce />
-      <div class = "flex flex-col h-screen bg-blue-400 overflow-hidden">
-        <h1 class="text-xl bg-green-200 text-center p-1">聊天室</h1>
+      <div class = "flex flex-col h-screen bg-cusblue-200 overflow-hidden">
+        <h1 class="text-xl bg-cusgreen-200 text-center p-1">聊天室</h1>
         <div class = "relative flex-grow overflow-auto">
           { MessageList }
         </div>
-        <div class="relative w-full flex p-2 mt-4 items-center bottom-0 bg-green-200">
+        <div class="relative w-full flex p-2 mt-4 items-center bottom-0 bg-cusgreen-200">
           <textarea
             className="chatMessageInput"
             placeholder="write something..."

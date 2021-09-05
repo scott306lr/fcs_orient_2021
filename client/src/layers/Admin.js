@@ -32,7 +32,7 @@ export default function Admin() {
       time: currentTime,
       name: "SYSTEM",
       role: "ANNOUNCEMENT",
-      teamId: null,
+      teamId: 987,
       content: newAnnounce.current.value,
     };
     console.log(payload);

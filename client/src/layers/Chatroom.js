@@ -93,7 +93,7 @@ export default function Chatroom() {
     <>
       <Announce />
       <div class = "flex flex-col h-screen bg-blue-400 overflow-hidden">
-        <h1 class="text-xl bg-green-200 text-center">聊天室</h1>
+        <h1 class="text-xl bg-green-200 text-center p-1">聊天室</h1>
         <div class = "relative flex-grow overflow-auto">
           { MessageList }
         </div>

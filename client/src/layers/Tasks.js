@@ -4,39 +4,29 @@ import Map from "../components/Map";
 import { AuthContext } from '../context/AuthContext';
 import axios from "axios";
 
-const taskJSON = [
-  {
-    taskID: 1,
-    name: "Question 1",
-    type: 1,
-    done: false 
-  },
-  {
-    taskID: 2,
-    name: "Question 2",
-    type: 1,
-    done: false 
-  },
-  {
-    taskID: 3,
-    name: "Question 3",
-    type: 1,
-    done: false 
-  }
-];
-
 export default function Tasks(props) {
   const {socket, user} = useContext(AuthContext);
-  const [tasks, setTasks] = useState(taskJSON);
-  const [tasksOpen, setTasksOpen] = useState(false);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    try {
+      const res = await axios.get(`/teamTask/${user.teamId}`);
+      setTasks(res.data.reverse());
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   useEffect(() => {
     socket.on("update tasks", (newTasks) => {
-      console.log("got ut!");
-      setTasks((tasks) => [...tasks, ...newTasks]);
-      console.log(tasks);
+      try {
+        const res = await axios.get(`/teamTask/${user.teamId}`);
+        setTasks((prev) => [...prev, ...newTasks]);
+      } catch (err) {
+        console.log(err);
+      }
     })
-  }, [socket, user, tasks]);
+  }, [socket]);
 
   
   const itemList = tasks.map((task) => {
@@ -46,10 +36,6 @@ export default function Tasks(props) {
       </div>
     );
   });
-
-  function switchTasksState(status) {
-    setTasksOpen(status);
-  }
 
   return (
     <div id = "map8Tasks">

@@ -1,17 +1,20 @@
 [
     {
+    	"_id" : ObjectId("613468e49020fa6032cae92d"),
         "name":"james",
-        "role":"student",
+        "role":"MEMBER",
         "teamId":"01"
     },
     {
+    	"_id" : ObjectId("613468e49020fa6032cae92e"),
         "name":"udchen",
-        "role":"student",
+        "role":"ADMIN",
         "teamId":"02"
     },
     {
+    	"_id" : ObjectId("613468e49020fa6032cae92f"),
         "name":"lr",
-        "role":"student",
+        "role":"LEAD",
         "teamId":"03"
     }
 ]

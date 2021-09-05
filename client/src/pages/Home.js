@@ -52,13 +52,14 @@ export default function Home() {
   })();
 
   return (
-    <div>
+    <div id = "app" class = "fixed inset-0">
       <h1 class="text-center text-2xl">FCS ORIENTING 2021</h1>
+      <div id = "messageBar" class = "index-ce"></div>
       <div id = "topBar" class="flex justify-between">
         <button onClick = {() => switchChat(true)} class="btn">Chatroom</button>
         <button onClick = {() => switchScore(true)} class="btn">Scoreboard</button>
       </div>
-      <button onClick = {() => {
+      <button class = "relative top-0 right-0" onClick = {() => {
         if (chatOpen)
           switchChat(false);
         if (scoreOpen)

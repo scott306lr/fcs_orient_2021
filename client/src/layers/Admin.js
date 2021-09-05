@@ -30,9 +30,9 @@ export default function Admin() {
     const currentTime = new Date();
     const payload = {
       time: currentTime,
-      name: user.name,
-      role: user.role,
-      team: user.team,
+      name: "SYSTEM",
+      role: "ANNOUNCEMENT",
+      team: null,
       content: newAnnounce.current.value,
     };
     console.log(payload);

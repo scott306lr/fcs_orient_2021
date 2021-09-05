@@ -52,7 +52,7 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" class = "fixed inset-0">
+    <div id = "app" class = "">
       <h1 class="text-center text-2xl">FCS ORIENTING 2021</h1>
       <div id = "messageBar" class = "index-ce"></div>
       <div id = "topBar" class="flex justify-between">

@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    team:{
+    teamId:{
         type:String,
         required:true,
     },

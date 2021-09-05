@@ -1,24 +1,25 @@
 const router = require("express").Router();
 const TeamTask = require("../models/TeamTask");
 
-// get all donetask information
-router.get("/",async(req,res)=>{
+// get teamtask information
+router.get("/:teamId",async(req,res)=>{
     try{
-        const doneTask = await DoneTask.find();
-        res.status(200).json(doneTask);
+        const teamTask = await TeamTask.find({teamId:req.params.teamId});
+        res.status(200).json(teamTask);
     }
     catch(err){
         res.status(500).json(err);
     }
 })
 
-// add a new donetask
+// add a new teamTask
 router.post("/",async(req,res)=>{
-    const newPost = new DoneTask({
-        tid: req.body.tid,
-        time: req.body.time,
-        team: req.body.team,
-        score: req.body.score,
+    const newPost = new TeamTask({
+        teamId: req.body.teamId,
+        taskName: req.body.taskName,
+        taskId: req.body.taskId,
+        qtype: req.body.qtype,
+        done: req.body.done
     });
     try{
         const savePost = await newPost.save();

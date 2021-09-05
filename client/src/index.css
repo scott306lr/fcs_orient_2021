@@ -21,5 +21,5 @@ code {
 }
 
 .btn-x {
-  @apply bg-red-400 px-2 m-1 rounded-full text-white hover:shadow-md;
+  @apply bg-red-400 h-4 w-4 flex items-center justify-center rounded-full text-white hover:shadow-md;
 }

@@ -60,9 +60,8 @@ export default function Home() {
         <button onClick = {() => switchScore(true)} class="btn">Scoreboard</button>
       </div>
 
-      {roleDisplay}
       <div id = "chat8Score" class = "flex-grow relative">
-        <button class = "relative top-0 right-0 z-50 btn-x" onClick = {() => {
+        <button class = "relative top-0 right-0 z-50 m-2 btn-x" onClick = {() => {
           if (chatOpen)
             switchChat(false);
           if (scoreOpen)
@@ -75,6 +74,9 @@ export default function Home() {
           <Score opened = {scoreOpen} onChange = {switchScore}/>
         </div>
       </div>
+
+      {roleDisplay}
+
     </div>
   );
 }

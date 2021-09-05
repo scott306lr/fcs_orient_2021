@@ -62,12 +62,12 @@ export default function Home() {
 
       {roleDisplay}
       <div id = "chat8Score" class = "flex-grow relative">
-        <button class = "relative top-0 right-0 z-50" onClick = {() => {
+        <button class = "relative top-0 right-0 z-50 btn-x" onClick = {() => {
           if (chatOpen)
             switchChat(false);
           if (scoreOpen)
             switchScore(false);
-        }}>X</button>
+        }}>×</button>
         <div id = "chatCollapse" class = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0">
           <Chatroom opened = {chatOpen} onChange = {switchChat}/>
         </div>

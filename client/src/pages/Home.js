@@ -3,7 +3,7 @@ import Member from "../layers/Member";
 import Chatroom from "../layers/Chatroom";
 import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
-import Lead from "../layers/Admin";
+import Lead from "../layers/Lead";
 
 
 import { AuthContext } from "../context/AuthContext";
@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div id = "app" class = "bg-cusblue-100 flex flex-col h-screen relative">
-      <h1 class="text-center text-2xl">FCS ORIENTING 2021</h1>
+      <h1 class="text-center text-3xl">FCS ORIENTING 2021</h1>
       <div id = "messageBar" class = "index-ce"></div>  
       <div id = "topBar" class="flex justify-between">
         <button onClick = {() => switchChat(true)} class="btn">Chatroom</button>

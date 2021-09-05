@@ -71,7 +71,7 @@ export default function Admin() {
           Send
         </button>
       </div>
-      admin
+      <h1 class="text-xl">Admin</h1>
     </div>
   );
 }

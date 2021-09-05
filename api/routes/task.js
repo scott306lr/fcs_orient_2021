@@ -15,8 +15,8 @@ router.get("/:taskId",async(req,res)=>{
 // add a new task
 router.post("/",async(req,res)=>{
     const newPost = new Task({
-        tid: req.body.tid,
-        name: req.body.name,
+        taskId: req.body.taskId,
+        taskName: req.body.taskName,
         question: req.body.question,
         answer: req.body.answer,
         qtype: req.body.qtype,

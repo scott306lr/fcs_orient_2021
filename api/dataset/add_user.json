@@ -1,0 +1,17 @@
+[
+    {
+        "name":"james",
+        "role":"student",
+        "teamId":"01"
+    },
+    {
+        "name":"udchen",
+        "role":"student",
+        "teamId":"02"
+    },
+    {
+        "name":"lr",
+        "role":"student",
+        "teamId":"03"
+    }
+]

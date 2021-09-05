@@ -15,9 +15,9 @@ router.get("/",async(req,res)=>{
 // add a new donetask
 router.post("/",async(req,res)=>{
     const newPost = new DoneTask({
-        tid: req.body.tid,
+        taskId: req.body.taskId,
         time: req.body.time,
-        team: req.body.team,
+        teamId: req.body.teamId,
         score: req.body.score,
     });
     try{

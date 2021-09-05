@@ -15,10 +15,9 @@ router.get("/:id",async(req,res)=>{
 // add a new user
 router.post("/",async(req,res)=>{
     const newPost = new User({
-        // uid: req.body.uid,
         name: req.body.name,
         role: req.body.role,
-        team: req.body.team,
+        teamId: req.body.teamId,
     });
     try{
         const savePost = await newPost.save();

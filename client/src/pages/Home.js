@@ -5,6 +5,7 @@ import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
 import Lead from "../layers/Admin";
 
+
 import { AuthContext } from "../context/AuthContext";
 
 export default function Home() {
@@ -23,7 +24,6 @@ export default function Home() {
   }
 
   const roleDisplay = (() => {
-    console.log(user.role);
     switch (user.role){
       case "ADMIN":
         return(

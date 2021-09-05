@@ -1,4 +1,4 @@
-export default function Chatroom(props) {
+export default function Chatbox(props) {
   return (
     <div>
       <div class="text-sm text-gray-400">{props.message.role}</div>

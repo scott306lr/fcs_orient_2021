@@ -37,6 +37,11 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("recieve message", payload);
   });
 
+  socket.on("send announcement", ({ payload }) => {
+    console.log("announcing...")
+    socket.emit("recieve message", payload);
+  });
+
 
   //changing game status, for admin use only.
   socket.on("start game", () => {

@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 //import { io, Socket } from "socket.io-client";
 import Chatbox from "../components/Chatbox";
 import { AuthContext } from "../context/AuthContext";
+import Announce from "../layers/Announce";
 import axios from "axios";
 
 const msgJSON = [
@@ -45,8 +46,8 @@ export default function Chatroom() {
   }, [])
 
   useEffect(() => {
-    socket.on("recieve message", (newMessage) => {
-      setMessages( (prev) => [...prev, newMessage]);
+    socket.on("recieve message", (payload) => {
+      setMessages( (prev) => [...prev, payload]);
     })
   }, [socket]);
 
@@ -89,19 +90,22 @@ export default function Chatroom() {
   });
 
   return (
-    <div class = "h-screen overflow-hidden bg-blue-400">
-      { MessageList }
-      <div class="absolute w-full flex mt-4 items-center inset-x-0 bottom-0 bg-green-200 block">
-        <textarea
-          className="chatMessageInput"
-          placeholder="write something..."
-          ref={newMessage}
-          class="h-auto resize-none flex-grow ml-4 rounded-md"
-        ></textarea>
-        <button className="chatSubmitButton" onClick={handleSubmit} class="h-auto btn mr-4">
-          Send
-        </button>
+    <>
+      <Announce />
+      <div class = "h-screen overflow-hidden bg-blue-400">
+        { MessageList }
+        <div class="absolute w-full flex mt-4 items-center inset-x-0 bottom-0 bg-green-200 block">
+          <textarea
+            className="chatMessageInput"
+            placeholder="write something..."
+            ref={newMessage}
+            class="h-auto resize-none flex-grow ml-4 rounded-md"
+          ></textarea>
+          <button className="chatSubmitButton" onClick={handleSubmit} class="h-auto btn mr-4">
+            Send
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

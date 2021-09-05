@@ -1,35 +1,31 @@
 const mongoose = require("mongoose");
 
-const TaskSchema = new mongoose.Schema({
-    taskId:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    taskName:{
+const TeamSchema = new mongoose.Schema({
+    teamId:{
         type:String,
         required:true,
     },
-    question:{
-        type:String,
-    },
-    answer:{
-        type:String,
-    },
-    qtype:{
+    teamName:{
         type:String,
         required:true,
     },
-    locationX:{
+    gold:{
         type:String,
-        required:true,
     },
-    locationY:{
+    silver:{
         type:String,
-        required:true,
+    },
+    bronze:{
+        type:String,
+    },
+    iron:{
+        type:String,
+    },
+    score:{
+        type:String,
     },
 },
 {timestamps:true}
 );
 
-module.exports = mongoose.model("Task", TaskSchema, "Task");
+module.exports = mongoose.model("Team", TeamSchema, "Team");

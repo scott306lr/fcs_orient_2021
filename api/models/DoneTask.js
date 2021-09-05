@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const DoneTaskSchema = new mongoose.Schema({
-    tid:{
+    taskId:{
         type:String,
         required:true,
     },
@@ -9,7 +9,7 @@ const DoneTaskSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    team:{
+    teamId:{
         type:String,
         required:true,
     },

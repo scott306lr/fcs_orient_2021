@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const Task = require("../models/Task");
 
-// get a task information by tid
-router.get("/:tid",async(req,res)=>{
+// get a task information by taskId
+router.get("/:taskId",async(req,res)=>{
     try{
-        const task = await Task.findOne({tid:req.params.tid});
+        const task = await Task.findOne({tid:req.params.taskId});
         res.status(200).json(task);
     }
     catch(err){

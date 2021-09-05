@@ -39,7 +39,7 @@ io.on("connection", (socket) => {
 
   socket.on("send announcement", ({ payload }) => {
     console.log("announcing...")
-    socket.emit("recieve message", payload);
+    io.emit("recieve message", payload);
   });
 
 

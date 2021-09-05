@@ -24,7 +24,7 @@ export const loginCall = async (rid, dispatch) => {
     name: "UDCHEN",
     rid: "AABBCCDD",
     role: "ADMIN",
-    team: "3",
+    teamId: "3",
   };
 
   dispatch(LoginStart());

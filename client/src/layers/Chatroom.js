@@ -64,7 +64,7 @@ export default function Chatroom() {
       time: currentTime,
       name: user.name,
       role: user.role,
-      team: user.team,
+      teamId: user.teamId,
       content: newMessage.current.value,
     };
     console.log(payload);

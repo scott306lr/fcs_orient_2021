@@ -94,7 +94,7 @@ export default function Score(props) {
   
   return (
     <div class="p-4 w-full overflow-hidden bg-cusorange-500">
-      <h2 class="text-xl">計分榜</h2>
+      <h2 class="text-xl overflow-hidden">計分榜</h2>
       <div class="max-w-prose mx-auto p-8">
         <div class="grid grid-cols-6 place-items-center">
           <div class="text-center align-middle uppercase font-bold">team</div>

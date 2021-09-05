@@ -1,9 +1,10 @@
-
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { loginCall } from "../apiCalls";
 import { AuthContext } from "../context/AuthContext";
+import { useParams  } from "react-router";
 
 export default function Login() {
+  const params = useParams();
   const rid = useRef();
   const { isFetching, error, dispatch } = useContext(AuthContext);
 
@@ -14,6 +15,14 @@ export default function Login() {
       dispatch
     );
   };
+
+  useEffect(() => {
+    params?.rid && 
+    loginCall(
+      params,
+      dispatch
+    );
+  }, [])
 
   return (
     <div>

@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(morgan("common"));
 
 const userRouter = require("./routes/user");
-app.use("/api/login", userRouter);
+app.use("/api/auth", userRouter);
 const taskRouter = require("./routes/task");
 app.use("/api/task", taskRouter);
 const messageRouter = require("./routes/message");

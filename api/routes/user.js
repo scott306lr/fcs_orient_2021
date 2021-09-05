@@ -2,9 +2,10 @@ const router = require("express").Router();
 const User = require("../models/User");
 
 // get a user information by uid
-router.get("/:id",async(req,res)=>{
+router.post("/login",async(req,res)=>{
     try{
-        const user = await User.findById(req.params.id);
+        console.log(req.body);
+        const user = await User.findById(req.body.rid);
         res.status(200).json(user);
     }
     catch(err){

@@ -3,7 +3,7 @@ import Member from "../layers/Member";
 import Chatroom from "../layers/Chatroom";
 import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
-import Lead from "../layers/Admin";
+import Lead from "../layers/Lead";
 
 
 import { AuthContext } from "../context/AuthContext";
@@ -52,17 +52,16 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" class = "flex flex-col h-screen relative">
-      <h1 class="text-center text-2xl">FCS ORIENTING 2021</h1>
+    <div id = "app" class = "bg-cusblue-100 flex flex-col h-screen relative">
+      <h1 class="text-center text-3xl">FCS ORIENTING 2021</h1>
       <div id = "messageBar" class = "index-ce"></div>  
       <div id = "topBar" class="flex justify-between">
         <button onClick = {() => switchChat(true)} class="btn">Chatroom</button>
         <button onClick = {() => switchScore(true)} class="btn">Scoreboard</button>
       </div>
 
-      {roleDisplay}
       <div id = "chat8Score" class = "flex-grow relative">
-        <button class = "relative top-0 right-0 z-50 btn-x" onClick = {() => {
+        <button class = "relative top-0 right-0 z-50 m-2 btn-x" onClick = {() => {
           if (chatOpen)
             switchChat(false);
           if (scoreOpen)
@@ -75,6 +74,9 @@ export default function Home() {
           <Score opened = {scoreOpen} onChange = {switchScore}/>
         </div>
       </div>
+
+      {roleDisplay}
+
     </div>
   );
 }

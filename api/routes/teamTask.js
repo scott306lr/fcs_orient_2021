@@ -56,4 +56,15 @@ router.post("/",async(req,res)=>{
     }
 })
 
+//delete all
+router.delete("/",async(req,res)=>{
+    try{
+        const user = await TeamTask.deleteMany();
+        res.status(200).json("teamTask has been delete")
+    }
+    catch(err){
+        return res.status(500).json(err);
+    }
+})
+
 module.exports = router;

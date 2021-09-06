@@ -10,7 +10,7 @@ export default function Chatbox(props) {
                     inline-block
                     py-1 px-2
                     rounded-md
-                    bg-green-300
+                    bg-cusgreen-200
                     focus:shadow-lg"
         >{props.message.content}</div>
       </div>

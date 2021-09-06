@@ -39,7 +39,7 @@ export default function Chatroom() {
   useEffect( async () => {
     try {
       const res = await axios.get("/message");
-      setMessages(res.data.reverse());
+      setMessages(res.data);
     } catch (err) {
       console.log(err);
     }

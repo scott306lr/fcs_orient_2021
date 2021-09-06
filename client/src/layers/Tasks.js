@@ -19,12 +19,7 @@ export default function Tasks(props) {
 
   useEffect(() => {
     socket.on("update tasks", async (newTasks) => {
-      try {
-        const res = await axios.get(`/teamTask/${user.teamId}`);
-        setTasks((prev) => [...prev, ...newTasks]);
-      } catch (err) {
-        console.log(err);
-      }
+      setTasks((prev) => [...prev, ...newTasks]);
     })
   }, [socket]);
 

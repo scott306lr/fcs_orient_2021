@@ -5,7 +5,7 @@ const Message = require("../models/Message");
 router.get("/",async(req,res)=>{
     try{
         const message = await Message.find().sort({_id:-1}).limit(200);
-        res.status(200).json(message);
+        res.status(200).json(message.reverse());
     }
     catch(err){
         res.status(500).json(err);

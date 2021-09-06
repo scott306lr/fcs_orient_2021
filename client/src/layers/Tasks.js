@@ -23,6 +23,30 @@ export default function Tasks(props) {
     })
   }, [socket]);
 
+  const unlockTask = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = {
+        locationX: 0,
+        locationY: 0,
+      }
+
+      const doneTask = {
+        time: "01:01",
+        taskid: 3,
+        who: "LR",
+        team: 1,
+        score: 4,
+      }
+
+      const res = await axios.post(`/teamTask/unlock/${user.teamId}`, payload);
+      socket.emit("answered correct", ({teamId:"12"}, doneTask, res.data));
+      setTasks((prev) => [...prev, ...res.data]);
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
   
   const itemList = tasks.map((task) => {
     return (
@@ -35,7 +59,7 @@ export default function Tasks(props) {
   return (
     <div id = "map8Tasks">
       <Map />
-      <button class = "absolute bottom-0" onClick = {() => console.log(true)}>TASKS</button>
+      <button class = "absolute bottom-0" onClick={unlockTask}>ADD TASKS</button>
       <div id = "taskList">
         {itemList}
       </div>

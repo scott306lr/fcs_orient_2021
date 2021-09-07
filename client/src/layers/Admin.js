@@ -25,7 +25,7 @@ export default function Admin() {
 
   const deleteAll = async () => {
     try {
-      await axios.delete("/");
+      await axios.delete("/teamTask");
     } catch (err) {
       console.log(err);
       return
@@ -65,8 +65,8 @@ export default function Admin() {
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
         <button class="btn" onClick = {startGame}> Start Game </button>
         <button class="btn" onClick = {endGame}> End Game </button>
-        <button class="btn" onClick = {deleteAll}> Del Team Task </button>
       </div>
+      <button class="btn" onClick = {deleteAll}> Del Team Task </button>
       <div id = "setInputTime">
         Set End Time
         <input id = "endTime" type = "time" min="15:00" max="18:00" required></input>

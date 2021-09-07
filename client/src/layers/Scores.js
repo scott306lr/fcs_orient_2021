@@ -8,14 +8,23 @@ import smadal from '../img/medal-2.svg';
 import bmadal from '../img/medal-3.svg';
 import imadal from '../img/medal-4.svg';
 
-const teamsJSON = [
-  {teamID: 1, name: "haha1", gold: "3", silver: "7", bronze: "3", iron: "2", score:"41"}, 
-  {teamID: 2, name: "haha2", gold: "1", silver: "7", bronze: "3", iron: "2", score:"33"},
-  {teamID: 3, name: "haha3", gold: "2", silver: "7", bronze: "3", iron: "4", score:"31"},
-  {teamID: 4, name: "haha4", gold: "1", silver: "1", bronze: "1", iron: "1", score:"10"},
-  {teamID: 5, name: "haha5", gold: "2", silver: "2", bronze: "3", iron: "4", score:"500"},
-  {teamID: 6, name: "haha6", gold: "8", silver: "8", bronze: "8", iron: "8", score:"80"},
-]
+// const teamsJSON = [
+//   {teamID: 1, name: "haha1", gold: "3", silver: "7", bronze: "3", iron: "2", score:"41"}, 
+//   {teamID: 2, name: "haha2", gold: "1", silver: "7", bronze: "3", iron: "2", score:"33"},
+//   {teamID: 3, name: "haha3", gold: "2", silver: "7", bronze: "3", iron: "4", score:"31"},
+//   {teamID: 4, name: "haha4", gold: "1", silver: "1", bronze: "1", iron: "1", score:"10"},
+//   {teamID: 5, name: "haha5", gold: "2", silver: "2", bronze: "3", iron: "4", score:"500"},
+//   {teamID: 6, name: "haha6", gold: "8", silver: "8", bronze: "8", iron: "8", score:"80"},
+// ]
+
+const teamsJSON = {
+  "1": {name: "haha1", gold: "3", silver: "7", bronze: "3", iron: "2", score:"41"}, 
+  "2": {name: "haha2", gold: "1", silver: "7", bronze: "3", iron: "2", score:"33"},
+  "3": {name: "haha3", gold: "2", silver: "7", bronze: "3", iron: "4", score:"31"},
+  "4": {name: "haha4", gold: "1", silver: "1", bronze: "1", iron: "1", score:"10"},
+  "5": {name: "haha5", gold: "2", silver: "2", bronze: "3", iron: "4", score:"500"},
+  "6": {name: "haha6", gold: "8", silver: "8", bronze: "8", iron: "8", score:"80"},
+} // LR: we can get teams list by api to show html, then call this JSON by using teamID in list.
 
 const tasksDoneJSON = [
   {
@@ -70,27 +79,48 @@ const tasksDoneJSON = [
 ]
 
 export default function Score(props) {
-
-  function compareRank(a, b) {
-    if (a.score != b.score)
-      return parseInt(a.score) > parseInt(b.score);
-    if (a.gold != b.gold)
-      return parseInt(a.gold) > parseInt(b.gold);
-    if (a.silver != b.silver)
-      return parseInt(a.silver) > parseInt(b.silver);
-    if (a.bronze != b.bronze)
-      return parseInt(a.bronze) > parseInt(b.bronze);
-    return parseInt(a.teamID) < parseInt(b.teamID);
-  }
-
-  function getTeamById(id) {
-    return teamsJSON.find(teamJSON => {
-      return teamJSON.teamID == id;
-    });
-  }
-
   const {socket, user} = useContext(AuthContext);
   const [teams, setTeams] = useState(teamsJSON);
+
+  const addScore = (teamId, doneTask) => {
+    var toUpdate = teams[teamId];
+    switch (doneTask.score){
+      case 4 :
+        toUpdate.gold += 1;
+        break;
+      case 3 :
+        toUpdate.silver += 1;
+        break;
+      case 2 :
+        toUpdate.bronze += 1;
+        break;
+      case 1 :
+        toUpdate.iron += 1;
+        break;
+    }
+    toUpdate.score += doneTask.score;
+    setTeams((prev) => ({...prev, [teamId]: toUpdate}) );
+  };
+
+  // const compareRank = (a, b) => {
+  //   if (a.score != b.score)
+  //     return parseInt(a.score) > parseInt(b.score);
+  //   if (a.gold != b.gold)
+  //     return parseInt(a.gold) > parseInt(b.gold);
+  //   if (a.silver != b.silver)
+  //     return parseInt(a.silver) > parseInt(b.silver);
+  //   if (a.bronze != b.bronze)
+  //     return parseInt(a.bronze) > parseInt(b.bronze);
+  //   return parseInt(a.teamID) < parseInt(b.teamID);
+  // }
+
+  // const getTeamById = (id) => {
+  //   return teamsJSON.find(teamJSON => {
+  //     return teamJSON.teamID == id;
+  //   });
+  // }
+
+  
   /*
   const [ranking, setRanking] = useState([...Array(6).keys()].map(id => id + 1).map(id => {
     try {
@@ -102,45 +132,35 @@ export default function Score(props) {
   }).sort(compareRank).map(teamJSON => teamJSON.teamID));
   */
 
-  const [ranking, setRanking] = useState(teamsJSON.sort(compareRank).map(teamJSON => teamJSON.teamID));
+  // const [ranking, setRanking] = useState(teamsJSON.sort(compareRank).map(teamJSON => teamJSON.teamID));
 
-  useEffect(() => {
-    socket.on("update score", (team, doneTask) => {
+  // useEffect(() => {
+  //   socket.on("update score", (teamId, doneTask) => {
 
-      // push to record
+  //     // push to record
       
-      // if not freezed
+  //     // if not freezed
       
-      const doneTeam = getTeamById(team);
+  //     addScore(teamId, doneTask);
 
-      if (doneTask.score == 4)
-        doneTeam.gold += 1;
-      else if (doneTask.score == 3)
-        doneTeam.silver += 1;
-      else if (doneTask.score == 2)
-        doneTeam.bronze += 1;
-      else
-        doneTeam.iron += 1;
-      doneTeam.score += doneTask.score;
+  //     var newRank = ranking;
+  //     var rank = teamsJSON.findIndex(rankID => (rankID == team));
+  //     while (rank > 0 && compareRank(getTeamById(newRank[rank]), getTeamById(newRank[rank - 1]))) {
+  //       [newRank[rank], newRank[rank - 1]] = [newRank[rank - 1], newRank[rank]];
+  //       rank -= 1;
+  //     }
+  //     if (newRank != ranking)
+  //       setRanking(newRank);
+  //     console.log("updating score!");
+  //   });
 
-      var newRank = ranking;
-      var rank = teamsJSON.findIndex(rankID => (rankID == team));
-      while (rank > 0 && compareRank(getTeamById(newRank[rank]), getTeamById(newRank[rank - 1]))) {
-        [newRank[rank], newRank[rank - 1]] = [newRank[rank - 1], newRank[rank]];
-        rank -= 1;
-      }
-      if (newRank != ranking)
-        setRanking(newRank);
-      console.log("updating score!");
-    });
+  //   console.log(10);
 
-    console.log(10);
-
-    ranking.forEach((id, i) => {
-      document.getElementById("score_" + id).style.order = 5 - i; 
-      console.log(5 - i);
-    });
-  }, [socket, ranking]);
+  //   ranking.forEach((id, i) => {
+  //     document.getElementById("score_" + id).style.order = 5 - i; 
+  //     console.log(5 - i);
+  //   });
+  // }, [socket, ranking]);
 
   const iterTeam = teams.map((teamJSON) => {
     return (

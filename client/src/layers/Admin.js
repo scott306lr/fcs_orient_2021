@@ -32,6 +32,29 @@ export default function Admin() {
     }
   }
 
+  // const addNewTask = async () => {
+  //   try {
+  //     res = await axios.get("/team");
+  //     teamList = res.data.map((team) => team.teamId);
+
+  //     for (var i=0; i<teamList.size(); i+=1){
+        
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     return
+  //   }
+  // }
+
+  // const initGame = async () => {
+  //   try {
+  //     await axios.delete("/teamTask");
+  //   } catch (err) {
+  //     console.log(err);
+  //     return
+  //   }
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newAnnounce.current.value === "") return;

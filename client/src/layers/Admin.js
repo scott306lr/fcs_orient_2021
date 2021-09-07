@@ -49,7 +49,8 @@ export default function Admin() {
   };
 
   return (
-    <div>
+    <div class="z-0">
+      <h1 class="text-xl">Admin Interface</h1>
       <div class="flex justify-between">
         <button class="btn" onClick = {freezeBoard}> Freeze Board </button>
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
@@ -71,7 +72,6 @@ export default function Admin() {
           Send
         </button>
       </div>
-      <h1 class="text-xl">Admin</h1>
     </div>
   );
 }

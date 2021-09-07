@@ -49,7 +49,8 @@ export default function Admin() {
   };
 
   return (
-    <div>
+    <div class="z-0">
+      <h1 class="text-xl">Lead Interface</h1>
       <div class="flex justify-between">
         <button class="btn" onClick = {freezeBoard}> Freeze Board </button>
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
@@ -60,7 +61,7 @@ export default function Admin() {
         Set End Time:
         <input id = "endTime" type = "time" min="15:00" max="18:00" required class="m-2"></input>
       </div>
-      <div class="relative w-full flex p-2 mt-4 items-center bottom-0 bg-green-200" id = "sendAnnounce">
+      <div class="relative flex p-2 mt-4" id = "sendAnnounce">
         <textarea
           className="announceText"
           placeholder="Key in announce text"
@@ -71,7 +72,6 @@ export default function Admin() {
           Send
         </button>
       </div>
-      <h1 class="text-xl">Lead</h1>
     </div>
   );
 }

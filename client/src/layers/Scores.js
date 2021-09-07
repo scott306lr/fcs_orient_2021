@@ -175,7 +175,7 @@ export default function Score(props) {
           <div class="text-center align-middle uppercase font-bold">score</div>
         </div>
       </div>
-      <div id="scoreList" class="flex flex-col space-y-4">
+      <div id="scoreList" class="space-y-4">
         {iterTeam}
       </div>
     </div>

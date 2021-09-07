@@ -14,13 +14,6 @@ router.get("/:teamId",async(req,res)=>{
     
 })
 
-// add tasks for new team, closet task has higher probability
-// req: {
-//     teamID,
-//     locationX,
-//     locationY,
-// }
-
 router.post("/unlock/:teamId",async(req,res)=>{
 
     try{
@@ -57,6 +50,19 @@ router.post("/unlock/:teamId",async(req,res)=>{
         res.status(500).json(err);
     }
 });
+
+// update done
+router.post("/done",async(req,res)=>{
+    try{
+        const teamTask = await TeamTask.findOne({teamId:req.body.teamId, taskId:req.body.taskId});
+        teamTask.done = true;
+        teamTask.save();
+        res.status(200).json("update successfully");
+    }
+    catch(err){
+        res.status(500).json(err);
+    }
+})
 
 
 // add a new teamTask

@@ -53,24 +53,38 @@ export default function Home() {
 
   return (
     <div id = "app" class = "bg-cusblue-100 flex flex-col h-screen relative">
-      <h1 class="text-center text-3xl">FCS ORIENTING 2021</h1>
+      <h1 class="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
       <div id = "messageBar" class = "index-ce"></div>  
       <div id = "topBar" class="flex justify-between">
-        <button onClick = {() => switchChat(true)} class="btn">Chatroom</button>
-        <button onClick = {() => switchScore(true)} class="btn">Scoreboard</button>
+        <button onClick = {() => {
+          if (chatOpen)
+            switchChat(false);
+          else {
+            switchChat(true);
+            switchScore(false);
+          }
+        }} class="btn">Chatroom</button>
+        <button onClick = {() => {
+          if (scoreOpen)
+            switchScore(false);
+          else {
+            switchScore(true);
+            switchChat(false);
+          }
+        }} class="btn">Scoreboard</button>
       </div>
-
+{/* "relative top-0 right-0 z-50 m-3 btn-x text-lg" */}
       <div id = "chat8Score" class = "flex-grow relative">
-        <button class = "relative top-0 right-0 z-50 m-2 btn-x" onClick = {() => {
+        <button class = {`${chatOpen | scoreOpen ? "relative top-0 right-0 z-50 m-3 btn-x text-lg" : "invisible"}`}  onClick = {() => {
           if (chatOpen)
             switchChat(false);
           if (scoreOpen)
             switchScore(false);
         }}>×</button>
-        <div id = "chatCollapse" class = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0">
+        <div id = "chatCollapse" class = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0 z-10">
           <Chatroom opened = {chatOpen} onChange = {switchChat}/>
         </div>
-        <div id = "scoreCollapse" class = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0">
+        <div id = "scoreCollapse" class = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0 z-10">
           <Score opened = {scoreOpen} onChange = {switchScore}/>
         </div>
       </div>

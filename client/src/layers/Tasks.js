@@ -18,7 +18,7 @@ export default function Tasks(props) {
   }, []);
 
   useEffect(() => {
-    socket.on("update tasks", async (newTasks) => {
+    socket.on("update tasks", (newTasks) => {
       setTasks((prev) => [...prev, ...newTasks]);
     })
   }, [socket]);

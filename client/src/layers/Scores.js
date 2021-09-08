@@ -123,11 +123,11 @@ export default function Score(props) {
     console.log("score_" + teamId);
     
     document.getElementById("score_" + teamId).style.order = 
-      toUpdate.score * 50 * 50 * 50 * 50 +
-      toUpdate.gold * 50 * 50 * 50 +
-      toUpdate.silver * 50 * 50 +
-      toUpdate.bronze * 50 +
-      toUpdate.iron;
+      -toUpdate.score * 50 * 50 * 50 * 50 +
+      -toUpdate.gold * 50 * 50 * 50 +
+      -toUpdate.silver * 50 * 50 +
+      -toUpdate.bronze * 50 +
+      -toUpdate.iron;
   };
 
 
@@ -193,7 +193,7 @@ export default function Score(props) {
 
   const iterTeam = teams.map((team) => {
     return (
-      <div class="transition-all max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl" id = {"score_" + team._id}>
+      <div class="transition-all duration-2000 max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl" id = {"score_" + team._id}>
         {/* <div class="md:flex"> */}
           <div class="p-8">
             <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
@@ -224,7 +224,7 @@ export default function Score(props) {
           <div class="text-center align-middle uppercase font-bold">score</div>
         </div>
       </div>
-      <div id="scoreList" class="flex flex-col space-y-4">
+      <div id="scoreList" class="flex flex-col space-y-4 transition-all">
         {iterTeam}
       </div>
       <button onClick = {() => {addScore(doneTask.teamId, doneTask)}}>Update</button>

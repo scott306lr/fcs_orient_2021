@@ -3,24 +3,31 @@ const TeamTask = require("../models/TeamTask");
 const Task = require("../models/Task");
 const Team = require("../models/Team");
 
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 const unlockTask = async(team_id, x, y, unlockCount) => {
     const teamTasks = await TeamTask.find({teamId: team_id});
     const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId );
-    console.log(teamTaskIds)
-    const task = await Task.find( {taskId: {$ne: teamTaskIds}});
+    const task = await Task.find( {id: {$ne: teamTaskIds}});
 
     const reqMan = x + y;
-    const randPickedTasks = task.sort(
+    var randPickedTasks = task.sort(
         function(a, b){
             const aMan = a.locationX + a.locationY;
             const bMan = b.locationX + b.locationY;
-            if (Math.random() < 0.1)
-                return Math.abs(aMan - reqMan) > Math.abs(bMan - reqMan);
-            else 
-                return Math.random() <= 0.5;
+
+            return Math.abs(aMan - reqMan) - Math.abs(bMan - reqMan);
         }   
-    ).slice(0, unlockCount);
-    console.log(randPickedTasks);
+    ).slice(0, 5);
+    shuffleArray(randPickedTasks);
+
+    randPickedTasks = randPickedTasks.slice(0, unlockCount);
+    console.log(randPickedTasks.map((t) => ({x: t.locationX, y: t.locationY})));
     
     const tasksToSave = randPickedTasks.map((task) => ({
         teamId: team_id,
@@ -126,21 +133,21 @@ const initTask = [
 router.post("/initTask",async(req,res)=>{
     try{
         await TeamTask.deleteMany();
-        await TeamTask.insertMany(initTask);
-        res.status(200).json("initial successful");
-        // const resTeams = await Team.find();
-        // //resTask = await Task.findById([])
+        //await TeamTask.insertMany(initTask);
+        //res.status(200).json("initial successful");
+        
+        const resTeams = await Team.find();
+        //resTask = await Task.findById([])
 
-        // console.log(resTeams);  
-
-        // resTeams.map( async(team) => (
-        //     await unlockTask(team.id, 0, 0, 2)
-        // ));
-        // res.status(200).json("hi");
+        //console.log(resTeams);  
+        resTeams.map( async(team) => (
+            await unlockTask(team.id, 0, 0, 2)
+        ));
+        res.status(200).json("hi");
     }
     catch(err){
         return res.status(500).json(err);
     }
 })
 
-module.exports = router;1111
+module.exports = router;

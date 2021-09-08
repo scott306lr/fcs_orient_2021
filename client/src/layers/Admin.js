@@ -63,7 +63,7 @@ export default function Admin() {
     const payload = {
       time: currentTime,
       name: "SYSTEM",
-      role: "ANNOUNCEMENT",
+      role: "SYSTEM",
       teamId: 987,
       content: newAnnounce.current.value,
     };

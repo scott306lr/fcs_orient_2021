@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 //import { io, Socket } from "socket.io-client";
 import Chatbox from "../components/Chatbox";
+import Announce from "../components/Announce";
 import { AuthContext } from "../context/AuthContext";
-import Announce from "../layers/Announce";
 import axios from "axios";
 
 const msgJSON = [
@@ -32,9 +32,9 @@ const msgJSON = [
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
   const [messages, setMessages] = useState(msgJSON);
+  const [arriveMessage, setArriveMessage] = useState();
   const newMessage = useRef();
   const scrollRef = useRef();
-  //const socket = useRef();
   
   useEffect( async () => {
     try {
@@ -43,11 +43,16 @@ export default function Chatroom() {
     } catch (err) {
       console.log(err);
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    setMessages( (prev) => [...prev, arriveMessage]);
+  }, [arriveMessage]);
 
   useEffect(() => {
     socket.on("recieve message", (payload) => {
-      setMessages( (prev) => [...prev, payload]);
+      console.log("payload");
+      setArriveMessage(payload);
     })
   }, [socket]);
 
@@ -91,7 +96,7 @@ export default function Chatroom() {
 
   return (
     <>
-      <Announce />
+      <Announce msg={arriveMessage}/>
       <div class = "flex flex-col h-screen bg-cusblue-200 overflow-hidden">
         <h1 class="text-xl bg-cusgreen-200 text-center p-1">聊天室</h1>
         <div class = "relative flex-grow overflow-auto">

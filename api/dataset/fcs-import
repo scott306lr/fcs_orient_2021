@@ -1,0 +1,7 @@
+#!/bin/bash
+
+arr=("Message" "Task" "Team" "TeamTask" "User")
+
+for val in ${arr[*]}; do
+	sudo mongoimport --collection=$val --file=`./add_${val}.json` --jsonArray
+done

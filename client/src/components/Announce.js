@@ -23,7 +23,7 @@ export default function Announce(props) {
   
   return (
     <div>
-      <Chatbox message={arriveMessage}/>
+      {/* <Chatbox message={curMessage}/> */}
     </div>
   );
 }

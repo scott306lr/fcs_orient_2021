@@ -5,6 +5,14 @@ import Announce from "../components/Announce";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
+const arriveMsgJSON = {
+  time: "21:02",
+  name: "AA",
+  role: "Admin",
+  team: 1,
+  content: "Hello!"
+};
+
 const msgJSON = [
   {
     time: "21:02",
@@ -32,7 +40,7 @@ const msgJSON = [
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
   const [messages, setMessages] = useState(msgJSON);
-  const [arriveMessage, setArriveMessage] = useState();
+  const [arriveMessage, setArriveMessage] = useState(arriveMsgJSON);
   const newMessage = useRef();
   const scrollRef = useRef();
   
@@ -43,6 +51,7 @@ export default function Chatroom() {
     } catch (err) {
       console.log(err);
     }
+    console.log(messages);
   }, []);
 
   useEffect(() => {
@@ -89,7 +98,7 @@ export default function Chatroom() {
   const MessageList = messages.map((msg) => {
     return (
       <div class="overflow-y-auto" ref={scrollRef}>
-        <Chatbox message={msg}/>
+        {/* <Chatbox message={msg}/> */}
       </div>
     );
   });

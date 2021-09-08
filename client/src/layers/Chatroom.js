@@ -40,7 +40,7 @@ const msgJSON = [
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
   const [messages, setMessages] = useState(msgJSON);
-  const [arriveMessage, setArriveMessage] = useState(arriveMsgJSON);
+  const [arriveMessage, setArriveMessage] = useState();
   const newMessage = useRef();
   const scrollRef = useRef();
   
@@ -60,7 +60,6 @@ export default function Chatroom() {
 
   useEffect(() => {
     socket.on("recieve message", (payload) => {
-      console.log("payload");
       setArriveMessage(payload);
     })
   }, [socket]);
@@ -98,7 +97,7 @@ export default function Chatroom() {
   const MessageList = messages.map((msg) => {
     return (
       <div class="overflow-y-auto" ref={scrollRef}>
-        {/* <Chatbox message={msg}/> */}
+        <Chatbox message={msg}/>
       </div>
     );
   });

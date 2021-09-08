@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const TeamTask = require("../models/TeamTask");
 const Task = require("../models/Task");
+const Team = require("../models/Team");
 
 const unlockTask = async(team_id, x, y, unlockCount) => {
     const teamTasks = await TeamTask.find({teamId: team_id});
-    const teamTaskIds = teamTasks.map((teamTask) => teamTask.teamId );
+    const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId );
     console.log(teamTaskIds)
-    const task = await Task.find( {teamId: {$nor: teamTaskIds}});
+    const task = await Task.find( {taskId: {$ne: teamTaskIds}});
 
     const reqMan = x + y;
     const randPickedTasks = task.sort(
@@ -92,7 +93,7 @@ router.post("/",async(req,res)=>{
 //delete all
 router.delete("/",async(req,res)=>{
     try{
-        await TeamTask.deleteMany({});
+        await TeamTask.deleteMany();
         res.status(200).json("deleted all task");
     }
     catch(err){
@@ -100,22 +101,46 @@ router.delete("/",async(req,res)=>{
     }
 })
 
+const initTask = [
+    {"teamId":"1", "taskName":"A", "taskId":"A", "qtype":"test", "done":false},
+    {"teamId":"1", "taskName":"B", "taskId":"B", "qtype":"test", "done":false},
+    {"teamId":"1", "taskName":"C", "taskId":"C", "qtype":"test", "done":false},
+    {"teamId":"2", "taskName":"D", "taskId":"D", "qtype":"test", "done":false},
+    {"teamId":"2", "taskName":"E", "taskId":"E", "qtype":"test", "done":false},
+    {"teamId":"2", "taskName":"F", "taskId":"F", "qtype":"test", "done":false},
+    {"teamId":"3", "taskName":"G", "taskId":"G", "qtype":"test", "done":false},
+    {"teamId":"3", "taskName":"H", "taskId":"H", "qtype":"test", "done":false},
+    {"teamId":"3", "taskName":"I", "taskId":"I", "qtype":"test", "done":false},
+    {"teamId":"4", "taskName":"J", "taskId":"j", "qtype":"test", "done":false},
+    {"teamId":"4", "taskName":"K", "taskId":"K", "qtype":"test", "done":false},
+    {"teamId":"4", "taskName":"L", "taskId":"L", "qtype":"test", "done":false},
+    {"teamId":"5", "taskName":"M", "taskId":"N", "qtype":"test", "done":false},
+    {"teamId":"5", "taskName":"O", "taskId":"O", "qtype":"test", "done":false},
+    {"teamId":"5", "taskName":"P", "taskId":"p", "qtype":"test", "done":false},
+    {"teamId":"6", "taskName":"Q", "taskId":"Q", "qtype":"test", "done":false},
+    {"teamId":"6", "taskName":"R", "taskId":"R", "qtype":"test", "done":false},
+    {"teamId":"6", "taskName":"S", "taskId":"S", "qtype":"test", "done":false}
+]
+
 //initialize tasks for each team
 router.post("/initTask",async(req,res)=>{
     try{
         await TeamTask.deleteMany();
-        
-        resTeams = await Team.find();
-        //resTask = await Task.findById([])
+        await TeamTask.insertMany(initTask);
+        res.status(200).json("initial successful");
+        // const resTeams = await Team.find();
+        // //resTask = await Task.findById([])
 
-        resTeams.map( async(team) => (
-            await unlockTask(team.teamId, 0, 0, 2)
-        ));
-        //res.status(200).json("deleted all task");
+        // console.log(resTeams);  
+
+        // resTeams.map( async(team) => (
+        //     await unlockTask(team.id, 0, 0, 2)
+        // ));
+        // res.status(200).json("hi");
     }
     catch(err){
         return res.status(500).json(err);
     }
 })
 
-module.exports = router;
+module.exports = router;1111

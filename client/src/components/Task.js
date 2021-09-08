@@ -19,23 +19,26 @@ const doneTask = {
 
 const newTasks = [
   {
-    taskID: 6,
-    name: "Question 6",
-    type: 1,
+    teamId: "3",
+    taskName: "Question 3",
+    taskId: "3",
+    qtype: "orient",
     done: false 
   },
   {
-    taskID: 7,
-    name: "Question 7",
-    type: 1,
+    teamId: "5",
+    taskName: "Question 5",
+    taskId: "5",
+    qtype: "orient",
     done: false 
   },
   {
-    taskID: 8,
-    name: "Question 8",
-    type: 1,
+    teamId: "8",
+    taskName: "Question 8",
+    taskId: "8",
+    qtype: "quiz",
     done: false 
-  }
+  },
 ];
 
 

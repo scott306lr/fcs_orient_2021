@@ -14,14 +14,14 @@ var GameStatus = {
 }
 
 io.on("connection", (socket) => {
-  console.log("a user connected.")
+  console.log("a user connected.");
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 
   socket.on("join team", (team) => {
     socket.join(team);
-    console.log(`ID: ${socket.id} joined team ${team}`)
+    console.log(`ID: ${socket.id} joined team ${team}`);
   });
   
   socket.on("answered correct", (team, doneTask, newTasks) => {
@@ -32,13 +32,13 @@ io.on("connection", (socket) => {
   })
 
   socket.on("send message", ({ payload }) => {
-    console.log("broadcasting message:")
-    console.log(payload)
+    console.log("broadcasting message:");
+    console.log(payload);
     socket.broadcast.emit("recieve message", payload);
   });
 
   socket.on("send announcement", ({ payload }) => {
-    console.log("announcing...")
+    console.log("announcing...");
     io.emit("recieve message", payload);
   });
 
@@ -46,25 +46,25 @@ io.on("connection", (socket) => {
   //changing game status, for admin use only.
   socket.on("start game", () => {
     GameStatus.in_game = true;
-    io.emit("status update", GameStatus)
+    io.emit("status update", GameStatus);
     console.log(`start game!`);
   })
 
   socket.on("stop game", () => {
     GameStatus.in_game = false;
-    io.emit("status update", GameStatus)
+    io.emit("status update", GameStatus);
     console.log(`stop game!`);
   })
 
   socket.on("freeze board", () => {
     GameStatus.board_freeze = true;
-    io.emit("status update", GameStatus)
+    io.emit("status update", GameStatus);
     console.log(`freeze board!`);
   })
 
   socket.on("unfreeze board", () => {
     GameStatus.board_freeze = false;
-    io.emit("board unfreezed")
+    io.emit("status update", GameStatus);
     console.log(`unfreeze board!`);
   })
 })

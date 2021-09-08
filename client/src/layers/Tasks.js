@@ -33,9 +33,8 @@ export default function Tasks(props) {
 
       const doneTask = {
         time: "01:01",
-        taskid: 3,
-        who: "LR",
-        team: 1,
+        teamId: 1,
+        taskId: 3,
         score: 4,
       }
 

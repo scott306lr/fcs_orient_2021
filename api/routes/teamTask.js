@@ -100,8 +100,12 @@ router.post("/initTask",async(req,res)=>{
     try{
         await TeamTask.deleteMany({});
         
-        res = await Team.findById([1, 2, 3, 4, 5]);
-        
+        resTeams = await Team.find();
+        //resTask = await Task.findById([])
+
+        resTeams.map((team) => ({
+            team: 
+        }));
         //res.status(200).json("deleted all task");
     }
     catch(err){

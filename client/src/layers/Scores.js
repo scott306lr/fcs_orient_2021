@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Scoreboard from "../components/Scoreboard";
 import { AuthContext } from "../context/AuthContext";
+import FlipMove from 'react-flip-move';
 import axios from "axios";
 
 import gmadal from '../img/medal-1.svg';
@@ -120,28 +121,32 @@ export default function Score(props) {
     toUpdate.score += doneTask.score;
     setTeamScore((prev) => ({...prev, [teamId]: toUpdate}) );
 
-    console.log("score_" + teamId);
+    // console.log("score_" + teamId);
     
-    document.getElementById("score_" + teamId).style.order = 
-      -toUpdate.score * 50 * 50 * 50 * 50 +
-      -toUpdate.gold * 50 * 50 * 50 +
-      -toUpdate.silver * 50 * 50 +
-      -toUpdate.bronze * 50 +
-      -toUpdate.iron;
+    // document.getElementById("score_" + teamId).style.zIndex = 
+    //   toUpdate.score * 50 * 50 * 50 * 50 +
+    //   toUpdate.gold * 50 * 50 * 50 +
+    //   toUpdate.silver * 50 * 50 +
+    //   toUpdate.bronze * 50 +
+    //   toUpdate.iron;
   };
 
 
-  // const compareRank = (a, b) => {
-  //   if (a.score != b.score)
-  //     return parseInt(a.score) > parseInt(b.score);
-  //   if (a.gold != b.gold)
-  //     return parseInt(a.gold) > parseInt(b.gold);
-  //   if (a.silver != b.silver)
-  //     return parseInt(a.silver) > parseInt(b.silver);
-  //   if (a.bronze != b.bronze)
-  //     return parseInt(a.bronze) > parseInt(b.bronze);
-  //   return parseInt(a.teamID) < parseInt(b.teamID);
-  // }
+  const compareRank = (a, b) => {
+    const scoreA = teamScore[a._id];
+    const scoreB = teamScore[b._id];
+    if (scoreA.score != scoreB.score)
+      return scoreB.score - scoreA.score;
+    if (scoreA.gold != scoreB.gold)
+      return scoreB.gold - scoreA.gold;
+    if (scoreA.silver != scoreB.silver)
+      return scoreB.silver - scoreA.silver;
+    if (scoreA.bronze != scoreB.bronze)
+      return scoreB.bronze - scoreA.bronze;
+    if (scoreA.iron != scoreB.iron)
+      return scoreB.iron - scoreA.iron;
+    return a._id - b._id;
+  }
 
   // const getTeamById = (id) => {
   //   return teamsJSON.find(teamJSON => {
@@ -190,18 +195,13 @@ export default function Score(props) {
   //     console.log(5 - i);
   //   });
   // }, [socket, ranking]);
-
-  const iterTeam = teams.map((team) => {
+  const iterList = teams.sort(compareRank).map((team) => {
     return (
-      <div class="transition-all duration-2000 max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl" id = {"score_" + team._id}>
-        {/* <div class="md:flex"> */}
-          <div class="p-8">
-            <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
-          </div>
-        {/* </div> */}
+      <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{zIndex: team._id == 6? 100: 0}}>
+        <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
       </div>                
     );
-  });
+  })
   
   return (
     <div class="p-4 w-full overflow-hidden bg-cusorange-500">
@@ -224,9 +224,10 @@ export default function Score(props) {
           <div class="text-center align-middle uppercase font-bold">score</div>
         </div>
       </div>
-      <div id="scoreList" class="flex flex-col space-y-4 transition-all">
-        {iterTeam}
-      </div>
+      <FlipMove id="scoreList" class="space-y-4" enterAnimation='accordionVertical'
+        leaveAnimation='accordionVertical'>
+        {iterList}
+      </FlipMove>
       <button onClick = {() => {addScore(doneTask.teamId, doneTask)}}>Update</button>
     </div>
   );

@@ -2,9 +2,9 @@ const router = require("express").Router();
 const Team = require("../models/Team");
 
 // get team information
-router.get("/:id",async(req,res)=>{
+router.get("/",async(req,res)=>{
     try{
-        const team = await Team.findById(req.params.id);
+        const team = await Team.find();
         res.status(200).json(team);
     }
     catch(err){
@@ -15,13 +15,7 @@ router.get("/:id",async(req,res)=>{
 // add a new team
 router.post("/",async(req,res)=>{
     const newPost = new Team({
-        teamId: req.body.teamId,
         teamName: req.body.teamName,
-        gold: req.body.gold,
-        silver: req.body.silver,
-        bronze: req.body.bronze,
-        iron: req.body.iron,
-        score: req.body.score
     });
     try{
         const savePost = await newPost.save();
@@ -46,21 +40,21 @@ router.post("/update_name/:id",async(req,res)=>{
 })
 
 // update medal
-router.post("/update_medal/:id",async(req,res)=>{
-    try{
-        const team = await Team.findById(req.params.id);
-        team.gold = req.body.gold;
-        team.silver = req.body.silver;
-        team.bronze = req.body.bronze;
-        team.iron = req.body.iron;
-        team.score = (parseInt(req.body.gold)*4 + parseInt(req.body.silver)*3 + parseInt(req.body.bronze)*2 + parseInt(req.body.iron)*1).toString();
-        team.save();
-        res.status(200).json("update medal successfully");
-    }
-    catch(err){
-        res.status(500).json(err);
-    }
-})
+// router.post("/update_medal/:id",async(req,res)=>{
+//     try{
+//         const team = await Team.findById(req.params.id);
+//         team.gold = req.body.gold;
+//         team.silver = req.body.silver;
+//         team.bronze = req.body.bronze;
+//         team.iron = req.body.iron;
+//         team.score = (parseInt(req.body.gold)*4 + parseInt(req.body.silver)*3 + parseInt(req.body.bronze)*2 + parseInt(req.body.iron)*1).toString();
+//         team.save();
+//         res.status(200).json("update medal successfully");
+//     }
+//     catch(err){
+//         res.status(500).json(err);
+//     }
+// })
 
 
 module.exports = router;

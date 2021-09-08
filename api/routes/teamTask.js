@@ -22,11 +22,11 @@ router.post("/unlock/:teamId",async(req,res)=>{
         console.log(teamTaskIds)
         const task = await Task.find( {teamId: {$nor: teamTaskIds}});
 
-        const reqMan = parseInt(req.body.locationX) + parseInt(req.body.locationY);
+        const reqMan = req.body.locationX + req.body.locationY;
         const randPickedTasks = task.sort(
             function(a, b){
-                const aMan = (parseInt(a.locationX) + parseInt(a.locationY));
-                const bMan = (parseInt(b.locationX) + parseInt(b.locationY));
+                const aMan = a.locationX + a.locationY;
+                const bMan = b.locationX + b.locationY;
                 if (Math.random() < 0.1)
                     return Math.abs(aMan - reqMan) > Math.abs(bMan - reqMan);
                 else 

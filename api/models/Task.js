@@ -21,11 +21,11 @@ const TaskSchema = new mongoose.Schema({
         required:true,
     },
     locationX:{
-        type:String,
+        type:Number,
         required:true,
     },
     locationY:{
-        type:String,
+        type:Number,
         required:true,
     },
 },

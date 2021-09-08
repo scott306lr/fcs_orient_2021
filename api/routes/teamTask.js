@@ -1,25 +1,33 @@
 const router = require("express").Router();
 const TeamTask = require("../models/TeamTask");
 const Task = require("../models/Task");
+const Team = require("../models/Team");
+
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
 const unlockTask = async(team_id, x, y, unlockCount) => {
     const teamTasks = await TeamTask.find({teamId: team_id});
-    const teamTaskIds = teamTasks.map((teamTask) => teamTask.teamId );
-    console.log(teamTaskIds)
-    const task = await Task.find( {teamId: {$nor: teamTaskIds}});
+    const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId );
+    const task = await Task.find( {id: {$ne: teamTaskIds}});
 
     const reqMan = x + y;
-    const randPickedTasks = task.sort(
+    var randPickedTasks = task.sort(
         function(a, b){
             const aMan = a.locationX + a.locationY;
             const bMan = b.locationX + b.locationY;
-            if (Math.random() < 0.1)
-                return Math.abs(aMan - reqMan) > Math.abs(bMan - reqMan);
-            else 
-                return Math.random() <= 0.5;
+
+            return Math.abs(aMan - reqMan) - Math.abs(bMan - reqMan);
         }   
-    ).slice(0, unlockCount);
-    console.log(randPickedTasks);
+    ).slice(0, 5);
+    shuffleArray(randPickedTasks);
+
+    randPickedTasks = randPickedTasks.slice(0, unlockCount);
+    console.log(randPickedTasks.map((t) => ({x: t.locationX, y: t.locationY})));
     
     const tasksToSave = randPickedTasks.map((task) => ({
         teamId: team_id,
@@ -92,7 +100,7 @@ router.post("/",async(req,res)=>{
 //delete all
 router.delete("/",async(req,res)=>{
     try{
-        await TeamTask.deleteMany({});
+        await TeamTask.deleteMany();
         res.status(200).json("deleted all task");
     }
     catch(err){
@@ -100,18 +108,42 @@ router.delete("/",async(req,res)=>{
     }
 })
 
+const initTask = [
+    {"teamId":"1", "taskName":"A", "taskId":"A", "qtype":"test", "done":false},
+    {"teamId":"1", "taskName":"B", "taskId":"B", "qtype":"test", "done":false},
+    {"teamId":"1", "taskName":"C", "taskId":"C", "qtype":"test", "done":false},
+    {"teamId":"2", "taskName":"D", "taskId":"D", "qtype":"test", "done":false},
+    {"teamId":"2", "taskName":"E", "taskId":"E", "qtype":"test", "done":false},
+    {"teamId":"2", "taskName":"F", "taskId":"F", "qtype":"test", "done":false},
+    {"teamId":"3", "taskName":"G", "taskId":"G", "qtype":"test", "done":false},
+    {"teamId":"3", "taskName":"H", "taskId":"H", "qtype":"test", "done":false},
+    {"teamId":"3", "taskName":"I", "taskId":"I", "qtype":"test", "done":false},
+    {"teamId":"4", "taskName":"J", "taskId":"j", "qtype":"test", "done":false},
+    {"teamId":"4", "taskName":"K", "taskId":"K", "qtype":"test", "done":false},
+    {"teamId":"4", "taskName":"L", "taskId":"L", "qtype":"test", "done":false},
+    {"teamId":"5", "taskName":"M", "taskId":"N", "qtype":"test", "done":false},
+    {"teamId":"5", "taskName":"O", "taskId":"O", "qtype":"test", "done":false},
+    {"teamId":"5", "taskName":"P", "taskId":"p", "qtype":"test", "done":false},
+    {"teamId":"6", "taskName":"Q", "taskId":"Q", "qtype":"test", "done":false},
+    {"teamId":"6", "taskName":"R", "taskId":"R", "qtype":"test", "done":false},
+    {"teamId":"6", "taskName":"S", "taskId":"S", "qtype":"test", "done":false}
+]
+
 //initialize tasks for each team
 router.post("/initTask",async(req,res)=>{
     try{
         await TeamTask.deleteMany();
+        //await TeamTask.insertMany(initTask);
+        //res.status(200).json("initial successful");
         
-        resTeams = await Team.find();
+        const resTeams = await Team.find();
         //resTask = await Task.findById([])
 
+        //console.log(resTeams);  
         resTeams.map( async(team) => (
-            await unlockTask(team.teamId, 0, 0, 2)
+            await unlockTask(team.id, 0, 0, 2)
         ));
-        //res.status(200).json("deleted all task");
+        res.status(200).json("hi");
     }
     catch(err){
         return res.status(500).json(err);

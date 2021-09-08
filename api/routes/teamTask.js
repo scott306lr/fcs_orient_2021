@@ -2,6 +2,37 @@ const router = require("express").Router();
 const TeamTask = require("../models/TeamTask");
 const Task = require("../models/Task");
 
+const unlockTask = async(team_id, x, y, unlockCount) => {
+    const teamTasks = await TeamTask.find({teamId: team_id});
+    const teamTaskIds = teamTasks.map((teamTask) => teamTask.teamId );
+    console.log(teamTaskIds)
+    const task = await Task.find( {teamId: {$nor: teamTaskIds}});
+
+    const reqMan = x + y;
+    const randPickedTasks = task.sort(
+        function(a, b){
+            const aMan = a.locationX + a.locationY;
+            const bMan = b.locationX + b.locationY;
+            if (Math.random() < 0.1)
+                return Math.abs(aMan - reqMan) > Math.abs(bMan - reqMan);
+            else 
+                return Math.random() <= 0.5;
+        }   
+    ).slice(0, unlockCount);
+    console.log(randPickedTasks);
+    
+    const tasksToSave = randPickedTasks.map((task) => ({
+        teamId: team_id,
+        taskName: task.taskName,
+        taskId: task.taskId,
+        qtype: task.qtype,
+        done: false,
+    }))
+
+    const savePost = await TeamTask.insertMany(tasksToSave);
+    return savePost;
+}
+
 // get teamtask information
 router.get("/:teamId",async(req,res)=>{
     try{
@@ -15,40 +46,14 @@ router.get("/:teamId",async(req,res)=>{
 })
 
 router.post("/unlock/:teamId",async(req,res)=>{
-
     try{
-        const teamTasks = await TeamTask.find({teamId: req.params.teamId});
-        const teamTaskIds = teamTasks.map((teamTask) => teamTask.teamId );
-        console.log(teamTaskIds)
-        const task = await Task.find( {teamId: {$nor: teamTaskIds}});
-
-        const reqMan = req.body.locationX + req.body.locationY;
-        const randPickedTasks = task.sort(
-            function(a, b){
-                const aMan = a.locationX + a.locationY;
-                const bMan = b.locationX + b.locationY;
-                if (Math.random() < 0.1)
-                    return Math.abs(aMan - reqMan) > Math.abs(bMan - reqMan);
-                else 
-                    return Math.random() <= 0.5;
-            }   
-        ).slice(0,2);
-        console.log(randPickedTasks);
-        
-        const tasksToSave = randPickedTasks.map((task) => ({
-            teamId: req.params.teamId,
-            taskName: task.taskName,
-            taskId: task.taskId,
-            qtype: task.qtype,
-            done: false,
-        }))
-
-        const savePost = await TeamTask.insertMany(tasksToSave);
+        const savePost = await unlockTask(req.params.teamId, req.body.locationX, req.body.locationY, 2); // unlockCount = 3
         res.status(200).json(savePost);
     }
     catch(err){
         res.status(500).json(err);
     }
+    
 });
 
 // update done
@@ -98,14 +103,14 @@ router.delete("/",async(req,res)=>{
 //initialize tasks for each team
 router.post("/initTask",async(req,res)=>{
     try{
-        await TeamTask.deleteMany({});
+        await TeamTask.deleteMany();
         
         resTeams = await Team.find();
         //resTask = await Task.findById([])
 
-        resTeams.map((team) => ({
-            team: 
-        }));
+        resTeams.map( async(team) => (
+            await unlockTask(team.teamId, 0, 0, 2)
+        ));
         //res.status(200).json("deleted all task");
     }
     catch(err){

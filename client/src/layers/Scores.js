@@ -27,11 +27,11 @@ const teamsJSON = [
 ]
 
 const teamScoreJSON = {
-  "1": {gold: 3, silver: 7, bronze: 3, iron: 2, score:41}, 
-  "2": {gold: 1, silver: 7, bronze: 3, iron: 2, score:33},
-  "3": {gold: 2, silver: 7, bronze: 3, iron: 4, score:31},
-  "4": {gold: 1, silver: 1, bronze: 1, iron: 1, score:10},
-  "5": {gold: 2, silver: 2, bronze: 3, iron: 4, score:500},
+  "1": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0}, 
+  "2": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
+  "3": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
+  "4": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
+  "5": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
   "6": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
 } // LR: we can get teams list by api to show html, then call this JSON by using teamID in list.
 
@@ -87,10 +87,18 @@ const doneTask = {
   score:4,
 };
 
+
 export default function Score(props) {
   const {socket, user, gamestatus} = useContext(AuthContext);
   const [teams, setTeams] = useState(teamsJSON);
   const [teamScore, setTeamScore] = useState(teamScoreJSON);
+
+  function loadScore() {
+    // call doneTasks
+    tasksDoneJSON.forEach(doneTask => {
+      addScore(doneTask.teamId, doneTask);
+    });
+  }
 
   useEffect( async() => {
     // try {
@@ -100,6 +108,8 @@ export default function Score(props) {
     //   console.log(err);
     // }
     setTeams(teamsJSON);
+    loadScore();
+
   }, []);
 
   // useEffect(() => {
@@ -199,9 +209,9 @@ export default function Score(props) {
   //     console.log(5 - i);
   //   });
   // }, [socket, ranking]);
-  const iterList = teams.sort(compareRank).map((team) => {
+  const iterList = teams.sort(compareRank).map((team, i) => {
     return (
-      <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{zIndex: team._id == 6? 100: 0}}>
+      <div class="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffd700": i == 1 ? "#c0c0c0": i == 2 ? "#cd7f32": "white"}}>
         <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
       </div>                
     );

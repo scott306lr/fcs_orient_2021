@@ -16,3 +16,8 @@ export const SocketConnect = (socket) => ({
   type: "SOCKET_CONNECT",
   payload: socket,
 });
+
+export const GSUpdate = (game_status) => ({
+  type: "GS_UPDATE",
+  payload: game_status,
+});

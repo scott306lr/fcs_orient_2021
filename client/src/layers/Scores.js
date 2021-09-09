@@ -89,7 +89,7 @@ const doneTask = {
 
 
 export default function Score(props) {
-  const {socket, user} = useContext(AuthContext);
+  const {socket, user, gamestatus} = useContext(AuthContext);
   const [teams, setTeams] = useState(teamsJSON);
   const [teamScore, setTeamScore] = useState(teamScoreJSON);
 
@@ -111,6 +111,10 @@ export default function Score(props) {
     loadScore();
 
   }, []);
+
+  // useEffect(() => {
+    
+  // }, [socket]);
 
   const addScore = (teamId, doneTask) => {
     var toUpdate = teamScore[teamId];
@@ -215,7 +219,7 @@ export default function Score(props) {
   
   return (
     <div class="p-4 w-full overflow-hidden bg-cusorange-500">
-      <h2 class="text-2xl overflow-hidden text-center">計分榜</h2>
+      <h2 class="text-2xl overflow-hidden text-center">計分榜 {gamestatus.board_freeze ? "*Frozen*" : ""}</h2>
       <div class="max-w-prose mx-auto p-8">
         <div class="grid grid-cols-6 place-items-center">
           <div class="text-center align-middle uppercase font-bold">team</div>

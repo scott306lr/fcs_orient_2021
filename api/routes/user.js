@@ -4,8 +4,8 @@ const User = require("../models/User");
 // get a user information by uid
 router.post("/login",async(req,res)=>{
     try{
-        console.log(req.body);
-        const user = await User.findById(req.body.rid);
+        console.log(req.body.id);
+        const user = await User.findById(req.body.id);
         res.status(200).json(user);
     }
     catch(err){

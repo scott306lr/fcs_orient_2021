@@ -11,8 +11,8 @@ export default function Admin() {
     socket.emit("start game");
   };
 
-  const endGame = () => {
-    socket.emit("end game");
+  const stopGame = () => {
+    socket.emit("stop game");
   };
 
   const freezeBoard = () => {
@@ -46,14 +46,15 @@ export default function Admin() {
   //   }
   // }
 
-  // const initGame = async () => {
-  //   try {
-  //     await axios.delete("/teamTask");
-  //   } catch (err) {
-  //     console.log(err);
-  //     return
-  //   }
-  // }
+  const initGame = async () => {
+    try {
+      const res = await axios.post("/teamTask/initTask");
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+      return
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,7 +68,7 @@ export default function Admin() {
       teamId: 987,
       content: newAnnounce.current.value,
     };
-    console.log(payload);
+    //console.log(payload);
     
     try {
       await axios.post("/message", payload);
@@ -87,8 +88,9 @@ export default function Admin() {
         <button class="btn" onClick = {freezeBoard}> Freeze Board </button>
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
         <button class="btn" onClick = {startGame}> Start Game </button>
-        <button class="btn" onClick = {endGame}> End Game </button>
+        <button class="btn" onClick = {stopGame}> Stop Game </button>
       </div>
+      <button class="btn" onClick = {initGame}> Init Game </button>
       <button class="btn" onClick = {deleteAll}> Del Team Task </button>
       <div id = "setInputTime">
         Set End Time

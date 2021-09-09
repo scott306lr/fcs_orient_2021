@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import {GSUpdate} from "../context/AuthActions"
 import Member from "../layers/Member";
 import Chatroom from "../layers/Chatroom";
 import Score from "../layers/Scores";
@@ -9,9 +10,15 @@ import Lead from "../layers/Lead";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Home() {
-  const {user} = useContext(AuthContext);
+  const {socket, user, gamestatus, dispatch} = useContext(AuthContext);
   const [chatOpen, setChat] = useState(false);
   const [scoreOpen, setScore] = useState(false);
+
+  useEffect(() => {
+    socket.on("status update", (game_status) => {
+      dispatch(GSUpdate(game_status));
+    })
+  }, [socket]);
 
   function switchChat(status) {
     console.log('switch');
@@ -29,23 +36,25 @@ export default function Home() {
         return(
           <>
             <Admin />
-            <Member />
+            {gamestatus.in_game ? <Member /> : "Game isn't started"}
           </>
         )
-        break;
+
       case "LEAD":
         return(
           <>
             <Lead />
-            <Member />
+            gamestatus.in_game ? <Member /> : "Game isn't started"
           </>
         );
-        break;
+
       case "MEMBER":
         return(
-          <Member />
+          <>
+            gamestatus.in_game ? <Member /> : "Game isn't started"
+          </>
         );
-        break;
+
       default:
         return "default";
     }

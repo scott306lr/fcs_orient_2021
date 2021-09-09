@@ -1,56 +1,92 @@
 [
     {
-        "taskId":"0011",
-        "taskName":"Q1",
-        "question":"how are you",
-        "answer":"i'm find",
-        "qtype":"greeting",
+        "taskId":"0001",
+        "taskName":"空橋",
+        "question":"工程三館與工程四館之間的空橋，自工程三館A樓連接工程四館B樓，共有C座。\n請以A_B_C的形式回答，例如1_2_3。",
+        "answer":"3_3_2",
+        "qtype":"nycu",
         "locationX":"0",
         "locationY":"1"
     },
     {
-        "taskId":"0012",
-        "taskName":"Q2",
-        "question":"hello",
-        "answer":"hi",
-        "qtype":"greeting",
+        "taskId":"0002",
+        "taskName":"郵局ATM",
+        "question":"中正堂郵局ATM機號？",
+        "answer":"006125-1J2",
+        "qtype":"nycu",
         "locationX":"2",
         "locationY":"3"
     },
     {
-        "taskId":"0013",
-        "taskName":"Q3",
-        "question":"what is your name",
-        "answer":"my name is james",
-        "qtype":"name",
+        "taskId":"0003",
+        "taskName":"標語",
+        "question":"這片草地上的白色標語組成什麼樣的句子？ \n請以英文大寫回答，不須標點符號，單字間需有一個空格。",
+        "answer":"BE THE LIGHT OF THE WORLD",
+        "qtype":"nycu",
         "locationX":"5",
         "locationY":"4"
     },
     {
-        "taskId":"0014",
-        "taskName":"Q4",
-        "question":"what is your name",
-        "answer":"my name is james",
-        "qtype":"name",
+        "taskId":"0004",
+        "taskName":"小木屋",
+        "question":"小木屋用餐區共有幾張桌子？請以數字回答。",
+        "answer":"8",
+        "qtype":"nycu",
         "locationX":"8",
         "locationY":"1"
     },
     {
-        "taskId":"0015",
-        "taskName":"Q5",
-        "question":"what is your name",
-        "answer":"my name is james",
-        "qtype":"name",
+        "taskId":"0005",
+        "taskName":"石頭",
+        "question":"石頭上刻的文字是？請以不含標點符號和空格之中文字回答。",
+        "answer":"知新致遠崇實篤行",
+        "qtype":"nycu",
         "locationX":"5",
         "locationY":"5"
     },
     {
-        "taskId":"0016",
-        "taskName":"Q6",
-        "question":"what is your name",
-        "answer":"my name is james",
-        "qtype":"name",
+        "taskId":"0006",
+        "taskName":"圖書館",
+        "question":"圖書館地下一樓入口內的空間共有幾盞燈？請以數字回答。",
+        "answer":"23",
+        "qtype":"nycu",
         "locationX":"9",
         "locationY":"7"
+    },
+    {
+        "taskId":"0007",
+        "taskName":"藝術品",
+        "question":"圖書館後面圓形的藝術品叫什麼名字？",
+        "answer":"月明",
+        "qtype":"nycu",
+        "locationX":"4",
+        "locationY":"6"
+    },
+    {
+        "taskId":"0008",
+        "taskName":"石碑",
+        "question":"圖書館後面的石碑叫什麼名字？",
+        "answer":"正氣",
+        "qtype":"nycu",
+        "locationX":"12",
+        "locationY":"4"
+    },
+    {
+        "taskId":"0009",
+        "taskName":"涼亭椅子",
+        "question":"活中前涼亭有幾張椅子？請以數字回答。",
+        "answer":"15",
+        "qtype":"nycu",
+        "locationX":"5",
+        "locationY":"1"
+    },
+    {
+        "taskId":"0010",
+        "taskName":"餐廳",
+        "question":"這面牌子面對的餐廳叫作什麼？",
+        "answer":"LALA Kitchen",
+        "qtype":"nycu",
+        "locationX":"0",
+        "locationY":"5"
     }
 ]

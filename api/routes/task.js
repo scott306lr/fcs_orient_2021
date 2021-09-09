@@ -2,9 +2,9 @@ const router = require("express").Router();
 const Task = require("../models/Task");
 
 // get a task information by taskId
-router.get("/:taskId",async(req,res)=>{
+router.get("/:id",async(req,res)=>{
     try{
-        const task = await Task.findOne({tid:req.params.taskId});
+        const task = await Task.findById(req.params.id);
         res.status(200).json(task);
     }
     catch(err){

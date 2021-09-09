@@ -11,7 +11,7 @@ export default function Login() {
   const handleClick = (e) => {
     e.preventDefault();
     loginCall(
-      { rid: rid.current.value },
+      rid,
       dispatch
     );
   };
@@ -19,7 +19,7 @@ export default function Login() {
   useEffect(() => {
     params?.rid && 
     loginCall(
-      params,
+      params.rid,
       dispatch
     );
   }, [])
@@ -43,10 +43,13 @@ export default function Login() {
           )}
         </button>
 
-        
       </form>
-
+            
       {error ? error : ""}
+
+      <a href="http://localhost:3000/login/613468e49020fa6032cae92e"> UD </a>
+      <a href="http://localhost:3000/login/613468e49020fa6032cae92d"> WJ </a>
+      <a href="http://localhost:3000/login/613468e49020fa6032cae92f"> LR </a>
     </div>
   );
 }

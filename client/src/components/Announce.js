@@ -3,27 +3,31 @@ import Chatbox from "./Chatbox";
 
 
 export default function Announce(props) {
-  const [curMessage, setCurMessage] = useState();
-  const [block, setBlock] = useState(false);
+  const [curMessage, setCurMessage] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (curMessage?.role === "SYSTEM"){
-      setBlock(true);
-      
-      const assetID = setTimeout(() => {
-        setBlock(false);
-      }, 60000);
-      return clearTimeout(assetID);
+    if (!show || curMessage?.role !== "SYSTEM" || props.msg?.role === "SYSTEM"){
+      setCurMessage(props.msg); 
     }
-  }, [curMessage]);
+  }, [props.msg]);
 
   useEffect(() => {
-    props.msg?.role === "SYSTEM" || !block && setCurMessage(props.msg);  
-  }, [props.msg]);
+    const showCount = (curMessage?.role === "SYSTEM") ? 60000 : 5000;
+
+    setShow(true);
+    const assetID = setTimeout(() => {
+      setShow(false);
+    }, showCount);
+    
+    return () => clearTimeout(assetID);
+  }, [curMessage]);
+  
+  const vis = (show) ? "visible" : "invisible";
   
   return (
-    <div>
-      {/* <Chatbox message={curMessage}/> */}
+    <div class={vis}>
+      <Chatbox message={curMessage}/>
     </div>
   );
 }

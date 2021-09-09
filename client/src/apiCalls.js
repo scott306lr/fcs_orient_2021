@@ -5,8 +5,8 @@ import axios from "axios";
 export const loginCall = async (rid, dispatch) => {
   dispatch(LoginStart(rid));
   try{
-    const res = await axios.post("/auth/login", rid)
-    console.log(res);
+    const res = await axios.post("/auth/login", {id: rid})
+    //console.log(res);
 
     // open client socket
     const socket = io("ws://localhost:8900");

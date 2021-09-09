@@ -1,20 +1,8 @@
 [
-    {
-        "teamName":"一小"
-    },
-    {
-        "teamName":"二小"
-    },
-    {
-        "teamName":"三小"
-    },
-    {
-        "teamName":"四小"
-    },
-    {
-        "teamName":"五小"
-    },
-    {
-        "teamName":"六小"
-    }
+    {"teamName":"一小"},
+    {"teamName":"二小"},
+    {"teamName":"三小"},
+    {"teamName":"四小"},
+    {"teamName":"五小"},
+    {"teamName":"六小"}
 ]

@@ -53,6 +53,7 @@ router.get("/:teamId",async(req,res)=>{
     
 })
 
+// randomly unlock new tasks
 router.post("/unlock/:teamId",async(req,res)=>{
     try{
         const savePost = await unlockTask(req.params.teamId, req.body.locationX, req.body.locationY, 2); // unlockCount = 3
@@ -108,42 +109,18 @@ router.delete("/",async(req,res)=>{
     }
 })
 
-const initTask = [
-    {"teamId":"1", "taskName":"A", "taskId":"A", "qtype":"test", "done":false},
-    {"teamId":"1", "taskName":"B", "taskId":"B", "qtype":"test", "done":false},
-    {"teamId":"1", "taskName":"C", "taskId":"C", "qtype":"test", "done":false},
-    {"teamId":"2", "taskName":"D", "taskId":"D", "qtype":"test", "done":false},
-    {"teamId":"2", "taskName":"E", "taskId":"E", "qtype":"test", "done":false},
-    {"teamId":"2", "taskName":"F", "taskId":"F", "qtype":"test", "done":false},
-    {"teamId":"3", "taskName":"G", "taskId":"G", "qtype":"test", "done":false},
-    {"teamId":"3", "taskName":"H", "taskId":"H", "qtype":"test", "done":false},
-    {"teamId":"3", "taskName":"I", "taskId":"I", "qtype":"test", "done":false},
-    {"teamId":"4", "taskName":"J", "taskId":"j", "qtype":"test", "done":false},
-    {"teamId":"4", "taskName":"K", "taskId":"K", "qtype":"test", "done":false},
-    {"teamId":"4", "taskName":"L", "taskId":"L", "qtype":"test", "done":false},
-    {"teamId":"5", "taskName":"M", "taskId":"N", "qtype":"test", "done":false},
-    {"teamId":"5", "taskName":"O", "taskId":"O", "qtype":"test", "done":false},
-    {"teamId":"5", "taskName":"P", "taskId":"p", "qtype":"test", "done":false},
-    {"teamId":"6", "taskName":"Q", "taskId":"Q", "qtype":"test", "done":false},
-    {"teamId":"6", "taskName":"R", "taskId":"R", "qtype":"test", "done":false},
-    {"teamId":"6", "taskName":"S", "taskId":"S", "qtype":"test", "done":false}
-]
 
 //initialize tasks for each team
 router.post("/initTask",async(req,res)=>{
     try{
         await TeamTask.deleteMany();
-        //await TeamTask.insertMany(initTask);
-        //res.status(200).json("initial successful");
         
         const resTeams = await Team.find();
-        //resTask = await Task.findById([])
-
-        //console.log(resTeams);  
         resTeams.map( async(team) => (
             await unlockTask(team.id, 0, 0, 2)
         ));
-        res.status(200).json("hi");
+
+        res.status(200).json("initial successfully");
     }
     catch(err){
         return res.status(500).json(err);

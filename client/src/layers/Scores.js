@@ -113,6 +113,8 @@ export default function Score(props) {
 
   useEffect(() => {
     loadScore();
+    console.log("aaa")
+    console.log(teamScore)
   }, [tasksDone]);
 
   useEffect(() => {
@@ -125,6 +127,8 @@ export default function Score(props) {
 
   const loadScore = () => {
     // call doneTasks
+    console.log("asdasd")
+    console.log(tasksDone)
     tasksDone.map( (doneTask) => {
       addScore(doneTask);
     });

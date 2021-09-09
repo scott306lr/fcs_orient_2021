@@ -61,7 +61,6 @@ export default function Tasks(props) {
   return (
     <div id = "map8Tasks">
       <Map />
-      <button class = "absolute bottom-0 right-0" onClick={unlockTask}>ADD TASKS</button>
       {itemList}
     </div>
   );

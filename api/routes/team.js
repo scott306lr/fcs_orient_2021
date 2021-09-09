@@ -29,7 +29,7 @@ router.post("/",async(req,res)=>{
 // update team name
 router.post("/update_name/:id",async(req,res)=>{
     try{
-        const team = await Team.findById(req.params.id);
+        var team = await Team.findById(req.params.id);
         team.teamName = req.body.teamName;
         team.save();
         res.status(200).json("update team name successfully");

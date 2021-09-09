@@ -50,28 +50,7 @@ export default function Admin() {
 
   return (
     <div class="z-0">
-      <h1 class="text-xl">Lead Interface</h1>
-      <div class="flex justify-between">
-        <button class="btn" onClick = {freezeBoard}> Freeze Board </button>
-        <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
-        <button class="btn" onClick = {startGame}> Start Game </button>
-        <button class="btn" onClick = {endGame}> End Game </button>
-      </div>
-      <div id = "setInputTime">
-        Set End Time:
-        <input id = "endTime" type = "time" min="15:00" max="18:00" required class="m-2"></input>
-      </div>
-      <div class="relative flex p-2 mt-4" id = "sendAnnounce">
-        <textarea
-          className="announceText"
-          placeholder="Key in announce text"
-          ref={newAnnounce}
-          class="h-auto resize-none flex-grow ml-4 rounded-md"
-        ></textarea>
-        <button className="submitAnnounce" onClick={handleSubmit} class="h-auto btn mr-4">
-          Send
-        </button>
-      </div>
+      LEAD
     </div>
   );
 }

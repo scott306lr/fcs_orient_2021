@@ -29,7 +29,7 @@ io.on("connection", (socket) => {
   socket.on("answered correct", (team, doneTask, newTasks) => {
     io.emit("update record", doneTask);
     io.emit("update score", team, doneTask);
-    io.to(team).emit("update tasks", newTasks);
+    io.to(team).emit("update tasks", doneTask, newTasks);
     console.log(`${team} answered correct`);
   })
 

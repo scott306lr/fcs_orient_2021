@@ -52,9 +52,11 @@ export default function Task(props) {
   }, [])
 
   const answerCheck = async () => {
-    if (answerText.current.value === task.answer) {
+    if (!task.done && answerText.current.value === task.answer) {
       try{
+        const res = await axios.post("/teamTask/done/", {teamId: user.teamId, taskId: task._id});
         const newTasks = await axios.post(`/teamTask/unlock/${user.teamId}`, task);
+        
         socket.emit("answered correct", user.teamId, task, newTasks.data);
         answerText.current.value = "";
       }catch(err){
@@ -75,13 +77,14 @@ export default function Task(props) {
       <br />
       <input placeholder="請輸入答案" ref={answerText}/>
       <button onClick = {() => answerCheck()}>上傳</button>
+      {task.done ? "done!" : "not yet."}
     </div>
   );
 
   return (
     <div>
         <h3 onClick = {() => setTaskOpen(!taskOpen)}>{task.taskName}</h3>
-        {taskOpen ? completeTask: ""}
+        { (taskOpen && !task.done) ? completeTask : "" }
     </div>
   );
 }

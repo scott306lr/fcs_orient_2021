@@ -18,7 +18,7 @@ export default function Task(props) {
   }, [])
 
   const answerCheck = async () => {
-    if (!task.done && answerText.current.value === task.answer) {
+    if (answerText.current.value === task.answer) {
       try{
         const res = await axios.post("/teamTask/done/", {teamId: user.teamId, taskId: task._id});
         const newTasks = await axios.post(`/teamTask/unlock/${user.teamId}`, task);
@@ -43,14 +43,14 @@ export default function Task(props) {
       <br />
       <input placeholder="請輸入答案" ref={answerText}/>
       <button onClick = {() => answerCheck()}>上傳</button>
-      {task.done ? "done!" : "not yet."}
+      {props.done ? "done!" : "not yet."}
     </div>
   );
 
   return (
     <div>
         <h3 onClick = {() => props.setTaskFocus(props.id)}>{task.taskName}</h3>
-        { (!task.done && props.taskFocus === props.id) ? completeTask : "" }
+        { (!props.done && props.taskFocus === props.id) ? completeTask : "" }
     </div>
   );
 }

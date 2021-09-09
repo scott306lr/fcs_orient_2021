@@ -13,7 +13,7 @@ export default function Tasks(props) {
     try {
       const res = await axios.get(`/teamTask/${user.teamId}`)
       setTasks(res.data);
-      console.log(tasks)
+      console.log(res.data)
     } catch (err) {
       console.log(err);
     }
@@ -21,19 +21,17 @@ export default function Tasks(props) {
 
   useEffect(() => {
     socket.on("update tasks", (doneTask, newTasks) => {
-      console.log(newTasks);
       setTasks((prev) => (prev.map((task) => {
-        return (doneTask.taskId === task._id) ? {...task, ['done']: true} : task
+        return (doneTask._id === task.taskId) ? {...task, ['done']: true} : task
       })));
       setTasks((prev) => [...prev, ...newTasks]);
     })
   }, [socket]);
   
   const itemList = tasks.map((task) => {
-    console.log(task.taskId)
     return (
       <div class = "task">
-        <Task id={task.taskId} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
+        <Task id={task.taskId} done={task.done} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
       </div>
     );
   });

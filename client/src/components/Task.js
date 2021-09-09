@@ -2,42 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from "axios";
 
-// const doneTask = {
-//   time: "01:01",
-//   taskid: 3,
-//   who: "LR",
-//   team: 1,
-//   score: 4,
-// }
-
-// const newTasks = [
-//   {
-//     teamId: "3",
-//     taskName: "Question 3",
-//     taskId: "3",
-//     qtype: "orient",
-//     done: false 
-//   },
-//   {
-//     teamId: "5",
-//     taskName: "Question 5",
-//     taskId: "5",
-//     qtype: "orient",
-//     done: false 
-//   },
-//   {
-//     teamId: "8",
-//     taskName: "Question 8",
-//     taskId: "8",
-//     qtype: "quiz",
-//     done: false 
-//   },
-// ];
-
-
 export default function Task(props) {
   const {socket, user} = useContext(AuthContext);
-  const [taskOpen, setTaskOpen] = useState(false);
   const [task, setTask] = useState([]);
   const answerText = useRef();
   
@@ -83,8 +49,8 @@ export default function Task(props) {
 
   return (
     <div>
-        <h3 onClick = {() => setTaskOpen(!taskOpen)}>{task.taskName}</h3>
-        { (taskOpen && !task.done) ? completeTask : "" }
+        <h3 onClick = {() => props.setTaskFocus(props.id)}>{task.taskName}</h3>
+        { (!task.done && props.taskFocus === props.id) ? completeTask : "" }
     </div>
   );
 }

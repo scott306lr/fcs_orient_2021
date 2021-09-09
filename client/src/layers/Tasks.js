@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Tasks(props) {
   const {socket, user} = useContext(AuthContext);
   const [tasks, setTasks] = useState([]);
+  const [taskFocus, setTaskFocus] = useState("");
 
   useEffect( async() => {
     try {
@@ -22,7 +23,7 @@ export default function Tasks(props) {
     socket.on("update tasks", (doneTask, newTasks) => {
       console.log(newTasks);
       setTasks((prev) => (prev.map((task) => {
-        return (doneTask._id === task._id) ? {...task, ['done']: true} : task
+        return (doneTask.taskId === task._id) ? {...task, ['done']: true} : task
       })));
       setTasks((prev) => [...prev, ...newTasks]);
     })
@@ -32,7 +33,7 @@ export default function Tasks(props) {
     console.log(task.taskId)
     return (
       <div class = "task">
-        <Task id = {task.taskId}/>
+        <Task id={task.taskId} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
       </div>
     );
   });

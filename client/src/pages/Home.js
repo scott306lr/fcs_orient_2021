@@ -51,7 +51,7 @@ export default function Home() {
       case "MEMBER":
         return(
           <>
-            gamestatus.in_game ? <Member /> : "Game isn't started"
+            {gamestatus.in_game ? <Member /> : "Game isn't started"}
           </>
         );
 

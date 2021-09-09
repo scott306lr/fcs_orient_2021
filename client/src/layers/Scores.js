@@ -211,15 +211,15 @@ export default function Score(props) {
   // }, [socket, ranking]);
   const iterList = teams.sort(compareRank).map((team, i) => {
     return (
-      <div class="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffd700": i == 1 ? "#c0c0c0": i == 2 ? "#cd7f32": "white"}}>
+      <div class="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>
         <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
       </div>                
     );
   })
   
   return (
-    <div class="p-4 w-full overflow-hidden bg-cusorange-500">
-      <h2 class="text-2xl overflow-hidden text-center">計分榜 {gamestatus.board_freeze ? "*Frozen*" : ""}</h2>
+    <div class="w-full overflow-hidden bg-cusorange-500">
+      <h2 class="m-4 text-2xl overflow-hidden text-center">計分榜 {gamestatus.board_freeze ? "*Frozen*" : ""}</h2>
       <div class="max-w-prose mx-auto p-8">
         <div class="grid grid-cols-6 place-items-center">
           <div class="text-center align-middle uppercase font-bold">team</div>

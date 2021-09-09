@@ -1,56 +1,50 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 export default function Admin() {
   const {socket, user} = useContext(AuthContext);
-  const [endTime, setEndTime] = useState();
-  const newAnnounce = useRef();
-  
-  const startGame = () => {
-    socket.emit("start game");
-  };
 
-  const endGame = () => {
-    socket.emit("end game");
-  };
+  const [tasks, setTasks] = useState([]);
+  const [selId, setSelId] = useState("");
+  const [selTask, setSelTask] = useState({});
 
-  const freezeBoard = () => {
-    socket.emit("freeze board");
-  };
-
-  const unfreezeBoard = () => {
-    socket.emit("unfreeze board");
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (newAnnounce.current.value === "") return;
-    
-    const currentTime = new Date();
-    const payload = {
-      time: currentTime,
-      name: "SYSTEM",
-      role: "ANNOUNCEMENT",
-      teamId: 987,
-      content: newAnnounce.current.value,
-    };
-    console.log(payload);
-    
+  useEffect( async() => {
     try {
-      await axios.post("/message", payload);
+      const res = await axios.get(`/teamTask/${user.teamId}`)
+      setTasks(res.data.map((task) => {
+        if (task.done === false)
+          return task;
+        else return null;
+      }));
+      console.log(tasks);
+      setSelId(tasks[0].taskId);
     } catch (err) {
       console.log(err);
-      return
     }
+  }, []);
 
-    socket.emit("send announcement", {payload});
-    newAnnounce.current.value = "";
-  };
+  useEffect( async() => {
+    try {
+      const res = await axios.get(`/task/${selId}`)
+      setSelTask(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [selId]);
+
 
   return (
     <div class="z-0">
-      LEAD
+      <select id = "selector" onChange = {() => {
+        const options = document.getElementById("selector").options;
+        console.log(options);
+        const idx = options.selectedIndex;
+        setSelId(options[idx].id);
+      }}>
+        {tasks.map((task) => <option id = {task.taskId}>{task.taskName}</option>)}
+      </select>
+      <div>本題答案：{selTask.answer}</div>
     </div>
   );
 }

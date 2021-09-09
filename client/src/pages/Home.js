@@ -36,7 +36,7 @@ export default function Home() {
         return(
           <>
             <Admin />
-            {gamestatus.in_game ? <Member /> : "Game isn't started"}
+            {gamestatus.in_game ? <Member /> : "Game hasen't started"}
           </>
         )
 

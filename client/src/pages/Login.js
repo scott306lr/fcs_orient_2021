@@ -2,8 +2,10 @@ import { useContext, useEffect, useRef } from "react";
 import { loginCall } from "../apiCalls";
 import { AuthContext } from "../context/AuthContext";
 import { useParams  } from "react-router";
+import { useCookies } from 'react-cookie';
 
 export default function Login() {
+  const [cookies, setCookie] = useCookies(['login']);
   const params = useParams();
   const rid = useRef();
   const { isFetching, error, dispatch } = useContext(AuthContext);
@@ -17,11 +19,19 @@ export default function Login() {
   };
 
   useEffect(() => {
-    params?.rid && 
-    loginCall(
-      params.rid,
-      dispatch
-    );
+    if (params?.rid){
+      setCookie('rid', params.rid, { path: '/' });
+      loginCall(
+        params.rid,
+        dispatch
+      );
+    }
+    else if (cookies?.rid){
+      loginCall(
+        cookies.rid,
+        dispatch
+      );
+    }
   }, [])
 
   return (

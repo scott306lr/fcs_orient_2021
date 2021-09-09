@@ -51,7 +51,7 @@ export default function Chatroom() {
     } catch (err) {
       console.log(err);
     }
-    console.log(messages);
+    //console.log(messages);
   }, []);
 
   useEffect(() => {

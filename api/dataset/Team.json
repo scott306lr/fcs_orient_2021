@@ -1,20 +1,26 @@
 [
     {
+    	"_id": { "$oid": "61396de99020fa6032cb83d1"},
         "teamName":"一小"
     },
     {
+    	"_id": { "$oid": "61396de99020fa6032cb83d2"},
         "teamName":"二小"
     },
     {
+    	"_id": { "$oid": "61396de99020fa6032cb83d3"},
         "teamName":"三小"
     },
     {
+    	"_id": { "$oid": "61396de99020fa6032cb83d4"},
         "teamName":"四小"
     },
     {
+    	"_id": { "$oid": "61396de99020fa6032cb83d5"},
         "teamName":"五小"
     },
     {
+    	"_id": { "$oid": "61396de99020fa6032cb83d6"},
         "teamName":"六小"
     }
 ]

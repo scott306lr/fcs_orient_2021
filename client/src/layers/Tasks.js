@@ -12,6 +12,7 @@ export default function Tasks(props) {
     try {
       const res = await axios.get(`/teamTask/${user.teamId}`)
       setTasks(res.data.reverse());
+      console.log(tasks)
     } catch (err) {
       console.log(err);
     }
@@ -19,6 +20,7 @@ export default function Tasks(props) {
 
   useEffect(() => {
     socket.on("update tasks", (newTasks) => {
+      console.log(newTasks);
       setTasks((prev) => [...prev, ...newTasks]);
     })
   }, [socket]);
@@ -48,9 +50,10 @@ export default function Tasks(props) {
   }
   
   const itemList = tasks.map((task) => {
+    console.log(task.taskId)
     return (
       <div class = "task">
-        <Task id = {task.taskID}/>
+        <Task id = {task.taskId}/>
       </div>
     );
   });
@@ -58,10 +61,8 @@ export default function Tasks(props) {
   return (
     <div id = "map8Tasks">
       <Map />
-      <button class = "absolute bottom-0" onClick={unlockTask}>ADD TASKS</button>
-      <div id = "taskList">
-        {itemList}
-      </div>
+      <button class = "absolute bottom-0 right-0" onClick={unlockTask}>ADD TASKS</button>
+      {itemList}
     </div>
   );
 }

@@ -13,10 +13,13 @@ const shuffleArray = (array) => {
 const unlockTask = async(team_id, x, y, unlockCount) => {
     const teamTasks = await TeamTask.find({teamId: team_id});
     const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId );
-    const task = await Task.find( {id: {$ne: teamTaskIds}});
+    const tasks = await Task.find( {_id: {$nin: teamTaskIds}});
+
+    // console.log(teamTaskIds);
+    // console.log(tasks.map((t) => ({taskId: t._id})));
 
     const reqMan = x + y;
-    var randPickedTasks = task.sort(
+    var randPickedTasks = tasks.sort(
         function(a, b){
             const aMan = a.locationX + a.locationY;
             const bMan = b.locationX + b.locationY;
@@ -27,18 +30,18 @@ const unlockTask = async(team_id, x, y, unlockCount) => {
     shuffleArray(randPickedTasks);
 
     randPickedTasks = randPickedTasks.slice(0, unlockCount);
-    console.log(randPickedTasks.map((t) => ({x: t.locationX, y: t.locationY})));
+    //console.log(randPickedTasks.map((t) => ({x: t.locationX, y: t.locationY})));
     
     const tasksToSave = randPickedTasks.map((task) => ({
         teamId: team_id,
         taskName: task.taskName,
-        taskId: task.taskId,
+        taskId: task._id,
         qtype: task.qtype,
         done: false,
     }))
 
-    const savePost = await TeamTask.insertMany(tasksToSave);
-    return savePost;
+    await TeamTask.insertMany(tasksToSave);
+    return tasksToSave;
 }
 
 // get teamtask information

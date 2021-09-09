@@ -48,7 +48,8 @@ export default function Admin() {
 
   const initGame = async () => {
     try {
-      await axios.post("/teamTask/initTask");
+      const res = await axios.post("/teamTask/initTask");
+      console.log(res.data);
     } catch (err) {
       console.log(err);
       return
@@ -67,7 +68,7 @@ export default function Admin() {
       teamId: 987,
       content: newAnnounce.current.value,
     };
-    console.log(payload);
+    //console.log(payload);
     
     try {
       await axios.post("/message", payload);
@@ -88,8 +89,8 @@ export default function Admin() {
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
         <button class="btn" onClick = {startGame}> Start Game </button>
         <button class="btn" onClick = {endGame}> End Game </button>
-        <button class="btn" onClick = {initGame}> Init Game </button>
       </div>
+      <button class="btn" onClick = {initGame}> Init Game </button>
       <button class="btn" onClick = {deleteAll}> Del Team Task </button>
       <div id = "setInputTime">
         Set End Time

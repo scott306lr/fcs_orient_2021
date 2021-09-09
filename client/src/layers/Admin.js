@@ -3,8 +3,8 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 export default function Admin() {
-  const {socket, user} = useContext(AuthContext);
-  const [endTime, setEndTime] = useState();
+  const {socket} = useContext(AuthContext);
+  //const [endTime, setEndTime] = useState();
   const newAnnounce = useRef();
   
   const startGame = () => {
@@ -73,27 +73,27 @@ export default function Admin() {
   };
 
   return (
-    <div class="z-0">
-      <h1 class="text-xl">Admin Interface</h1>
-      <div class="flex justify-between">
-        <button class="btn" onClick = {freezeBoard}> Freeze Board </button>
-        <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
-        <button class="btn" onClick = {startGame}> Start Game </button>
-        <button class="btn" onClick = {stopGame}> Stop Game </button>
+    <div className="z-0">
+      <h1 className="text-xl">Admin Interface</h1>
+      <div className="flex justify-between">
+        <button className="btn" onClick = {freezeBoard}> Freeze Board </button>
+        <button className="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
+        <button className="btn" onClick = {startGame}> Start Game </button>
+        <button className="btn" onClick = {stopGame}> Stop Game </button>
       </div>
-      <button class="btn" onClick = {initGame}> Init Game </button>
+      <button className="btn" onClick = {initGame}> Init Game </button>
       <div id = "setInputTime">
         Set End Time
         <input id = "endTime" type = "time" min="15:00" max="18:00" required></input>
       </div>
-      <div class="relative w-full flex p-2 mt-4 items-center bottom-0 bg-green-200" id = "sendAnnounce">
+      <div className="relative w-full flex p-2 mt-4 items-center bottom-0 bg-green-200" id = "sendAnnounce">
         <textarea
           className="announceText"
           placeholder="Key in announce text"
           ref={newAnnounce}
-          class="h-auto resize-none flex-grow ml-4 rounded-md"
+          className="h-auto resize-none flex-grow ml-4 rounded-md"
         ></textarea>
-        <button className="submitAnnounce" onClick={handleSubmit} class="h-auto btn mr-4">
+        <button className="submitAnnounce" onClick={handleSubmit} className="h-auto btn mr-4">
           Send
         </button>
       </div>

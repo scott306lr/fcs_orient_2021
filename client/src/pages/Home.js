@@ -61,10 +61,10 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" class = "bg-cusblue-100 flex flex-col h-screen relative">
-      <h1 class="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
-      <div id = "messageBar" class = "index-ce"></div>  
-      <div id = "topBar" class="flex justify-between">
+    <div id = "app" className="bg-cusblue-100 flex flex-col h-screen relative">
+      <h1 className="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
+      <div id = "messageBar" className="index-ce"></div>  
+      <div id = "topBar" className="flex justify-between">
         <button onClick = {() => {
           if (chatOpen)
             switchChat(false);
@@ -72,7 +72,7 @@ export default function Home() {
             switchChat(true);
             switchScore(false);
           }
-        }} class="btn">Chatroom</button>
+        }} className="btn">Chatroom</button>
         <button onClick = {() => {
           if (scoreOpen)
             switchScore(false);
@@ -80,20 +80,20 @@ export default function Home() {
             switchScore(true);
             switchChat(false);
           }
-        }} class="btn">Scoreboard</button>
+        }} className="btn">Scoreboard</button>
       </div>
 {/* "relative top-0 right-0 z-50 m-3 btn-x text-lg" */}
-      <div id = "chat8Score" class = "flex-grow relative">
-        <button class = {`${chatOpen | scoreOpen ? "relative top-0 right-0 z-50 m-3 btn-x text-lg" : "invisible"}`}  onClick = {() => {
+      <div id = "chat8Score" className= "flex-grow relative">
+        <button className = {`${chatOpen | scoreOpen ? "relative top-0 right-0 z-50 m-3 btn-x text-lg" : "invisible"}`}  onClick = {() => {
           if (chatOpen)
             switchChat(false);
           if (scoreOpen)
             switchScore(false);
         }}>×</button>
-        <div id = "chatCollapse" class = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0 z-10">
+        <div id = "chatCollapse" className = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0 z-10">
           <Chatroom opened = {chatOpen} onChange = {switchChat}/>
         </div>
-        <div id = "scoreCollapse" class = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0 z-10">
+        <div id = "scoreCollapse" className = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0 z-10">
           <Score opened = {scoreOpen} onChange = {switchScore}/>
         </div>
       </div>

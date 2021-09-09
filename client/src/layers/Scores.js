@@ -90,31 +90,40 @@ const doneTask = {
 
 export default function Score(props) {
   const {socket, user, gamestatus} = useContext(AuthContext);
+  const [tasksDone, setTasksDone] = useState(tasksDoneJSON);
   const [teams, setTeams] = useState(teamsJSON);
   const [teamScore, setTeamScore] = useState(teamScoreJSON);
 
-  function loadScore() {
+  const loadScore = () => {
     // call doneTasks
-    tasksDoneJSON.forEach(doneTask => {
+    tasksDone.forEach( (doneTask) => {
       addScore(doneTask.teamId, doneTask);
     });
   }
 
-  useEffect( async() => {
-    // try {
-    //   const res = await axios.get("/team");
-    //   setTeams(res.data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    setTeams(teamsJSON);
-    loadScore();
+  useEffect( () => {
+    async function fetchData(){
+      try {
+        const team_res = await axios.get("/team");
+        setTeams(team_res.data);
 
+        const dtask_res = await axios.get("/doneTask");
+        setTasksDone(dtask_res.data);
+
+        loadScore();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchData();
   }, []);
 
-  // useEffect(() => {
-    
-  // }, [socket]);
+  useEffect(() => {
+    socket.on("update record", (doneTask) => {
+      setTeams((prev) => [...prev, doneTask]);
+    })
+  }, [socket]);
 
   const addScore = (teamId, doneTask) => {
     var toUpdate = teamScore[teamId];
@@ -211,34 +220,34 @@ export default function Score(props) {
   // }, [socket, ranking]);
   const iterList = teams.sort(compareRank).map((team, i) => {
     return (
-      <div class="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>
+      <div className="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>
         <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
       </div>                
     );
   })
   
   return (
-    <div class="w-full overflow-hidden bg-cusorange-500">
-      <h2 class="m-4 text-2xl overflow-hidden text-center">計分榜 {gamestatus.board_freeze ? "*Frozen*" : ""}</h2>
-      <div class="max-w-prose mx-auto p-8">
-        <div class="grid grid-cols-6 place-items-center">
-          <div class="text-center align-middle uppercase font-bold">team</div>
-          <div class="text-center align-middle">
-            <img src={gmadal} alt="gold" class="h-8" />
+    <div className="w-full overflow-hidden bg-cusorange-500">
+      <h2 className="m-4 text-2xl overflow-hidden text-center">計分榜 {gamestatus.board_freeze ? "*Frozen*" : ""}</h2>
+      <div className="max-w-prose mx-auto p-8">
+        <div className="grid grid-cols-6 place-items-center">
+          <div className="text-center align-middle uppercase font-bold">team</div>
+          <div className="text-center align-middle">
+            <img src={gmadal} alt="gold" className="h-8" />
           </div>
-          <div class="text-center align-middle">
-            <img src={smadal} alt="silver" class="h-8" />
+          <div className="text-center align-middle">
+            <img src={smadal} alt="silver" className="h-8" />
           </div>
-          <div class="text-center align-middle">
-            <img src={bmadal} alt="bronze" class="h-8" />
+          <div className="text-center align-middle">
+            <img src={bmadal} alt="bronze" className="h-8" />
           </div>
-          <div class="text-center align-middle">
-            <img src={imadal} alt="iron" class="h-8" />
+          <div className="text-center align-middle">
+            <img src={imadal} alt="iron" className="h-8" />
           </div>
-          <div class="text-center align-middle uppercase font-bold">score</div>
+          <div className="text-center align-middle uppercase font-bold">score</div>
         </div>
       </div>
-      <FlipMove id="scoreList" class="space-y-4" enterAnimation='accordionVertical'
+      <FlipMove id="scoreList" className="space-y-4" enterAnimation='accordionVertical'
         leaveAnimation='accordionVertical'>
         {iterList}
       </FlipMove>

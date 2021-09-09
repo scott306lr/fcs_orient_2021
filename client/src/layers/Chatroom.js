@@ -96,7 +96,7 @@ export default function Chatroom() {
 
   const MessageList = messages.map((msg) => {
     return (
-      <div class="overflow-y-auto" ref={scrollRef}>
+      <div className="overflow-y-auto" ref={scrollRef}>
         <Chatbox message={msg}/>
       </div>
     );
@@ -105,19 +105,19 @@ export default function Chatroom() {
   return (
     <>
       <Announce msg={arriveMessage}/>
-      <div class = "flex flex-col h-screen bg-cusblue-200 overflow-hidden">
-        <h1 class="text-xl bg-cusgreen-200 text-center p-1">聊天室</h1>
-        <div class = "relative flex-grow overflow-auto">
+      <div className = "flex flex-col h-screen bg-cusblue-200 overflow-hidden">
+        <h1 className="text-xl bg-cusgreen-200 text-center p-1">聊天室</h1>
+        <div className = "relative flex-grow overflow-auto">
           { MessageList }
         </div>
-        <div class="relative w-full flex p-2 mt-4 items-center bottom-0 bg-cusgreen-200">
+        <div className="relative w-full flex p-2 mt-4 items-center bottom-0 bg-cusgreen-200">
           <textarea
             className="chatMessageInput"
             placeholder="write something..."
             ref={newMessage}
-            class="h-auto resize-none flex-grow ml-4 rounded-md"
+            className="h-auto resize-none flex-grow ml-4 rounded-md"
           ></textarea>
-          <button className="chatSubmitButton" onClick={handleSubmit} class="h-auto btn mr-4">
+          <button className="chatSubmitButton" onClick={handleSubmit} className="h-auto btn mr-4">
             Send
           </button>
         </div>

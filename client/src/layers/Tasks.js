@@ -30,7 +30,7 @@ export default function Tasks(props) {
   
   const itemList = tasks.map((task) => {
     return (
-      <div class = "task">
+      <div className="task">
         <Task id={task.taskId} done={task.done} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
       </div>
     );

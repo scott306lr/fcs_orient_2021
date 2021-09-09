@@ -1,10 +1,10 @@
 export default function Chatbox(props) {
   return (
     <div> 
-      <div class="text-sm text-gray-400">{props.message?.role}</div>
-      <div class="space-x-4">
-        <div class="inline-block">{props.message?.name}</div>
-        <div class="mx-2
+      <div className="text-sm text-gray-400">{props.message?.role}</div>
+      <div className="space-x-4">
+        <div className="inline-block">{props.message?.name}</div>
+        <div className="mx-2
                     break-all
                     text-left
                     inline-block

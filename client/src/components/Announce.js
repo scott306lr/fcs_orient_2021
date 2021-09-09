@@ -10,7 +10,7 @@ export default function Announce(props) {
     if (!show || curMessage?.role !== "SYSTEM" || props.msg?.role === "SYSTEM"){
       setCurMessage(props.msg); 
     }
-  }, [props.msg]);
+  }, [show, curMessage, props.msg]);
 
   useEffect(() => {
     const showCount = (curMessage?.role === "SYSTEM") ? 60000 : 5000;
@@ -26,7 +26,7 @@ export default function Announce(props) {
   const vis = (show) ? "visible" : "invisible";
   
   return (
-    <div class={vis}>
+    <div className={vis}>
       <Chatbox message={curMessage}/>
     </div>
   );

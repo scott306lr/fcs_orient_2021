@@ -35,7 +35,7 @@ export default function Admin() {
 
 
   return (
-    <div class="z-0">
+    <div className="z-0">
       <select id = "selector" onChange = {() => {
         const options = document.getElementById("selector").options;
         console.log(options);

@@ -68,16 +68,16 @@ export default function Records(props) {
 
   const iterRecords = tasksDone.map((record) => {
     return (
-      <div class="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl">
+      <div className="max-w-prose mx-auto bg-white rounded-xl shadow-md hover:shadow-xl">
         {record.toString()}
       </div>                
     );
   });
   
   return (
-    <div class="p-4 w-full overflow-hidden">
+    <div className="p-4 w-full overflow-hidden">
       <h2>Records</h2>
-      <div id="scoreList" class="space-y-4">
+      <div id="scoreList" className="space-y-4">
         {iterRecords}
       </div>
     </div>

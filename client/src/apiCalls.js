@@ -1,5 +1,5 @@
 import {LoginStart, LoginSuccess, LoginFailure, SocketConnect} from "./context/AuthActions"
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
 import axios from "axios";
 
 export const loginCall = async (rid, dispatch) => {

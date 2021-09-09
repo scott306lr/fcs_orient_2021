@@ -43,10 +43,13 @@ export default function Login() {
           )}
         </button>
 
-        
       </form>
-
+            
       {error ? error : ""}
+
+      <a href="http://localhost:3000/login/613468e49020fa6032cae92e"> UD </a>
+      <a href="http://localhost:3000/login/613468e49020fa6032cae92d"> WJ </a>
+      <a href="http://localhost:3000/login/613468e49020fa6032cae92f"> LR </a>
     </div>
   );
 }

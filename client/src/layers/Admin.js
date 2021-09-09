@@ -46,14 +46,14 @@ export default function Admin() {
   //   }
   // }
 
-  // const initGame = async () => {
-  //   try {
-  //     await axios.delete("/teamTask");
-  //   } catch (err) {
-  //     console.log(err);
-  //     return
-  //   }
-  // }
+  const initGame = async () => {
+    try {
+      await axios.post("/teamTask/initTask");
+    } catch (err) {
+      console.log(err);
+      return
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,6 +88,7 @@ export default function Admin() {
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
         <button class="btn" onClick = {startGame}> Start Game </button>
         <button class="btn" onClick = {endGame}> End Game </button>
+        <button class="btn" onClick = {initGame}> Init Game </button>
       </div>
       <button class="btn" onClick = {deleteAll}> Del Team Task </button>
       <div id = "setInputTime">

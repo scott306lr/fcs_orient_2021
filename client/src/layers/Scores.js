@@ -90,43 +90,49 @@ const doneTask = {
 
 export default function Score(props) {
   const {socket, user, gamestatus} = useContext(AuthContext);
-  const [tasksDone, setTasksDone] = useState(tasksDoneJSON);
-  const [teams, setTeams] = useState(teamsJSON);
-  const [teamScore, setTeamScore] = useState(teamScoreJSON);
+  const [tasksDone, setTasksDone] = useState([]);
+  const [teams, setTeams] = useState([]);
+  const [teamScore, setTeamScore] = useState({});
 
-  const loadScore = () => {
-    // call doneTasks
-    tasksDone.forEach( (doneTask) => {
-      addScore(doneTask.teamId, doneTask);
-    });
-  }
-
-  useEffect( () => {
-    async function fetchData(){
+  useEffect(() => {
+    const fetchData = async() => {
       try {
+        const initScore = {gold: 0, silver: 0, bronze: 0, iron: 0, score: 0 };
         const team_res = await axios.get("/team");
-        setTeams(team_res.data);
-
         const dtask_res = await axios.get("/doneTask");
-        setTasksDone(dtask_res.data);
+        team_res.data.map( (team) => (setTeamScore((prev) => ({...prev, [team._id]: initScore}))) );
 
-        loadScore();
+        setTeams(team_res.data);
+        setTasksDone(dtask_res.data);
       } catch (err) {
         console.log(err);
       }
     }
-
     fetchData();
   }, []);
 
   useEffect(() => {
+    loadScore();
+  }, [tasksDone]);
+
+  useEffect(() => {
     socket.on("update record", (doneTask) => {
-      setTeams((prev) => [...prev, doneTask]);
+      console.log(doneTask)
+      setTasksDone((prev) => [...prev, doneTask]);
+      addScore(doneTask.teamId, doneTask)
     })
   }, [socket]);
 
-  const addScore = (teamId, doneTask) => {
-    var toUpdate = teamScore[teamId];
+  const loadScore = () => {
+    // call doneTasks
+    tasksDone.map( (doneTask) => {
+      addScore(doneTask);
+    });
+  }
+
+  const addScore = (doneTask) => {
+    var toUpdate = teamScore[doneTask.teamId];
+    console.log(toUpdate)
     switch (doneTask.score){
       case 4 :
         toUpdate.gold += 1;
@@ -142,7 +148,7 @@ export default function Score(props) {
         break;
     }
     toUpdate.score += doneTask.score;
-    setTeamScore((prev) => ({...prev, [teamId]: toUpdate}) );
+    setTeamScore((prev) => ({...prev, [doneTask.teamId]: toUpdate}) );
 
     // console.log("score_" + teamId);
     
@@ -154,10 +160,11 @@ export default function Score(props) {
     //   toUpdate.iron;
   };
 
-
   const compareRank = (a, b) => {
     const scoreA = teamScore[a._id];
     const scoreB = teamScore[b._id];
+    if (!scoreA || !scoreB) return 0;
+
     if (scoreA.score != scoreB.score)
       return scoreB.score - scoreA.score;
     if (scoreA.gold != scoreB.gold)
@@ -171,53 +178,6 @@ export default function Score(props) {
     return a._id - b._id;
   }
 
-  // const getTeamById = (id) => {
-  //   return teamsJSON.find(teamJSON => {
-  //     return teamJSON.teamID == id;
-  //   });
-  // }
-
-  
-  /*
-  const [ranking, setRanking] = useState([...Array(6).keys()].map(id => id + 1).map(id => {
-    try {
-      const res = axios.get("/teamTask/" + id);
-      setTeams(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }).sort(compareRank).map(teamJSON => teamJSON.teamID));
-  */
-
-  // const [ranking, setRanking] = useState(teamsJSON.sort(compareRank).map(teamJSON => teamJSON.teamID));
-
-  // useEffect(() => {
-  //   socket.on("update score", (teamId, doneTask) => {
-
-  //     // push to record
-      
-  //     // if not freezed
-      
-  //     addScore(teamId, doneTask);
-
-  //     var newRank = ranking;
-  //     var rank = teamsJSON.findIndex(rankID => (rankID == team));
-  //     while (rank > 0 && compareRank(getTeamById(newRank[rank]), getTeamById(newRank[rank - 1]))) {
-  //       [newRank[rank], newRank[rank - 1]] = [newRank[rank - 1], newRank[rank]];
-  //       rank -= 1;
-  //     }
-  //     if (newRank != ranking)
-  //       setRanking(newRank);
-  //     console.log("updating score!");
-  //   });
-
-  //   console.log(10);
-
-  //   ranking.forEach((id, i) => {
-  //     document.getElementById("score_" + id).style.order = 5 - i; 
-  //     console.log(5 - i);
-  //   });
-  // }, [socket, ranking]);
   const iterList = teams.sort(compareRank).map((team, i) => {
     return (
       <div className="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>

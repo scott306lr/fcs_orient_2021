@@ -5,10 +5,6 @@ const DoneTaskSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    time:{
-        type:String,
-        required:true,
-    },
     teamId:{
         type:String,
         required:true,

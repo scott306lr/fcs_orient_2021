@@ -25,9 +25,8 @@ export default function Task(props) {
       try{
         const res = await axios.post("/teamTask/done/", {teamId: user.teamId, taskId: task._id});
         const newTasks = await axios.post(`/teamTask/unlock/${user.teamId}`, task);
-        
-        const doneTask = {}
-        socket.emit("answered correct", user.teamId, task, newTasks.data);
+        console.log(res.data)
+        socket.emit("answered correct", user.teamId, newTasks.data, res.data);
         answerText.current.value = "";
       }catch(err){
         console.log(err);

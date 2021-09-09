@@ -2,6 +2,7 @@ const router = require("express").Router();
 const TeamTask = require("../models/TeamTask");
 const Task = require("../models/Task");
 const Team = require("../models/Team");
+const DoneTask = require("../models/DoneTask");
 
 const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--){
@@ -74,7 +75,16 @@ router.post("/done",async(req,res)=>{
         const teamTask = await TeamTask.findOne({teamId:req.body.teamId, taskId:req.body.taskId});
         teamTask.done = true;
         teamTask.save();
-        res.status(200).json("update successfully");
+
+        const cnt = await DoneTask.find({taskId:req.body.taskId}).count();
+        const newdoneTask = new DoneTask({
+            teamId: req.body.teamId,
+            taskId: req.body.taskId,
+            score: (4-cnt >= 1) ? 4-cnt : 1,
+        });
+        newdoneTask.save();
+
+        res.status(200).json(newdoneTask);
     }
     catch(err){
         res.status(500).json(err);

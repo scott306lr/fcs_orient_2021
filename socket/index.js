@@ -26,9 +26,8 @@ io.on("connection", (socket) => {
     console.log(`ID: ${socket.id} joined team ${team}`);
   });
   
-  socket.on("answered correct", (team, doneTask, newTasks) => {
+  socket.on("answered correct", (team, newTasks, doneTask) => {
     io.emit("update record", doneTask);
-    io.emit("update score", team, doneTask);
     io.to(team).emit("update tasks", doneTask, newTasks);
     console.log(`${team} answered correct`);
   })

@@ -11,7 +11,7 @@ export default function Login() {
   const handleClick = (e) => {
     e.preventDefault();
     loginCall(
-      { rid: rid.current.value },
+      rid,
       dispatch
     );
   };
@@ -19,7 +19,7 @@ export default function Login() {
   useEffect(() => {
     params?.rid && 
     loginCall(
-      params,
+      params.rid,
       dispatch
     );
   }, [])

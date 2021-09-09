@@ -48,7 +48,7 @@ const unlockTask = async(team_id, x, y, unlockCount) => {
 router.get("/:teamId",async(req,res)=>{
     try{
         const teamTask = await TeamTask.find({teamId:req.params.teamId});
-        res.status(200).json(teamTask);
+        res.status(200).json(teamTask.reverse());
     }
     catch(err){
         res.status(500).json(err);

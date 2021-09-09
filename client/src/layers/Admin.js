@@ -11,8 +11,8 @@ export default function Admin() {
     socket.emit("start game");
   };
 
-  const endGame = () => {
-    socket.emit("end game");
+  const stopGame = () => {
+    socket.emit("stop game");
   };
 
   const freezeBoard = () => {
@@ -88,7 +88,7 @@ export default function Admin() {
         <button class="btn" onClick = {freezeBoard}> Freeze Board </button>
         <button class="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
         <button class="btn" onClick = {startGame}> Start Game </button>
-        <button class="btn" onClick = {endGame}> End Game </button>
+        <button class="btn" onClick = {stopGame}> Stop Game </button>
       </div>
       <button class="btn" onClick = {initGame}> Init Game </button>
       <button class="btn" onClick = {deleteAll}> Del Team Task </button>

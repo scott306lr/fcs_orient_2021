@@ -15,6 +15,8 @@ var GameStatus = {
 
 io.on("connection", (socket) => {
   console.log("a user connected.");
+  socket.emit("status update", GameStatus);
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });

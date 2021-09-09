@@ -6,6 +6,7 @@ const AuthReducer = (state, action) => {
         user: null,
         isFetching: true,
         error: false,
+        gamestatus: state.gamestatus,
       };
 
     case "LOGIN_SUCCESS":
@@ -14,6 +15,7 @@ const AuthReducer = (state, action) => {
         user: action.payload,
         isFetching: false,
         error: false,
+        gamestatus: state.gamestatus,
       };
 
     case "LOGIN_FAILURE":
@@ -22,6 +24,7 @@ const AuthReducer = (state, action) => {
         user: null,
         isFetching: false,
         error: action.payload,
+        gamestatus: state.gamestatus,
       };
 
     case "SOCKET_CONNECT":
@@ -30,10 +33,20 @@ const AuthReducer = (state, action) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
+        gamestatus: state.gamestatus,
       };
     
-      default: 
-        return state;
+    case "GS_UPDATE":
+      return{
+        socket: state.socket,
+        user: state.user,
+        isFetching: state.isFetching,
+        error: state.error,
+        gamestatus: action.payload,
+      };
+    
+    default: 
+      return state;
   }
 };
 

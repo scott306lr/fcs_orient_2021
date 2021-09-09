@@ -119,7 +119,7 @@ export default function Score(props) {
     socket.on("update record", (doneTask) => {
       console.log(doneTask)
       setTasksDone((prev) => [...prev, doneTask]);
-      addScore(doneTask.teamId, doneTask)
+      //addScore(doneTask.teamId, doneTask)
     })
   }, [socket]);
 

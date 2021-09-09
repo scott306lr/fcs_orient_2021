@@ -23,15 +23,6 @@ export default function Admin() {
     socket.emit("unfreeze board");
   };
 
-  const deleteAll = async () => {
-    try {
-      await axios.delete("/teamTask");
-    } catch (err) {
-      console.log(err);
-      return
-    }
-  }
-
   // const addNewTask = async () => {
   //   try {
   //     res = await axios.get("/team");
@@ -91,7 +82,6 @@ export default function Admin() {
         <button class="btn" onClick = {stopGame}> Stop Game </button>
       </div>
       <button class="btn" onClick = {initGame}> Init Game </button>
-      <button class="btn" onClick = {deleteAll}> Del Team Task </button>
       <div id = "setInputTime">
         Set End Time
         <input id = "endTime" type = "time" min="15:00" max="18:00" required></input>

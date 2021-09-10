@@ -63,7 +63,12 @@ export default function Score(props) {
     });
     //console.log(Object.values(team_score));
     //return JSON.parse(team_score)
-    return Object.values(team_score);
+    console.log("!")
+    console.log(team_score)
+    const scoreAll = Object.keys(team_score).map((key) => team_score[key]).sort(compareRank);
+    const scores = Object.keys(team_score).map((key) => team_score[key].score).sort((a, b) => b - a);
+    console.log(scores);
+    return scoreAll;
   }
 
   const addScore = (team_score, doneTask) => {
@@ -91,9 +96,10 @@ export default function Score(props) {
   };
 
   const compareRank = (a, b) => {
+
     const scoreA = a.score;
     const scoreB = b.score;
-    if (!scoreA || !scoreB) return 0;
+    // if (!scoreA || !scoreB) return 0;
 
     if (scoreA.score != scoreB.score)
       return scoreB.score - scoreA.score;
@@ -108,7 +114,7 @@ export default function Score(props) {
     return a._id - b._id;
   }
 
-  const iterList = teamScore.sort(compareRank).map((ts, i) => {
+  const iterList = teamScore.map((ts, i) => {
     return (
       <div className="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + ts._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>
         <Scoreboard teamId={ts._id} teamName={ts.teamName} gold={ts.gold} silver={ts.silver} bronze={ts.bronze} iron={ts.iron} score={ts.score}/>

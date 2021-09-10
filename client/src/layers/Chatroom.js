@@ -5,54 +5,22 @@ import Announce from "../components/Announce";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
-const arriveMsgJSON = {
-  time: "21:02",
-  name: "AA",
-  role: "Admin",
-  team: 1,
-  content: "Hello!"
-};
-
-const msgJSON = [
-  {
-    time: "21:02",
-    name: "AA",
-    role: "Admin",
-    team: 1,
-    content: "Hello!"
-  },
-  {
-    time: "21:03",
-    name: "BB",
-    role: "Member",
-    team: 5,
-    content: "Hi!"
-  },
-  {
-    time: "21:03",
-    name: "CC",
-    role: "Member",
-    team: 3,
-    content: "wwwwwww"
-  },
-];
-
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
-  const [messages, setMessages] = useState(msgJSON);
+  const [messages, setMessages] = useState([]);
   const [arriveMessage, setArriveMessage] = useState();
   const newMessage = useRef();
   const scrollRef = useRef();
   
   useEffect( () => {
     const fetchData = async() => {
-    // try {
-    //   const res = await axios.get("/message");
-    //   setMessages(res.data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    // //console.log(messages);
+      try {
+        const res = await axios.get("/backend/message");
+        setMessages(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+      //console.log(messages);
     }
     fetchData();
   }, []);

@@ -9,7 +9,7 @@ export const loginCall = async (rid, dispatch) => {
     //console.log(res);
 
     // open client socket
-    const socket = io("ws://localhost:8900");
+    const socket = io("ws://localhost:8900"); //io("http://www.lrnctu.tw");
     dispatch(SocketConnect(socket));
 
     // join team and redirect

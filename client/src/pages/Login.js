@@ -56,9 +56,9 @@ export default function Login() {
             
       {error ? error : ""}
 
-      <a href="http://localhost:3000/login/613468e49020fa6032cae900"> UD </a>
-      <a href="http://localhost:3000/login/613468e49020fa6032cae901"> LR </a>
-      <a href="http://localhost:3000/login/613468e49020fa6032cae902"> WJ </a>
+      <a href="http://www.lrnctu.tw/login/613468e49020fa6032cae900"> UD </a>
+      <a href="http://www.lrnctu.tw/login/613468e49020fa6032cae901"> LR </a>
+      <a href="http://www.lrnctu.tw/login/613468e49020fa6032cae902"> WJ </a>
     </div>
   );
 }

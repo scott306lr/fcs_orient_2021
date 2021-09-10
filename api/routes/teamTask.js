@@ -129,6 +129,7 @@ router.delete("/",async(req,res)=>{
 router.post("/initTask",async(req,res)=>{
     try{
         await TeamTask.deleteMany();
+        await DoneTask.deleteMany();
         
         const resTeams = await Team.find();
         resTeams.map( async(team) => (

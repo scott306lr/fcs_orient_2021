@@ -65,10 +65,10 @@ export default function Score(props) {
     //return JSON.parse(team_score)
     console.log("!")
     console.log(team_score)
-    const scoreAll = Object.keys(team_score).map((key) => team_score[key]).sort(compareRank);
-    const scores = Object.keys(team_score).map((key) => team_score[key].score).sort((a, b) => b - a);
-    console.log(scores);
-    return scoreAll;
+    var scoreAll = []
+    for (let key in team_score)
+      scoreAll.push(team_score[key])
+    return scoreAll.sort(compareRank);
   }
 
   const addScore = (team_score, doneTask) => {
@@ -96,22 +96,20 @@ export default function Score(props) {
   };
 
   const compareRank = (a, b) => {
-
-    const scoreA = a.score;
-    const scoreB = b.score;
+    
     // if (!scoreA || !scoreB) return 0;
 
-    if (scoreA.score != scoreB.score)
-      return scoreB.score - scoreA.score;
-    if (scoreA.gold != scoreB.gold)
-      return scoreB.gold - scoreA.gold;
-    if (scoreA.silver != scoreB.silver)
-      return scoreB.silver - scoreA.silver;
-    if (scoreA.bronze != scoreB.bronze)
-      return scoreB.bronze - scoreA.bronze;
-    if (scoreA.iron != scoreB.iron)
-      return scoreB.iron - scoreA.iron;
-    return a._id - b._id;
+    if (a.score != b.score)
+      return b.score - a.score;
+    if (a.gold != b.gold)
+      return b.gold - a.gold;
+    if (a.silver != b.silver)
+      return b.silver - a.silver;
+    if (a.bronze != b.bronze)
+      return b.bronze - a.bronze;
+    if (a.iron != b.iron)
+      return b.iron - a.iron;
+    return 0;
   }
 
   const iterList = teamScore.map((ts, i) => {

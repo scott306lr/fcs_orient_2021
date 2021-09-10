@@ -9,100 +9,27 @@ import smadal from '../img/medal-2.svg';
 import bmadal from '../img/medal-3.svg';
 import imadal from '../img/medal-4.svg';
 
-// const teamsJSON = [
-//   {teamID: 1, name: "haha1", gold: "3", silver: "7", bronze: "3", iron: "2", score:"41"}, 
-//   {teamID: 2, name: "haha2", gold: "1", silver: "7", bronze: "3", iron: "2", score:"33"},
-//   {teamID: 3, name: "haha3", gold: "2", silver: "7", bronze: "3", iron: "4", score:"31"},
-//   {teamID: 4, name: "haha4", gold: "1", silver: "1", bronze: "1", iron: "1", score:"10"},
-//   {teamID: 5, name: "haha5", gold: "2", silver: "2", bronze: "3", iron: "4", score:"500"},
-//   {teamID: 6, name: "haha6", gold: "8", silver: "8", bronze: "8", iron: "8", score:"80"},
-// ]
-const teamsJSON = [
-  {_id: "1", teamName: "haha1"},
-  {_id: "2", teamName: "haha2"},
-  {_id: "3", teamName: "haha3"},
-  {_id: "4", teamName: "haha4"},
-  {_id: "5", teamName: "haha5"},
-  {_id: "6", teamName: "haha6"},
-]
-
-const teamScoreJSON = {
-  "1": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0}, 
-  "2": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
-  "3": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
-  "4": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
-  "5": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
-  "6": {gold: 0, silver: 0, bronze: 0, iron: 0, score:0},
-} // LR: we can get teams list by api to show html, then call this JSON by using teamID in list.
-
-const tasksDoneJSON = [
-  {
-    time:"21:34",
-    teamId:"1",
-    taskId:"9",
-    score:4,
-  },
-  {
-    time:"21:35",
-    teamId:"2",
-    taskId:"8",
-    score:4,
-  },
-  {
-    time:"21:34",
-    teamId:"1",
-    taskId:"8",
-    score:3,
-  },
-  {
-    time:"21:34",
-    teamId:"1",
-    taskId:"3",
-    score:4,
-  },
-  {
-    time:"21:34",
-    teamId:"3",
-    taskId:"3",
-    score:3,
-  },
-  {
-    time:"21:34",
-    teamId:"2",
-    taskId:"9",
-    score:3,
-  },
-  {
-    time:"21:34",
-    teamId:"4",
-    taskId:"3",
-    score:2,
-  },
-]
-
-const doneTask = {
-  time:"21:34",
-  teamId:"6",
-  taskId:"9",
-  score:4,
-};
-
 
 export default function Score(props) {
   const {socket, user, gamestatus} = useContext(AuthContext);
-  const [tasksDone, setTasksDone] = useState([]);
-  const [teams, setTeams] = useState([]);
-  const [teamScore, setTeamScore] = useState({});
+  const [tasksDone, setTasksDone] = useState([""]);
+  const [teams, setTeams] = useState([""]);
+  const [teamScore, setTeamScore] = useState([""]);
+
+  const initTeamScore = (teams) => {
+    var team_score = {};
+    teams.forEach( (team) => team_score[team._id] = {_id: team._id, teamName: team.teamName, gold: 0, silver: 0, bronze: 0, iron: 0, score: 0 });
+    return team_score;
+  }
 
   useEffect(() => {
     const fetchData = async() => {
       try {
-        const initScore = {gold: 0, silver: 0, bronze: 0, iron: 0, score: 0 };
         const team_res = await axios.get("/backend/team");
-        const dtask_res = await axios.get("/backend/doneTask");
-        team_res.data.map( (team) => (setTeamScore((prev) => ({...prev, [team._id]: initScore}))) );
-
+        //setTeamScore(initTeamScore(team_res.data));
         setTeams(team_res.data);
+
+        const dtask_res = await axios.get("/backend/doneTask");
         setTasksDone(dtask_res.data);
       } catch (err) {
         console.log(err);
@@ -112,53 +39,49 @@ export default function Score(props) {
   }, []);
 
   useEffect(() => {
-    console.log('ABC')
-    loadScore(tasksDone);
+    setTeamScore(loadScore(tasksDone));
+    console.log("notice me")
+    console.log(loadScore(tasksDone))
+    console.log(loadScore(tasksDone).sort(compareRank));
   }, [tasksDone]);
+
+  // useEffect(() => {
+  //   setTSList(Object.values(teamScore));
+  // }, [teamScore]);
 
   useEffect(() => {
     socket.on("update record", (doneTask) => {
-      console.log("!")
-      console.log(doneTask)
       setTasksDone((prev) => [...prev, doneTask]);
       //addScore(doneTask.teamId, doneTask)
     })
   }, [socket]);
 
   const loadScore = (tasksDone) => {
-    // call doneTasks
-    const initScore = {gold: 0, silver: 0, bronze: 0, iron: 0, score: 0 };
-    console.log(teams)
-    teams.map( (team) => (setTeamScore((prev) => ({...prev, [team._id]: initScore}))) );
-    console.log(teamScore);
-    console.log("Len " + tasksDone.length)
+    var team_score = initTeamScore(teams);
     tasksDone.map( (doneTask) => {
-      // console.log("!!")
-      addScore(doneTask);
+      addScore(team_score, doneTask);
     });
+    //console.log(Object.values(team_score));
+    //return JSON.parse(team_score)
+    return Object.values(team_score);
   }
 
-  const addScore = (doneTask) => {
-    // console.log('AddScore: ' + doneTask.teamId[doneTask.teamId.length - 1] + '\nProblemID: ' + doneTask.taskId)
-    var toUpdate = teamScore[doneTask.teamId];
+  const addScore = (team_score, doneTask) => {
     switch (doneTask.score){
       case 4 :
-        toUpdate.gold += 1;
+        team_score[doneTask.teamId].gold += 1;
         break;
       case 3 :
-        toUpdate.silver += 1;
+        team_score[doneTask.teamId].silver += 1;
         break;
       case 2 :
-        toUpdate.bronze += 1;
+        team_score[doneTask.teamId].bronze += 1;
         break;
       case 1 :
-        toUpdate.iron += 1;
+        team_score[doneTask.teamId].iron += 1;
         break;
     }
-    toUpdate.score += doneTask.score;
-    setTeamScore((prev) => ({...prev, [doneTask.teamId]: toUpdate}) );
-    // console.log("score_" + teamId);
-    
+    team_score[doneTask.teamId].score += doneTask.score;
     // document.getElementById("score_" + teamId).style.zIndex = 
     //   toUpdate.score * 50 * 50 * 50 * 50 +
     //   toUpdate.gold * 50 * 50 * 50 +
@@ -168,8 +91,8 @@ export default function Score(props) {
   };
 
   const compareRank = (a, b) => {
-    const scoreA = teamScore[a._id];
-    const scoreB = teamScore[b._id];
+    const scoreA = a.score;
+    const scoreB = b.score;
     if (!scoreA || !scoreB) return 0;
 
     if (scoreA.score != scoreB.score)
@@ -185,10 +108,10 @@ export default function Score(props) {
     return a._id - b._id;
   }
 
-  const iterList = teams.sort(compareRank).map((team, i) => {
+  const iterList = teamScore.sort(compareRank).map((ts, i) => {
     return (
-      <div className="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + team._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>
-        <Scoreboard teamId={team._id} teamName={team.teamName} gold={teamScore[team._id].gold} silver={teamScore[team._id].silver} bronze={teamScore[team._id].bronze} iron={teamScore[team._id].iron} score={teamScore[team._id].score}/>
+      <div className="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + ts._id} style = {{background: i == 0 ? "#ffe552": i == 1 ? "#cdcdcd": i == 2 ? "#d28c47": "white"}}>
+        <Scoreboard teamId={ts._id} teamName={ts.teamName} gold={ts.gold} silver={ts.silver} bronze={ts.bronze} iron={ts.iron} score={ts.score}/>
       </div>                
     );
   })
@@ -219,7 +142,7 @@ export default function Score(props) {
         {iterList}
       </FlipMove>
       <button onClick = {() => {console.log(tasksDone);
-        console.log(tasksDone.length)}}>Update</button>
+        console.log(tasksDone.length)}}>Test log</button>
     </div>
   );
 }

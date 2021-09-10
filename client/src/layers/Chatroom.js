@@ -44,14 +44,17 @@ export default function Chatroom() {
   const newMessage = useRef();
   const scrollRef = useRef();
   
-  useEffect( async () => {
-    try {
-      const res = await axios.get("/message");
-      setMessages(res.data);
-    } catch (err) {
-      console.log(err);
+  useEffect( () => {
+    const fetchData = async() => {
+    // try {
+    //   const res = await axios.get("/message");
+    //   setMessages(res.data);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    // //console.log(messages);
     }
-    //console.log(messages);
+    fetchData();
   }, []);
 
   useEffect(() => {

@@ -25,14 +25,13 @@ export default function Login() {
         params.rid,
         dispatch
       );
-    }
-    else if (cookies?.rid){
+    } else if (cookies?.rid){
       loginCall(
         cookies.rid,
         dispatch
       );
     }
-  }, [])
+  }, []);
 
   return (
     <div>

@@ -112,9 +112,7 @@ export default function Score(props) {
   }, []);
 
   useEffect(() => {
-    loadScore();
-    console.log("aaa")
-    console.log(teamScore)
+    loadScore(tasksDone);
   }, [tasksDone]);
 
   useEffect(() => {
@@ -125,10 +123,8 @@ export default function Score(props) {
     })
   }, [socket]);
 
-  const loadScore = () => {
+  const loadScore = (tasksDone) => {
     // call doneTasks
-    console.log("asdasd")
-    console.log(tasksDone)
     tasksDone.map( (doneTask) => {
       addScore(doneTask);
     });
@@ -136,7 +132,7 @@ export default function Score(props) {
 
   const addScore = (doneTask) => {
     var toUpdate = teamScore[doneTask.teamId];
-    console.log(toUpdate)
+    //console.log(toUpdate)
     switch (doneTask.score){
       case 4 :
         toUpdate.gold += 1;

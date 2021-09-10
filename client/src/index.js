@@ -9,11 +9,11 @@ import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <CookiesProvider>
+    <CookiesProvider>
+      <AuthContextProvider>
         <App />
-      </CookiesProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

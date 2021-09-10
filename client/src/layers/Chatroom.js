@@ -8,7 +8,7 @@ import axios from "axios";
 export default function Chatroom() {
   const {socket, user} = useContext(AuthContext)
   const [messages, setMessages] = useState([]);
-  const [arriveMessage, setArriveMessage] = useState();
+  const [arriveMessage, setArriveMessage] = useState("");
   const newMessage = useRef();
   const scrollRef = useRef();
   
@@ -51,7 +51,7 @@ export default function Chatroom() {
       teamId: user.teamId,
       content: newMessage.current.value,
     };
-    console.log(payload);
+    //console.log(payload);
     
     try {
       await axios.post("/backend/message", payload);
@@ -65,9 +65,9 @@ export default function Chatroom() {
     newMessage.current.value = "";
   };
 
-  const MessageList = messages.map((msg) => {
+  const MessageList = messages.map((msg, i) => {
     return (
-      <div className="overflow-y-auto" ref={scrollRef}>
+      <div key={i} className="overflow-y-auto" ref={scrollRef}>
         <Chatbox message={msg}/>
       </div>
     );
@@ -83,12 +83,11 @@ export default function Chatroom() {
         </div>
         <div className="relative w-full flex p-2 mt-4 items-center bottom-0 bg-cusgreen-200">
           <textarea
-            className="chatMessageInput"
             placeholder="write something..."
             ref={newMessage}
             className="h-auto resize-none flex-grow ml-4 rounded-md"
           ></textarea>
-          <button className="chatSubmitButton" onClick={handleSubmit} className="h-auto btn mr-4">
+          <button onClick={handleSubmit} className="h-auto btn mr-4">
             Send
           </button>
         </div>

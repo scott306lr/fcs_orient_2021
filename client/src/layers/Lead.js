@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 export default function Admin() {
-  const {socket, user} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
 
   const [tasks, setTasks] = useState([]);
   const [selId, setSelId] = useState("");
@@ -13,20 +13,14 @@ export default function Admin() {
     const fetchData = async() => {
       try {
         const res = await axios.get(`/backend/teamTask/${user.teamId}`)
-        setTasks(res.data.map((task) => {
-          if (task.done === false)
-            return task;
-          else return null;
-        }));
-        console.log(tasks);
-        setSelId(tasks[0].taskId);
+        //setTasks(res.data);
+        setTasks(res.data.filter((task) => task.done === false));
       } catch (err) {
         console.log(err);
       }
     }
     fetchData();
-
-  }, []);
+  }, [user]);
 
   useEffect( () => {
     const fetchData = async() => {

@@ -20,7 +20,7 @@ export default function Tasks(props) {
       }
     }
     fetchData();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     socket.on("update tasks", (doneTask, newTasks) => {
@@ -31,9 +31,9 @@ export default function Tasks(props) {
     })
   }, [socket]);
   
-  const itemList = tasks.map((task) => {
+  const itemList = tasks.map((task, i) => {
     return (
-      <div className="task">
+      <div key={i}>
         <Task id={task.taskId} done={task.done} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
       </div>
     );
@@ -42,7 +42,9 @@ export default function Tasks(props) {
   return (
     <div id = "map8Tasks">
       <Map />
+      <div>
       {itemList}
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function Task(props) {
       }
     }
     fetchData();
-  }, [])
+  }, [props])
 
   const answerCheck = async () => {
     if (answerText.current.value === task.answer) {
@@ -42,7 +42,7 @@ export default function Task(props) {
   const completeTask = (
     <div>
       <p>{task.question}</p>
-      <img src={`../assets/tasks/${task.taskId}.jpg`} alt = "Task Image"/>
+      <img src={`../assets/tasks/${task.taskId}.jpg`} alt = "Task_Image"/>
       <br />
       <input placeholder="請輸入答案" ref={answerText}/>
       <button onClick={() => answerCheck()}> 上傳 </button>

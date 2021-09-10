@@ -25,7 +25,7 @@ export default function Tasks(props) {
   useEffect(() => {
     socket.on("update tasks", (doneTask, newTasks) => {
       setTasks((prev) => (prev.map((task) => {
-        return (doneTask._id === task.taskId) ? {...task, ['done']: true} : task
+        return (doneTask.taskId === task.taskId) ? {...task, 'done': true} : task
       })));
       setTasks((prev) => [...prev, ...newTasks]);
     })

@@ -98,8 +98,8 @@ export default function Score(props) {
     const fetchData = async() => {
       try {
         const initScore = {gold: 0, silver: 0, bronze: 0, iron: 0, score: 0 };
-        const team_res = await axios.get("/team");
-        const dtask_res = await axios.get("/doneTask");
+        const team_res = await axios.get("/backend/team");
+        const dtask_res = await axios.get("/backend/doneTask");
         team_res.data.map( (team) => (setTeamScore((prev) => ({...prev, [team._id]: initScore}))) );
 
         setTeams(team_res.data);

@@ -12,7 +12,7 @@ export default function Admin() {
   useEffect( () => {
     const fetchData = async() => {
       try {
-        const res = await axios.get(`/teamTask/${user.teamId}`)
+        const res = await axios.get(`/backend/teamTask/${user.teamId}`)
         setTasks(res.data.map((task) => {
           if (task.done === false)
             return task;
@@ -31,7 +31,7 @@ export default function Admin() {
   useEffect( () => {
     const fetchData = async() => {
       try {
-        const res = await axios.get(`/task/${selId}`)
+        const res = await axios.get(`/backend/task/${selId}`)
         setSelTask(res.data);
       } catch (err) {
         console.log(err);

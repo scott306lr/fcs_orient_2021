@@ -12,7 +12,7 @@ export default function Tasks(props) {
   useEffect( () => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/teamTask/${user.teamId}`)
+        const res = await axios.get(`/backend/teamTask/${user.teamId}`)
         setTasks(res.data);
         console.log(res.data)
       } catch (err) {

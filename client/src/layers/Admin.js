@@ -39,7 +39,7 @@ export default function Admin() {
 
   const initGame = async () => {
     try {
-      const res = await axios.post("/teamTask/initTask");
+      const res = await axios.post("/backend/teamTask/initTask");
       console.log(res.data);
     } catch (err) {
       console.log(err);
@@ -62,7 +62,7 @@ export default function Admin() {
     //console.log(payload);
     
     try {
-      await axios.post("/message", payload);
+      await axios.post("/backend/message", payload);
     } catch (err) {
       console.log(err);
       return

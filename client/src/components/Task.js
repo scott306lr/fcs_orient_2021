@@ -10,7 +10,7 @@ export default function Task(props) {
   useEffect( () => {
     async function fetchData(){
       try{
-        const res = await axios.get(`/Task/${props.id}`);
+        const res = await axios.get(`/backend/task/${props.id}`);
         setTask(res.data);
       }catch(err){
         console.log(err);

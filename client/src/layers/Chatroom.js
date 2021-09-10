@@ -86,7 +86,7 @@ export default function Chatroom() {
     console.log(payload);
     
     try {
-      await axios.post("/message", payload);
+      await axios.post("/backend/message", payload);
     } catch (err) {
       console.log(err);
       return

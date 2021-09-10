@@ -18,7 +18,7 @@ export default function Home() {
     socket.on("status update", (game_status) => {
       dispatch(GSUpdate(game_status));
     })
-  }, [socket]);
+  }, [socket, dispatch]);
 
   function switchChat(status) {
     console.log('switch');

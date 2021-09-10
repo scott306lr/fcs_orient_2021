@@ -9,14 +9,17 @@ export default function Tasks(props) {
   const [tasks, setTasks] = useState([]);
   const [taskFocus, setTaskFocus] = useState("");
 
-  useEffect( async() => {
-    try {
-      const res = await axios.get(`/teamTask/${user.teamId}`)
-      setTasks(res.data);
-      console.log(res.data)
-    } catch (err) {
-      console.log(err);
+  useEffect( () => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/teamTask/${user.teamId}`)
+        setTasks(res.data);
+        console.log(res.data)
+      } catch (err) {
+        console.log(err);
+      }
     }
+    fetchData();
   }, []);
 
   useEffect(() => {

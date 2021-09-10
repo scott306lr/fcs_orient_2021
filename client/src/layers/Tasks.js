@@ -14,7 +14,6 @@ export default function Tasks(props) {
       try {
         const res = await axios.get(`/backend/teamTask/${user.teamId}`)
         setTasks(res.data);
-        console.log(res.data)
       } catch (err) {
         console.log(err);
       }

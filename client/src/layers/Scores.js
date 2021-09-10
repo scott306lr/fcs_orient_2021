@@ -112,6 +112,7 @@ export default function Score(props) {
   }, []);
 
   useEffect(() => {
+
     loadScore(tasksDone);
   }, [tasksDone]);
 
@@ -125,6 +126,11 @@ export default function Score(props) {
 
   const loadScore = (tasksDone) => {
     // call doneTasks
+    const initScore = {gold: 0, silver: 0, bronze: 0, iron: 0, score: 0 };
+    console.log("!")
+    console.log(teams)
+    teams.map( (team) => (setTeamScore((prev) => ({...prev, [team._id]: initScore}))) );
+    console.log(teamScore);
     tasksDone.map( (doneTask) => {
       addScore(doneTask);
     });
@@ -133,8 +139,6 @@ export default function Score(props) {
   const addScore = (doneTask) => {
 
     var toUpdate = teamScore[doneTask.teamId];
-    console.log(`Toupdate: ${toUpdate}`)
-    //console.log(toUpdate)
     switch (doneTask.score){
       case 4 :
         toUpdate.gold += 1;
@@ -151,7 +155,6 @@ export default function Score(props) {
     }
     toUpdate.score += doneTask.score;
     setTeamScore((prev) => ({...prev, [doneTask.teamId]: toUpdate}) );
-
     // console.log("score_" + teamId);
     
     // document.getElementById("score_" + teamId).style.zIndex = 
@@ -213,7 +216,7 @@ export default function Score(props) {
         leaveAnimation='accordionVertical'>
         {iterList}
       </FlipMove>
-      <button onClick = {() => {addScore(doneTask.teamId, doneTask)}}>Update</button>
+      <button onClick = {() => {console.log(teamScore)}}>Update</button>
     </div>
   );
 }

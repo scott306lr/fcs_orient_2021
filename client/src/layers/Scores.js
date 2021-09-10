@@ -135,8 +135,9 @@ export default function Score(props) {
   }
 
   const addScore = (doneTask) => {
+
     var toUpdate = teamScore[doneTask.teamId];
-    console.log(toUpdate)
+    console.log(`Toupdate: ${toUpdate}`)
     switch (doneTask.score){
       case 4 :
         toUpdate.gold += 1;

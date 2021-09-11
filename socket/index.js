@@ -4,13 +4,10 @@ const io = require("socket.io")(8900, {
   }
 });
 
-// TEAM_COUNT = 6
-// const Teams = [...Array(TEAM_COUNT).keys()].map(x => ++x) // [1, 2, 3, 4, 5, 6]
-// console.log(Teams)
-
 var GameStatus = {
   in_game: false, 
   board_freeze: false,
+  freeze_time: null,
 }
 
 io.on("connection", (socket) => {
@@ -36,11 +33,13 @@ io.on("connection", (socket) => {
     console.log("broadcasting message:");
     console.log(payload);
     socket.broadcast.emit("recieve message", payload);
+    socket.broadcast.emit("recieve announce", payload);
   });
 
   socket.on("send announcement", ({ payload }) => {
     console.log("announcing...");
     io.emit("recieve message", payload);
+    io.emit("recieve announce", payload);
   });
 
 

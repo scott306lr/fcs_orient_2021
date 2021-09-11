@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   gamestatus: {
     in_game: false, 
     board_freeze: false,
+    freeze_time: null,
   },
 }
 

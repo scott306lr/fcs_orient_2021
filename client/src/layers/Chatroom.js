@@ -1,7 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-//import { io, Socket } from "socket.io-client";
 import Chatbox from "../components/Chatbox";
-import Announce from "../components/Announce";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
@@ -51,7 +49,6 @@ export default function Chatroom() {
       teamId: user.teamId,
       content: newMessage.current.value,
     };
-    //console.log(payload);
     
     try {
       await axios.post("/backend/message", payload);
@@ -75,7 +72,7 @@ export default function Chatroom() {
 
   return (
     <>
-      <Announce msg={arriveMessage}/>
+      {/* <Announce msg={arriveMessage}/> */}
       <div className = "flex flex-col h-screen bg-cusblue-200 overflow-hidden">
         <h1 className="text-xl bg-cusgreen-200 text-center p-1">聊天室</h1>
         <div className = "relative flex-grow overflow-auto">

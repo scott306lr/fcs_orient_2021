@@ -4,7 +4,8 @@
   "description": "socket.io backend",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "run": "node index.js"
   },
   "author": "",
   "license": "ISC",

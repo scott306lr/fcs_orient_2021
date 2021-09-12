@@ -90,7 +90,7 @@ export default function Score(props) {
 
   const iterList = teamScore.map((ts, i) => {
     return (
-      <div className="max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8" key = {"score_" + ts._id} style = {{background: i === 0 ? "#ffe552": i === 1 ? "#cdcdcd": i === 2 ? "#d28c47": "white"}}>
+      <div className={`max-w-prose mx-auto rounded-xl shadow-md hover:shadow-xl p-8 ring-red-700 ${ts._id === user.teamId ? "ring-4" : ""}`} key = {"score_" + ts._id} style = {{background: i === 0 ? "#ffe552": i === 1 ? "#cdcdcd": i === 2 ? "#d28c47": "white"}}>
         <Scoreboard teamId={ts._id} teamName={ts.teamName} gold={ts.gold} silver={ts.silver} bronze={ts.bronze} iron={ts.iron} score={ts.score}/>
       </div>                
     );

@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  reverse-proxy:
+    image: nginx:mainline-alpine
+    container_name: reverse_proxy
+    volumes:
+      - ./client/build:/var/www/fcs2021
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - api
+      - socket
+
+  api:
+    image: api
+    container_name: api
+    build:
+      context: ./api
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: on-failure
+
+  socket:
+    image: socket
+    container_name: socket
+    build:
+      context: ./socket
+    ports:
+      - 8900:8900
+    restart: on-failure
+
+  db:
+    image: "mongo"
+    container_name: "mongodb"
+    command: mongod --dbpath /data/db --port 27041
+    volumes:
+      - db-data:/data/db
+
+volumes:
+  db-data:

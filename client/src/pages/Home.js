@@ -62,8 +62,8 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" className="bg-cusblue-100 flex flex-col h-screen relative">
-      <button className = {`${chatOpen || scoreOpen ? "relative top-0 right-0 z-50 m-3 btn-x text-lg" : "invisible"}`}  onClick = {() => {
+    <div id = "app" className="bg-cusblue-100 flex flex-col h-screen">
+      <button className = {`${(chatOpen || scoreOpen) ? "right-0 top-0 z-50 m-3 btn-x text-lg" : "invisible"}`}  onClick = {() => {
         switchChat(false);
         switchScore(false);
       }}>×</button>

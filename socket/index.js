@@ -1,6 +1,6 @@
 const io = require("socket.io")(8900, {
   cors: {
-    origin: "http://localhost:3000" //origin: "http://www.lrnctu.tw"
+    origin: ["http://www.lrnctu.tw", "http://localhost:3000"]
   }
 });
 

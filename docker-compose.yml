@@ -3,9 +3,8 @@ version: "3"
 services:
   reverse-proxy:
     image: nginx:mainline-alpine
-    container_name: reverse_proxy
     volumes:
-      - ./client/build:/var/www/fcs2021
+      - ./client/build:/var/www/fcs/build
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
@@ -14,31 +13,26 @@ services:
       - socket
 
   api:
-    image: api
-    container_name: api
-    build:
-      context: ./api
-    ports:
-      - 8000:8000
+    build: ./api
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb:27018/fcs
     depends_on:
-      - db
-    restart: on-failure
+      - mongodb
+    restart: always
 
   socket:
-    image: socket
-    container_name: socket
-    build:
-      context: ./socket
-    ports:
-      - 8900:8900
-    restart: on-failure
+    build: ./socket
+    environment:
+      NODE_ENV: production
 
-  db:
+  mongodb:
     image: "mongo"
-    container_name: "mongodb"
-    command: mongod --dbpath /data/db --port 27041
+    ports:
+      - 27018:27018
     volumes:
       - db-data:/data/db
+    command: mongod --port 27018 --bind_ip_all
 
 volumes:
   db-data:

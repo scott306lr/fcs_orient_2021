@@ -8,6 +8,8 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
+    environment:
+      - PUBLIC_URI
     depends_on:
       - api
       - socket
@@ -15,7 +17,7 @@ services:
   api:
     build: ./api
     environment:
-      - NODE_ENV=production
+      - PUBLIC_URI
       - MONGO_URI=mongodb://mongodb:27018/fcs
     depends_on:
       - mongodb
@@ -24,7 +26,7 @@ services:
   socket:
     build: ./socket
     environment:
-      NODE_ENV: production
+      - PUBLIC_URI
 
   mongodb:
     image: "mongo"

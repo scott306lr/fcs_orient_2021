@@ -9,7 +9,7 @@ npm run build
 1. Download docker and docker-compose
 2. Go to the root folder and run:
 ```bash
-sudo docker-compose up
+sudo docker-compose up -d
 ```
 3. Run "mongo_import.sh" in ./dataset by:
 ```bash

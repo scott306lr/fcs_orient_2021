@@ -2,17 +2,17 @@
 a realtime app for fcs orienteering with chat.
 
 ## How to deploy with docker:
-1. build client in ./client:
+build client in ./client if you need:
 ```bash
 npm run build
 ```
-2. Download docker and docker-compose
-3. Go to the root folder and run:
+1. Download docker and docker-compose
+2. Go to the root folder and run:
 ```bash
 sudo docker-compose up
 ```
-4. Run "mongo_import.sh" in ./dataset by:
+3. Run "mongo_import.sh" in ./dataset by:
 ```bash
 ./dataset/mongo_import.sh
 ```
-5. That's all it!
+4. That's all it!

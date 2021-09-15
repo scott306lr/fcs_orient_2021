@@ -1,9 +1,10 @@
 #! /bin/bash
 
-cd "$(dirname "${BASH_SOURCE[0]}")"
+HOST="${1:-27017}"
 
-mongo localhost:27018/fcs --eval "db.dropDatabase()"
-mongoimport -h localhost:27018 -d fcs -c Task --jsonArray < Task.json
-mongoimport -h localhost:27018 -d fcs -c Team --jsonArray < Team.json
-mongoimport -h localhost:27018 -d fcs -c User --jsonArray < User.json
+cd "$(dirname "${BASH_SOURCE[0]}")"
+mongo localhost:$HOST/fcs --eval "db.dropDatabase()"
+mongoimport -h localhost:$HOST -d fcs -c Task --jsonArray < Task.json
+mongoimport -h localhost:$HOST -d fcs -c Team --jsonArray < Team.json
+mongoimport -h localhost:$HOST -d fcs -c User --jsonArray < User.json
 

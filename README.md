@@ -17,7 +17,7 @@ npm run build
 sudo docker-compose up -d
 ```
 
-3. Initialize and import data to "mongo_import.sh" in ./dataset:
+3. Initialize and import data to db with "mongo_import.sh" in ./dataset:
 
 ```bash
 ./dataset/mongo_import.sh 27018

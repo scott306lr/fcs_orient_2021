@@ -83,7 +83,7 @@ export default function ChatList() {
 
   const MessageList = messages.map((msg, i) => {
     return (
-      <motion.li key={i} ref={scrollRef}> 
+      <motion.li key={i} ref={scrollRef} > 
         <Chatbox message={msg}/>
       </motion.li>
     );

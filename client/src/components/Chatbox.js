@@ -15,9 +15,11 @@ export default function Chatbox(props) {
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
+      className="bg-white ring ring-blue-200 py-2 px-4 rounded"
     >
-      <motion.div className="text-sm text-gray-400">{props.message?.role}</motion.div>
+      
       <motion.div className="space-x-4">
+        <motion.div className="text-sm text-gray-400">{props.message?.role}</motion.div>
         <motion.div className="inline-block">{props.message?.name}</motion.div>
         <motion.div className="mx-2
                     break-all

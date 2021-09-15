@@ -73,7 +73,7 @@ export default function Admin() {
   };
 
   return (
-    <div className="z-0">
+    <>
       <h1 className="text-xl">Admin Interface</h1>
       <div className="flex justify-between">
         <button className="btn" onClick = {freezeBoard}> Freeze Board </button>
@@ -86,7 +86,7 @@ export default function Admin() {
         Set End Time
         <input id = "endTime" type = "time" min="15:00" max="18:00" required></input>
       </div>
-      <div className="relative w-full flex p-2 mt-4 items-center bottom-0 bg-green-200" id = "sendAnnounce">
+      <div className="w-full flex p-2 mt-4 items-center bottom-0 bg-green-200" id = "sendAnnounce">
         <textarea
           className="announceText"
           placeholder="Key in announce text"
@@ -97,6 +97,6 @@ export default function Admin() {
           Send
         </button>
       </div>
-    </div>
+    </>
   );
 }

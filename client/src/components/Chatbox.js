@@ -1,10 +1,25 @@
+import { motion } from "framer-motion"
+
+const variants = {
+  open: {
+    opacity: 1,
+  },
+  closed: {
+    opacity: 0,
+  }
+};
+
 export default function Chatbox(props) {
   return (
-    <div> 
-      <div className="text-sm text-gray-400">{props.message?.role}</div>
-      <div className="space-x-4">
-        <div className="inline-block">{props.message?.name}</div>
-        <div className="mx-2
+    <motion.li 
+      variants={variants}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <motion.div className="text-sm text-gray-400">{props.message?.role}</motion.div>
+      <motion.div className="space-x-4">
+        <motion.div className="inline-block">{props.message?.name}</motion.div>
+        <motion.div className="mx-2
                     break-all
                     text-left
                     inline-block
@@ -12,8 +27,8 @@ export default function Chatbox(props) {
                     rounded-md
                     bg-cusgreen-200
                     focus:shadow-lg"
-        >{props.message?.content}</div>
-      </div>
-    </div>
+        >{props.message?.content}</motion.div>
+      </motion.div>
+    </motion.li>
   );
 }

@@ -7,7 +7,7 @@ export const loginCall = async (rid, dispatch) => {
   try{
     const res = await axios.post("/backend/auth/login", {id: rid})
 
-    const socket = io("/");
+    const socket = io("ws://127.0.0.1:8900");
     dispatch(SocketConnect(socket));
 
     // join team and redirect

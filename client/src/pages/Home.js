@@ -6,6 +6,8 @@ import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
 import Lead from "../layers/Lead";
 import Announce from "../components/Announce";
+import NavBubble from "../components/NavBubble";
+// import Example from "../test/Example";
 
 
 import { AuthContext } from "../context/AuthContext";
@@ -62,42 +64,49 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" className="bg-cusblue-100 flex flex-col h-screen">
-      <button className = {`${(chatOpen || scoreOpen) ? "right-0 top-0 z-50 m-3 btn-x text-lg" : "invisible"}`}  onClick = {() => {
-        switchChat(false);
-        switchScore(false);
+    <div id = "app" className="fixed bg-cusblue-100 h-full w-full">
+      <div className="h-screen w-screen z-10">
+        <h1 className="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
+        <div id = "chatCollapse" className = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0">
+          {/* <Chatroom opened = {chatOpen} onChange = {switchChat}/> */}
+        </div>
+        <div id = "scoreCollapse" className = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0">
+          <Score opened = {scoreOpen} onChange = {switchScore}/>
+        </div>
+
+        
+        <div id = "topBar" className="flex justify-between">
+          <button onClick = {() => {
+            if (chatOpen)
+              switchChat(false);
+            else {
+              switchChat(true);
+              switchScore(false);
+            }
+          }} className="btn"> Chatroom </button>
+          
+          <button onClick = {() => {
+            if (scoreOpen)
+              switchScore(false);
+            else {
+              switchScore(true);
+              switchChat(false);
+            }
+          }} className="btn"> Scoreboard </button>
+        </div>
+
+        <Announce />
+        {roleDisplay}
+
+        <NavBubble/>
+      </div>
+
+      <button className = {"fixed right-0 top-0 m-3 btn-x text-lg " + `${(chatOpen || scoreOpen) ? "" : "invisible"}`}  onClick = {() => {
+          switchChat(false);
+          switchScore(false);
       }}>×</button>
-      <div id = "chatCollapse" className = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0 z-10">
-        <Chatroom opened = {chatOpen} onChange = {switchChat}/>
-      </div>
-      <div id = "scoreCollapse" className = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0 z-10">
-        <Score opened = {scoreOpen} onChange = {switchScore}/>
-      </div>
 
-      <h1 className="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
-      <div id = "topBar" className="flex justify-between">
-        <button onClick = {() => {
-          if (chatOpen)
-            switchChat(false);
-          else {
-            switchChat(true);
-            switchScore(false);
-          }
-        }} className="btn"> Chatroom </button>
-        <button onClick = {() => {
-          if (scoreOpen)
-            switchScore(false);
-          else {
-            switchScore(true);
-            switchChat(false);
-          }
-        }} className="btn"> Scoreboard </button>
-      </div>
-
-      <Announce />
-{/* "relative top-0 right-0 z-50 m-3 btn-x text-lg" */}
-
-      {roleDisplay}
+      
 
     </div>
   );

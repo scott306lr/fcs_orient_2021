@@ -31,7 +31,6 @@ function App() {
   const {user} = useContext(AuthContext)
   return (
     <Router>
-      
       <Switch>
         <Route exact path="/">
           {user ? <Home /> : <Login />}

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import ChatList from "./ChatList";
 
@@ -17,7 +17,7 @@ export default function NavBubble(props) {
     closed: {
       clipPath: "circle(25px at 40px 40px)",
       transition: {
-        delay: 0.5,
+        delay: 0.2,
         type: "spring",
         stiffness: 400,
         damping: 40
@@ -33,15 +33,21 @@ export default function NavBubble(props) {
         className={`fixed flex h-screen w-screen left-0 top-0`}
       >
         <motion.div className="h-full w-full bg-blue-200" variants={sidebar} />
-        {isOpen ? <ChatList/> : ""}
+        <AnimatePresence
+          initial={false}
+          exitBeforeEnter={true}
+        >
+          {isOpen && <ChatList/>}
+        </AnimatePresence>
         <motion.button
           className="fixed top-8 left-8"
           onTap={() => setIsOpen((prev) => !prev)}
         >
-          {isOpen ? "X" : "O"}
+        {isOpen ? "X" : "O"}
         </motion.button>
 
       </motion.nav>
+      
     </>
   )
 }

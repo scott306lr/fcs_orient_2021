@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <div id = "app" className="fixed bg-cusblue-100 h-screen w-screen">
-      <div className="z-20">
+      <div className="z-10 relative">
         <NavBubble/>
         <h1 className="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
         <div id = "chatCollapse" className = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0">

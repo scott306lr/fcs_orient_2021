@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
-import ChatList from "./ChatList";
+import ScoreList from "./ScoreList";
 
-export default function NavBubble(props) {
+export default function ScoreBubble(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const sidebar = {
@@ -30,17 +30,18 @@ export default function NavBubble(props) {
       <motion.nav
         initial={false}
         animate={isOpen ? "open" : "closed"}
-        className={`fixed flex h-screen w-screen left-0 top-0`}
+        className={`fixed flex left-0 top-0 z-10`}
       >
-        <motion.div className="h-full w-full bg-blue-200" variants={sidebar} />
+        {isOpen && <motion.div className="fixed h-screen w-screen bg-green-200" variants={sidebar} />}
+        
         <AnimatePresence
           initial={false}
           exitBeforeEnter={true}
         >
-          {isOpen && <ChatList/>}
+          {isOpen && <ScoreList/>}
         </AnimatePresence>
         <motion.button
-          className="fixed top-8 left-8"
+          className="circle ml-14 bg-green-200 z-10"
           onTap={() => setIsOpen((prev) => !prev)}
         >
         {isOpen ? "X" : "O"}

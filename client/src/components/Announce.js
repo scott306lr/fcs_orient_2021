@@ -30,10 +30,8 @@ export default function Announce() {
     return () => clearTimeout(assetID);
   }, [curMessage]);
   
-  const vis = (show) ? "visible" : "invisible";
-  
   return (
-    <div className={vis}>
+    <div className={`h-8 w-full place-items-center bg-blue-600 ${show ? "visible" : "invisible"}`}>
       <Chatbox message={curMessage}/>
     </div>
   );

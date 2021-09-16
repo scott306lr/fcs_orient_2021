@@ -46,7 +46,7 @@ export default function Chatbox(props) {
       whileTap={{ scale: 0.95 }}
     >
 
-      {(props.me === props.message?.name) ? <RightForm message={props.message} />: <LeftForm message={props.message} />}
+      {(props?.me && props?.me === props.message?.name) ? <RightForm message={props.message} />: <LeftForm message={props.message} />}
       
     </motion.div>
   );

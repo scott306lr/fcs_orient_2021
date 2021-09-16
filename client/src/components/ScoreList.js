@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useCallback } from "react";
-import Scoreboard from "../components/Scoreboard";
+import Scoreboard from "./Scoreboard";
 import { AuthContext } from "../context/AuthContext";
 import FlipMove from 'react-flip-move';
 import axios from "axios";
@@ -97,7 +97,7 @@ export default function Score(props) {
   })
   
   return (
-    <div className="w-full overflow-hidden bg-cusorange-500">
+    <div className="fixed left-0 top-0 h-screen w-full overflow-hidden bg-cusorange-500">
       <h2 className="m-4 text-2xl overflow-hidden text-center">計分榜 {gamestatus.board_freeze ? "*Frozen*" : ""}</h2>
       <div className="max-w-prose mx-auto p-8">
         <div className="grid grid-cols-6 place-items-center">

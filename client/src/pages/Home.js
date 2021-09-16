@@ -5,7 +5,8 @@ import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
 import Lead from "../layers/Lead";
 import Announce from "../components/Announce";
-import NavBubble from "../components/NavBubble";
+import ChatBubble from "../components/ChatBubble";
+import ScoreBubble from "../components/ScoreBubble";
 // import Example from "../test/Example";
 
 
@@ -63,38 +64,15 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" className="fixed bg-cusblue-100 h-screen w-screen">
-      <div className="z-10 relative">
-        <NavBubble/>
-        <h1 className="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
-        <div id = "chatCollapse" className = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0">
-          {/* <Chatroom opened = {chatOpen} onChange = {switchChat}/> */}
-        </div>
-        <div id = "scoreCollapse" className = "transition-all duration-500 absolute right-0 w-0 h-full bottom-0">
-          <Score opened = {scoreOpen} onChange = {switchScore}/>
-        </div>
-
+    <div id = "app" className="bg-cusblue-100 h-screen w-screen">
+      
+      <ScoreBubble/>  
+      <ChatBubble/>
+      
+      <div className="h-14 w-full">
         
-        <div id = "topBar" className="flex justify-between">
-          <button onClick = {() => {
-            if (chatOpen)
-              switchChat(false);
-            else {
-              switchChat(true);
-              switchScore(false);
-            }
-          }} className="btn"> Chatroom </button>
-          
-          <button onClick = {() => {
-            if (scoreOpen)
-              switchScore(false);
-            else {
-              switchScore(true);
-              switchChat(false);
-            }
-          }} className="btn"> Scoreboard </button>
-        </div>
-
+        <div className="flex h-14 w-full" />
+        <h1 className="text-center text-3xl p-4">FCS ORIENTING 2021</h1>
         <Announce />
         {roleDisplay}
       </div>

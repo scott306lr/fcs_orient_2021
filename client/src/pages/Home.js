@@ -63,8 +63,9 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" className="fixed bg-cusblue-100 h-full w-full">
-      <div className="h-screen w-screen z-10">
+    <div id = "app" className="fixed bg-cusblue-100 h-screen w-screen">
+      <div className="z-20">
+        <NavBubble/>
         <h1 className="text-center text-3xl m-2">FCS ORIENTING 2021</h1>
         <div id = "chatCollapse" className = "transition-all duration-500 absolute left-0 w-0 h-full bottom-0">
           {/* <Chatroom opened = {chatOpen} onChange = {switchChat}/> */}
@@ -96,8 +97,6 @@ export default function Home() {
 
         <Announce />
         {roleDisplay}
-
-        <NavBubble/>
       </div>
 
       <button className = {`fixed right-0 top-0 m-3 btn-x text-lg ${(chatOpen || scoreOpen) ? "" : "invisible"}`}  onClick = {() => {

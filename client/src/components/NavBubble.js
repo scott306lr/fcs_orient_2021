@@ -30,9 +30,9 @@ export default function NavBubble(props) {
       <motion.nav
         initial={false}
         animate={isOpen ? "open" : "closed"}
-        className={`fixed h-screen w-screen left-0 top-0 `}
+        className={`fixed flex h-screen w-screen left-0 top-0`}
       >
-        <motion.div onClick={(e) => e.stopPropagation()} className="h-full w-full bg-blue-200" variants={sidebar} />
+        <motion.div className="h-full w-full bg-blue-200" variants={sidebar} />
         {isOpen ? <ChatList/> : ""}
         <motion.button
           className="fixed top-8 left-8"

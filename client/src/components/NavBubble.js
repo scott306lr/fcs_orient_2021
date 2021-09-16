@@ -1,10 +1,8 @@
 import { motion } from "framer-motion"
-import { useRef, useState } from "react"
-import Backdrop from "./Backdrop"
+import { useState } from "react"
 import ChatList from "./ChatList";
 
 export default function NavBubble(props) {
-  const constraintsRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const sidebar = {
@@ -32,20 +30,17 @@ export default function NavBubble(props) {
       <motion.nav
         initial={false}
         animate={isOpen ? "open" : "closed"}
-        className={`fixed left-0 top-0 flex z-${isOpen ? 0 : 10}`}
+        className={`fixed h-screen w-screen left-0 top-0 `}
       >
-        <motion.div onClick={(e) => e.stopPropagation()} className="fixed h-screen w-full bg-blue-200" variants={sidebar} />
-        <ChatList/>
+        <motion.div onClick={(e) => e.stopPropagation()} className="h-full w-full bg-blue-200" variants={sidebar} />
+        {isOpen ? <ChatList/> : ""}
         <motion.button
-          className="relative top-8 left-8"
+          className="fixed top-8 left-8"
           onTap={() => setIsOpen((prev) => !prev)}
         >
           {isOpen ? "X" : "O"}
         </motion.button>
 
-        
-
-        {/* <div className="fixed w-300 p-4 bg-red-700" /> */}
       </motion.nav>
     </>
   )

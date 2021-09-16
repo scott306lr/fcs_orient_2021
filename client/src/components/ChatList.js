@@ -83,7 +83,12 @@ export default function ChatList() {
 
   const MessageList = messages.map((msg, i) => {
     return (
-      <motion.li key={i} ref={scrollRef} > 
+      <motion.li 
+        className="py-2 px-1 rounded" 
+        key={i} 
+        ref={scrollRef} 
+        variants={variants}
+      > 
         <Chatbox message={msg}/>
       </motion.li>
     );
@@ -91,23 +96,27 @@ export default function ChatList() {
 
 
   return (
-    <>
-      <motion.ul className="fixed flex flex-col top-20 left-20" variants={variants}>
-        {MessageList}
-      </motion.ul>
-      
-      
-      <motion.div className="fixed flex w-full bottom-5" variants={input_vars}>
-      {/* { messages.length } */}
+    
+    <motion.div className="fixed flex flex-col h-screen w-full left-0 top-0">
+      <motion.div className="bg-yellow-500 p-4 flex flex-col h-full w-full place-items-center overflow-y-auto overflow-x-hidden">
+        <motion.div className="bg-blue-500 flex flex-col w-full place-items-center overflow-y-auto overflow-x-hidden">
+          <motion.ul className="bg-red-300 flex flex-col mx-4" >
+            {MessageList}
+          </motion.ul>
+        </motion.div>
+      </motion.div>
+
+      <motion.div className="flex w-full bottom-5" variants={input_vars}>
         <motion.textarea
           placeholder="write something..."
           ref={newMessage}
-          className="h-auto resize-none flex-grow ml-4 rounded-md"
+          className="h-auto resize-none flex-grow ml-4 my-2 rounded-md"
         ></motion.textarea>
         <motion.button onClick={handleSubmit} className="h-auto btn mr-4">
           Send
         </motion.button>
       </motion.div>
-    </>
+      
+    </motion.div> 
   );
 }

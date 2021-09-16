@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
@@ -88,12 +88,11 @@ export default function Admin() {
       </div>
       <div className="w-full flex p-2 mt-4 items-center bottom-0 bg-green-200" id = "sendAnnounce">
         <textarea
-          className="announceText"
           placeholder="Key in announce text"
           ref={newAnnounce}
           className="h-auto resize-none flex-grow ml-4 rounded-md"
         ></textarea>
-        <button className="submitAnnounce" onClick={handleSubmit} className="h-auto btn mr-4">
+        <button onClick={handleSubmit} className="h-auto btn mr-4">
           Send
         </button>
       </div>

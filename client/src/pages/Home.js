@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import {GSUpdate} from "../context/AuthActions"
 import Member from "../layers/Member";
-import Chatroom from "../layers/Chatroom";
 import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
 import Lead from "../layers/Lead";
@@ -101,9 +100,9 @@ export default function Home() {
         <NavBubble/>
       </div>
 
-      <button className = {"fixed right-0 top-0 m-3 btn-x text-lg " + `${(chatOpen || scoreOpen) ? "" : "invisible"}`}  onClick = {() => {
-          switchChat(false);
-          switchScore(false);
+      <button className = {`fixed right-0 top-0 m-3 btn-x text-lg ${(chatOpen || scoreOpen) ? "" : "invisible"}`}  onClick = {() => {
+        switchChat(false);
+        switchScore(false);
       }}>×</button>
 
       

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
-import ScoreList from "./ScoreList";
+import ScoreList from "../components/ScoreList";
 
 export default function ScoreBubble(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,30 +25,32 @@ export default function ScoreBubble(props) {
     }
   };
 
+  const ShowScore = () => {
+    return(
+      <>
+        <motion.div className="fixed h-screen w-screen bg-blue-200" variants={sidebar} />
+        <ScoreList/>
+      </>
+  )}
+
   return(
-    <>
       <motion.nav
         initial={false}
         animate={isOpen ? "open" : "closed"}
         className={`fixed flex left-0 top-0 z-10`}
-      >
-        {isOpen && <motion.div className="fixed h-screen w-screen bg-green-200" variants={sidebar} />}
-        
+      >        
         <AnimatePresence
           initial={false}
           exitBeforeEnter={true}
         >
-          {isOpen && <ScoreList/>}
+          { isOpen && <ShowScore/> }
         </AnimatePresence>
         <motion.button
           className="circle ml-14 bg-green-200 z-10"
           onTap={() => setIsOpen((prev) => !prev)}
         >
-        {isOpen ? "X" : "O"}
+          {isOpen ? "X" : "O"}
         </motion.button>
-
       </motion.nav>
-      
-    </>
   )
 }

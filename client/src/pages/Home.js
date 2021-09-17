@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import {GSUpdate} from "../context/AuthActions"
 import Member from "../layers/Member";
-import Score from "../layers/Scores";
 import Admin from "../layers/Admin";
 import Lead from "../layers/Lead";
 import Announce from "../components/Announce";
-import ChatBubble from "../components/ChatBubble";
-import ScoreBubble from "../components/ScoreBubble";
+import ChatBubble from "../layers/ChatBubble";
+import ScoreBubble from "../layers/ScoreBubble";
 // import Example from "../test/Example";
 
 

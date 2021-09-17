@@ -8,6 +8,7 @@ export const loginCall = async (rid, dispatch) => {
     const res = await axios.post("/backend/auth/login", {id: rid})
 
     const socket = io("ws://127.0.0.1:8900");
+    //const socket = io("/");
     dispatch(SocketConnect(socket));
 
     // join team and redirect
@@ -18,22 +19,4 @@ export const loginCall = async (rid, dispatch) => {
     dispatch(LoginFailure(err.toString()));
     return;
   }
-
-  
-
-  // const user = {
-  //   name: "UDCHEN",
-  //   rid: "AABBCCDD",
-  //   role: "ADMIN",
-  //   teamId: "3",
-  // };
-
-  // dispatch(LoginStart());
-  // setTimeout( function(){
-  //   const socket = io("ws://localhost:8900");
-  //   dispatch(SocketConnect(socket));
-
-  //   socket.emit("join team", user.team);
-  //   dispatch(LoginSuccess(user));
-  // }, 1000);
 }

@@ -124,11 +124,11 @@ export default function ChatList() {
 
   return (
     
-    <motion.div className="fixed flex flex-col h-screen w-full left-0 top-0" >
+    <motion.div className="fixed flex flex-col h-full w-full left-0 top-0" >
       <motion.h2 initial={{opacity: 0}} animate={{ opacity: 1 }} exit={{opacity: 0}} className="mt-6 mb-4 text-2xl overflow-hidden text-center"> Chat </motion.h2>
       
       <motion.div className="p-4 flex flex-col h-full w-full place-items-center overflow-y-auto overflow-x-hidden">
-        <motion.div className="flex flex-col w-full place-items-center overflow-y-auto overflow-x-hidden">
+        <motion.div className="flex flex-col h-full w-full overflow-y-auto overflow-x-hidden">
           <motion.ul variants={text_vars} className="flex flex-col mx-4" >
             {MessageList}
           </motion.ul>

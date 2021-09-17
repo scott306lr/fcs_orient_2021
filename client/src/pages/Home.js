@@ -63,7 +63,7 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" className="bg-cusblue-100 h-screen w-screen">
+    <div id = "app" className="bg-cusblue-100 h-screen min-w-screen">
       
       <ScoreBubble/>  
       <ChatBubble/>

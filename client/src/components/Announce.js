@@ -5,8 +5,8 @@ import Chatbox from "./Chatbox";
 
 export default function Announce() {
   const {socket} = useContext(AuthContext);
-  const [arriveMessage, setArriveMessage] = useState("");
-  const [curMessage, setCurMessage] = useState([]);
+  const [arriveMessage, setArriveMessage] = useState({name: "WELCOME", content: "Welcome to FCS Orienting!"});
+  const [curMessage, setCurMessage] = useState();
   const [show, setShow] = useState(false);
   useEffect(() => {
     socket.on("recieve announce", (payload) => {
@@ -31,8 +31,8 @@ export default function Announce() {
   }, [curMessage]);
   
   return (
-    <div className={`h-8 w-full place-items-center bg-blue-600 ${show ? "visible" : "invisible"}`}>
-      <Chatbox message={curMessage}/>
+    <div className={`h-8 w-full place-items-center ${show ? "visible" : "invisible"}`}>
+      <Chatbox message={curMessage} mode={"ANNOUNCE"}/>
     </div>
   );
 }

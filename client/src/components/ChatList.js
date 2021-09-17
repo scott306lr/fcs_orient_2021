@@ -89,17 +89,6 @@ export default function ChatList() {
     }
   }
 
-  const variants = {
-    open: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    },
-  };
-  
-
   const MessageList = messages.map((msg, i) => {
     return (
       <motion.li 
@@ -116,7 +105,7 @@ export default function ChatList() {
           }
         }}
       > 
-        <Chatbox message={msg} me={user.name}/>
+        <Chatbox message={msg} me={user.name} mode={"CHAT"}/>
       </motion.li>
     );
   });

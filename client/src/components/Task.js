@@ -52,7 +52,7 @@ export default function Task(props) {
 
   return (
     <div>
-        <h3 onClick={() => props.setTaskFocus(props.id)}> {task.taskName} </h3>
+        <h3 onClick={() => props.setTaskFocus((props.taskFocus === props.id) ? "" : props.id)}> {task.taskName} </h3>
         { (!props.done && props.taskFocus === props.id) ? completeTask : "" }
     </div>
   );

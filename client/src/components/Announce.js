@@ -31,7 +31,7 @@ export default function Announce() {
   }, [curMessage]);
   
   return (
-    <div className={`h-8 w-full place-items-center ${show ? "visible" : "invisible"}`}>
+    <div className={`h-12 w-full place-items-center ${show ? "visible" : "invisible"}`}>
       <Chatbox message={curMessage} mode={"ANNOUNCE"}/>
     </div>
   );

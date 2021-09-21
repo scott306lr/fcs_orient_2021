@@ -32,17 +32,21 @@ export default function Tasks(props) {
   
   const itemList = tasks.map((task, i) => {
     return (
-      <div key={i}>
+      <div key={i} className="flex flex-col py-2 w-full bg-yellow-100 rounded m-2 text-center ring ring-yellow-200">
         <Task id={task.taskId} done={task.done} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
       </div>
     );
   });
 
   return (
-    <div id = "map8Tasks">
-      <Map />
-      <div>
-      {itemList}
+    <div className="flex flex-col h-full w-full">
+      <div className="flex pb-5">
+        <Map />
+      </div>
+      <div className="flex-none h-3/5 bg-green-500">
+        <div className="flex flex-col">
+          {itemList}
+        </div>
       </div>
     </div>
   );

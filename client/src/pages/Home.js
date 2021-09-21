@@ -63,15 +63,14 @@ export default function Home() {
   })();
 
   return (
-    <div id = "app" className="bg-cusblue-100 h-screen min-w-screen">
+    <div id = "app" className="bg-cusblue-100 h-screen w-screen">
       
       <ScoreBubble/>  
       <ChatBubble/>
       
-      <div className="h-14 w-full">
-        
-        <div className="flex h-14 w-full" />
-        <h1 className="text-center text-3xl p-4">FCS ORIENTING 2021</h1>
+      <div className="flex flex-col h-full w-full">
+        <div className="z-100 py-8"/>
+        <h1 className="text-center text-3xl py-5">FCS ORIENTING 2021</h1>
         <Announce />
         {roleDisplay}
       </div>

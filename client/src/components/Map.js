@@ -1,7 +1,5 @@
 export default function Map() {
   return (
-    <div>
-      <img src = "assets/map.png" alt = "Map" style = {{display:"block", margin:"auto", width: "50%"}}/>
-    </div>
+    <img src = "assets/map.png" alt = "Map" width="200" height="200" className="rounded mx-auto"/>
   );
 }

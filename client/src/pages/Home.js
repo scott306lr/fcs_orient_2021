@@ -13,6 +13,7 @@ import { AuthContext } from "../context/AuthContext";
 
 export default function Home() {
   const {socket, user, gamestatus, dispatch} = useContext(AuthContext);
+  const [bubbleOpen, setBubbleOpen] = useState(false);
   const [chatOpen, setChat] = useState(false);
   const [scoreOpen, setScore] = useState(false);
 
@@ -65,8 +66,10 @@ export default function Home() {
   return (
     <div id = "app" className="bg-cusblue-100 h-screen w-screen">
       
-      <ScoreBubble/>  
-      <ChatBubble/>
+      <div className="flex space-x-2 sticky top-0 z-50">
+        <ChatBubble isOpen={bubbleOpen} setIsOpen={setBubbleOpen} />
+        <ScoreBubble isOpen={bubbleOpen} setIsOpen={setBubbleOpen} />  
+      </div>
       
       <div className="flex flex-col h-full w-full">
         <div className="z-100 py-8"/>

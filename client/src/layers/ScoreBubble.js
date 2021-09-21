@@ -1,9 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
 import ScoreList from "../components/ScoreList";
 
 export default function ScoreBubble(props) {
-  const [isOpen, setIsOpen] = useState(false);
 
   const sidebar = {
     open: (height = 1000) => ({
@@ -28,7 +26,7 @@ export default function ScoreBubble(props) {
   const ShowScore = () => {
     return(
       <>
-        <motion.div className="fixed h-screen w-screen bg-blue-200" variants={sidebar} />
+        <motion.div className="fixed top-0 left-0 h-screen w-screen bg-cusorange-500" variants={sidebar} />
         <ScoreList/>
       </>
   )}
@@ -36,20 +34,20 @@ export default function ScoreBubble(props) {
   return(
       <motion.nav
         initial={false}
-        animate={isOpen ? "open" : "closed"}
-        className={`fixed flex left-0 top-0 z-10`}
+        animate={props.isOpen === "score" ? "open" : "closed"}
+        className={`flex z-10`}
       >        
         <AnimatePresence
           initial={false}
           exitBeforeEnter={true}
         >
-          { isOpen && <ShowScore/> }
+          { props.isOpen === "score" && <ShowScore/> }
         </AnimatePresence>
         <motion.button
-          className="circle ml-14 bg-green-200 z-10"
-          onTap={() => setIsOpen((prev) => !prev)}
+          className="circle bg-cusorange-500 z-20"
+          onTap={() => props.setIsOpen((prev) => ((prev === "score") ? "" : "score"))}
         >
-          {isOpen ? "X" : "O"}
+          {props.isOpen === "score" ? "X" : <img className="m-auto" src="https://img.icons8.com/fluency-systems-regular/32/000000/trophy.png" alt="score"/>}
         </motion.button>
       </motion.nav>
   )

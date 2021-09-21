@@ -60,6 +60,8 @@ export default function Score(props) {
       case 1 :
         team_score[doneTask.teamId].iron += 1;
         break;
+      default:
+        break;
     }
     team_score[doneTask.teamId].score += doneTask.score;
   };

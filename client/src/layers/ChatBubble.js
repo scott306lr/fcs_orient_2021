@@ -1,9 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import ChatList from "../components/ChatList";
 
 export default function ChatBubble(props) {
-  const [isOpen, setIsOpen] = useState(false);
 
   const sidebar = {
     open: (height = 1000) => ({
@@ -28,7 +26,7 @@ export default function ChatBubble(props) {
   const ShowChat = () => {
     return(
       <>
-        <motion.div className="fixed h-screen w-screen bg-blue-200" variants={sidebar} />
+        <motion.div className="fixed top-0 left-0 h-screen w-screen bg-blue-200" variants={sidebar} />
         <ChatList/>
       </>
   )}
@@ -36,20 +34,20 @@ export default function ChatBubble(props) {
   return(
       <motion.nav
         initial={false}
-        animate={isOpen ? "open" : "closed"}
-        className={`fixed flex left-0 top-0 z-10`}
+        animate={props.isOpen === "chat" ? "open" : "closed"}
+        className={`flex z-9999`}
       >
         <AnimatePresence
           initial={false}
           exitBeforeEnter={true}
         >
-          { isOpen && <ShowChat/> }
+          { props.isOpen === "chat" && <ShowChat/> }
         </AnimatePresence>
         <motion.button
-          className="circle bg-blue-200 z-10"
-          onTap={() => setIsOpen((prev) => !prev)}
+          className="circle bg-blue-200 z-20"
+          onTap={() => props.setIsOpen((prev) => ((prev === "chat") ? "" : "chat"))}
         >
-          {isOpen ? "X" : "O"}
+          {props.isOpen === "chat" ? "X" : <img className="m-auto" src="https://img.icons8.com/material-outlined/32/000000/speech-bubble-with-dots.png" alt="msg"/>}
         </motion.button>
       </motion.nav>
   )

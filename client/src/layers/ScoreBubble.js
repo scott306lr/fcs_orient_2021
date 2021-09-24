@@ -26,7 +26,7 @@ export default function ScoreBubble(props) {
   const ShowScore = () => {
     return(
       <>
-        <motion.div className="fixed top-0 left-0 h-screen w-screen bg-cusorange-500" variants={sidebar} />
+        <motion.div className="fixed top-0 left-0 h-screen w-screen bg-cusorange-500" variants={"sidebar"} />
         <ScoreList/>
       </>
   )}

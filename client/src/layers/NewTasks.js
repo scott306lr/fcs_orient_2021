@@ -7,6 +7,7 @@ import axios from "axios";
 
 export default function Tasks(props) {
   const {socket, user} = useContext(AuthContext);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [taskFocus, setTaskFocus] = useState("");
 
@@ -36,8 +37,8 @@ export default function Tasks(props) {
       <motion.div className="pb-5">
         <Map />
       </motion.div>
-      <motion.div className="fixed bottom-0 flex flex-col p-4 h-2/5 w-full overflow-y-hidden rounded bg-gray-400 ">
-        <motion.button className="px-4 w-full mb-2 bg-gray-300 rounded" > ^ </motion.button>
+      <motion.div className={`fixed bottom-0 flex flex-col p-4 w-full overflow-y-hidden rounded bg-gray-400 ${isExpanded ? "h-2/5" : "h-full"}`}>
+        <motion.button className="px-4 w-full mb-2 bg-gray-300 rounded" onClick={() => setIsExpanded((prev) => !prev)} > ^ </motion.button>
         <motion.div className="flex flex-col w-full h-full overflow-y-scroll pl-4 rounded bg-gray-300">
           <AnimateSharedLayout>
               {tasks.filter(task => !task.done).map((item, i) => (

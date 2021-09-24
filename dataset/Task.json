@@ -1,92 +1,407 @@
 [
-    {
-        "taskId":"0001",
-        "taskName":"空橋",
-        "question":"工程三館與工程四館之間的空橋，自工程三館A樓連接工程四館B樓，共有C座。\n請以A_B_C的形式回答，例如1_2_3。",
-        "answer":"3_3_2",
-        "qtype":"nycu",
-        "locationX":"0",
-        "locationY":"1"
-    },
-    {
-        "taskId":"0002",
-        "taskName":"郵局ATM",
-        "question":"中正堂郵局ATM機號？",
-        "answer":"006125-1J2",
-        "qtype":"nycu",
-        "locationX":"2",
-        "locationY":"3"
-    },
-    {
-        "taskId":"0003",
-        "taskName":"標語",
-        "question":"這片草地上的白色標語組成什麼樣的句子？ \n請以英文大寫回答，不須標點符號，單字間需有一個空格。",
-        "answer":"BE THE LIGHT OF THE WORLD",
-        "qtype":"nycu",
-        "locationX":"5",
-        "locationY":"4"
-    },
-    {
-        "taskId":"0004",
-        "taskName":"小木屋",
-        "question":"小木屋用餐區共有幾張桌子？請以數字回答。",
-        "answer":"8",
-        "qtype":"nycu",
-        "locationX":"8",
-        "locationY":"1"
-    },
-    {
-        "taskId":"0005",
-        "taskName":"石頭",
-        "question":"石頭上刻的文字是？請以不含標點符號和空格之中文字回答。",
-        "answer":"知新致遠崇實篤行",
-        "qtype":"nycu",
-        "locationX":"5",
-        "locationY":"5"
-    },
-    {
-        "taskId":"0006",
-        "taskName":"圖書館",
-        "question":"圖書館地下一樓入口內的空間共有幾盞燈？請以數字回答。",
-        "answer":"23",
-        "qtype":"nycu",
-        "locationX":"9",
-        "locationY":"7"
-    },
-    {
-        "taskId":"0007",
-        "taskName":"藝術品",
-        "question":"圖書館後面圓形的藝術品叫什麼名字？",
-        "answer":"月明",
-        "qtype":"nycu",
-        "locationX":"4",
-        "locationY":"6"
-    },
-    {
-        "taskId":"0008",
-        "taskName":"石碑",
-        "question":"圖書館後面的石碑叫什麼名字？",
-        "answer":"正氣",
-        "qtype":"nycu",
-        "locationX":"12",
-        "locationY":"4"
-    },
-    {
-        "taskId":"0009",
-        "taskName":"涼亭椅子",
-        "question":"活中前涼亭有幾張椅子？請以數字回答。",
-        "answer":"15",
-        "qtype":"nycu",
-        "locationX":"5",
-        "locationY":"1"
-    },
-    {
-        "taskId":"0010",
-        "taskName":"餐廳",
-        "question":"這面牌子面對的餐廳叫作什麼？",
-        "answer":"LALA Kitchen",
-        "qtype":"nycu",
-        "locationX":"0",
-        "locationY":"5"
-    }
+  {
+    "taskId": "101",
+    "taskName": "跑步",
+    "question": "交大田徑場上，快跑應該使用哪幾個跑道？\n由小到大回答數字即可，例如奇數道的答案是\"1357",
+    "answer": "345",
+    "qtype": "text",
+    "locationX": "N",
+    "locationY": "13"
+  },
+  {
+    "taskId": "102",
+    "taskName": "ATM",
+    "question": "後面的提款機是哪家銀行的？\n答案共4個字",
+    "answer": "玉山銀行",
+    "qtype": "text",
+    "locationX": "K",
+    "locationY": "4"
+  },
+  {
+    "taskId": "103",
+    "taskName": "裝置藝術",
+    "question": "這座裝置藝術的名稱？\n答案共4個字",
+    "answer": "鳳凌霄漢",
+    "qtype": "text",
+    "locationX": "M",
+    "locationY": "8"
+  },
+  {
+    "taskId": "104",
+    "taskName": "合作",
+    "question": "這是工程五館正門左側牌子上的文字。\n大門右側牌子的第一行字是\"陽明交大-？？",
+    "answer": "穩懋",
+    "qtype": "text",
+    "locationX": "J",
+    "locationY": "7"
+  },
+  {
+    "taskId": "105",
+    "taskName": "格子",
+    "question": "交映樓外的方格圖從左上角那格開始，往右數5格、往下數3格、往左數2格、往下數1格、往右數7格、往上數4格、往左數1格、往下數2格的格子中的5個中文字是？",
+    "answer": "安惠榮教授",
+    "qtype": "text",
+    "locationX": "M",
+    "locationY": "8"
+  },
+  {
+    "taskId": "106",
+    "taskName": "花",
+    "question": "請問大樓附近的池塘中主要有什麼花？",
+    "answer": "荷花",
+    "qtype": "text",
+    "locationX": "E",
+    "locationY": "8"
+  },
+  {
+    "taskId": "107",
+    "taskName": "氣體",
+    "question": "輸入圖片中高壓氣體的英文名稱？\n請以小寫字母回答",
+    "answer": "nitrogen",
+    "qtype": "text",
+    "locationX": "N",
+    "locationY": "11"
+  },
+  {
+    "taskId": "108",
+    "taskName": "噴泉",
+    "question": "獅子噴泉之上，由左到右的三個英文字母？",
+    "answer": "ESA",
+    "qtype": "text",
+    "locationX": "H",
+    "locationY": "8"
+  },
+  {
+    "taskId": "109",
+    "taskName": "English",
+    "question": "請問馬兒附近的英文字？\n答案為4個大寫字母，注意馬兒位置有些許變動",
+    "answer": "NOLA",
+    "qtype": "text",
+    "locationX": "G",
+    "locationY": "8"
+  },
+  {
+    "taskId": "110",
+    "taskName": "百年樹人",
+    "question": "拍攝地點旁的青楓樹由什麼系幾級的校友捐贈？\n請以六個字\"OO系xx級\"回答",
+    "answer": "電物系59級",
+    "qtype": "text",
+    "locationX": "H",
+    "locationY": "8"
+  },
+  {
+    "taskId": "111",
+    "taskName": "Fantastic Pork Chops and Where to Find Them",
+    "question": "試問該店家豬肉的產地？",
+    "answer": "西班牙",
+    "qtype": "text",
+    "locationX": "J",
+    "locationY": "4"
+  },
+  {
+    "taskId": "201",
+    "taskName": "圖案",
+    "question": "二餐外圍牆面上，還有幾個相同的圖案？",
+    "answer": "2",
+    "qtype": "math",
+    "locationX": "K",
+    "locationY": "13"
+  },
+  {
+    "taskId": "202",
+    "taskName": "座椅",
+    "question": "所拍攝的建築物上共設有幾張座椅？\n回答數字即可",
+    "answer": "75",
+    "qtype": "math",
+    "locationX": "N",
+    "locationY": "12"
+  },
+  {
+    "taskId": "203",
+    "taskName": "吉歐．魅特力",
+    "question": "請解答張貼在附近的數學題。\n如果答案為分數(ex: 七分之五)，請輸入\"5/7\"\n如果答案帶根號(ex: 二根號三)，請輸入\"2s3",
+    "answer": "7500s2",
+    "qtype": "math",
+    "locationX": "M",
+    "locationY": "7"
+  },
+  {
+    "taskId": "204",
+    "taskName": "ECED",
+    "question": "工程三館與工程四館之間的空橋，自工程三館A樓連接工程四館B樓，共有C座。\n請以A_B_C的形式回答，例如1_2_3。",
+    "answer": "3_3_2",
+    "qtype": "math",
+    "locationX": "K",
+    "locationY": "9"
+  },
+  {
+    "taskId": "205",
+    "taskName": "步道",
+    "question": "女二舍後方的階梯步道，向上走會在步道邊看到A個小燈，其中第B個小燈被漆成全黑。\n請以A-B的形式回答，例如5-3。",
+    "answer": "10-8",
+    "qtype": "math",
+    "locationX": "J",
+    "locationY": "8"
+  },
+  {
+    "taskId": "206",
+    "taskName": "交大棒球場",
+    "question": "本站搭到公學新村最快抵達，中間需經過X站，一般成人車費需花費Y元。\n請以X_Y的形式回答，例如11_15。",
+    "answer": "8_0",
+    "qtype": "math",
+    "locationX": "N",
+    "locationY": "8"
+  },
+  {
+    "taskId": "207",
+    "taskName": "停車場",
+    "question": "該停車場所在的大樓，地上+地下共有幾層？",
+    "answer": "13",
+    "qtype": "math",
+    "locationX": "K",
+    "locationY": "4"
+  },
+  {
+    "taskId": "302",
+    "taskName": "世界のヒカリ",
+    "question": "和校園中任意\"BE THE LIGHT OF THE WORLD\"合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "303",
+    "taskName": "門把",
+    "question": "這是人社二館的門把。小隊派出2人以類似的姿勢拍照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "G",
+    "locationY": "9"
+  },
+  {
+    "taskId": "304",
+    "taskName": "トレール",
+    "question": "在圖片拍攝地點拍一張合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "N",
+    "locationY": "15"
+  },
+  {
+    "taskId": "305",
+    "taskName": "跳網合照",
+    "question": "小隊派出3人拍跳網照，三個人頭都要比網子高！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "O",
+    "locationY": "10"
+  },
+  {
+    "taskId": "306",
+    "taskName": "迎竹",
+    "question": "小隊派出4人，和門市外的吉祥物合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "L",
+    "locationY": "3"
+  },
+  {
+    "taskId": "307",
+    "taskName": "可愛的狗勾",
+    "question": "和跟任意校犬合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "308",
+    "taskName": "竹湖",
+    "question": "在湖畔合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "E",
+    "locationY": "12"
+  },
+  {
+    "taskId": "309",
+    "taskName": "逐風",
+    "question": "在逐風廣場拍攝一張合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "G",
+    "locationY": "5"
+  },
+  {
+    "taskId": "310",
+    "taskName": "涼亭",
+    "question": "到碑文附近的涼亭裡拍攝一張合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "H",
+    "locationY": "8"
+  },
+  {
+    "taskId": "311",
+    "taskName": "嚴禁機車進入",
+    "question": "小隊派出1人，在圖片拍攝地點用相同的pose拍一張獨照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "O",
+    "locationY": "14"
+  },
+  {
+    "taskId": "312",
+    "taskName": "公共電話",
+    "question": "請拍攝離這棵樹最近的公共電話！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "K",
+    "locationY": "9"
+  },
+  {
+    "taskId": "313",
+    "taskName": "繞樹三匝",
+    "question": "圍繞這棵樹坐下，拍一張合照！",
+    "answer": "answer.",
+    "qtype": "photo",
+    "locationX": "H",
+    "locationY": "6"
+  },
+  {
+    "taskId": "401",
+    "taskName": "關主壹(環工、唱交大校歌)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "M",
+    "locationY": "15"
+  },
+  {
+    "taskId": "402",
+    "taskName": "關主貳(體育館、買飲料)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "M",
+    "locationY": "12"
+  },
+  {
+    "taskId": "403",
+    "taskName": "關主參(電資大樓、補充能量)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "D",
+    "locationY": "8"
+  },
+  {
+    "taskId": "404",
+    "taskName": "關主肆(中正堂、50!)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "H",
+    "locationY": "11"
+  },
+  {
+    "taskId": "405",
+    "taskName": "關主伍(工五後門、找東西)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "K",
+    "locationY": "7"
+  },
+  {
+    "taskId": "406",
+    "taskName": "關主陸(竹湖、團康)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "F",
+    "locationY": "10"
+  },
+  {
+    "taskId": "408",
+    "taskName": "關主捌(小木屋、送東西)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "J",
+    "locationY": "10"
+  },
+  {
+    "taskId": "409",
+    "taskName": "關主玖(二餐、成語接龍)",
+    "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
+    "answer": "答案。",
+    "qtype": "host",
+    "locationX": "K",
+    "locationY": "13"
+  },
+  {
+    "taskId": "501",
+    "taskName": "YouBike",
+    "question": "找到騎YouBike的工作人員，回答指定問題！",
+    "answer": "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "502",
+    "taskName": "Announcement",
+    "question": "等公告囉",
+    "answer": "This is an announcement.",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "503",
+    "taskName": "キャンプのなまえ",
+    "question": "本營隊的全名？",
+    "answer": "2021交大附中山迎新宿營",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "504",
+    "taskName": "ETAD",
+    "question": ".tamrof DDMMYYYY ni rewsna esaelP ?etad s'yadot si tahW",
+    "answer": "20211002",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "505",
+    "taskName": "七個字？",
+    "question": "你猜啊？！",
+    "answer": "優質營隊附中山",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "506",
+    "taskName": "找OO就對了！",
+    "question": "吃不飽、吃不好、吃太貴、吃到膩...不知道要吃什麼？",
+    "answer": "一餐",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  },
+  {
+    "taskId": "506",
+    "taskName": "找OO就對了！",
+    "question": "吃不飽、吃不好、吃太貴、吃到膩...不知道要吃什麼？",
+    "answer": "一餐",
+    "qtype": "easy",
+    "locationX": "Z",
+    "locationY": "0"
+  }
 ]

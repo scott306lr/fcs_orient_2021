@@ -22,6 +22,10 @@ export default function Admin() {
   const unfreezeBoard = () => {
     socket.emit("unfreeze board");
   };
+  
+  const freezeUpdate = () => {
+    socket.emit("update freezetime");
+  }
 
   const initGame = async () => {
     if (window.confirm("initialize game?")){
@@ -61,6 +65,7 @@ export default function Admin() {
       <h1 className="text-xl">Admin Interface</h1>
       <div className="flex-wrap justify-between">
         <button className="btn" onClick = {freezeBoard}> Freeze Board </button>
+        <button className="btn" onClick = {freezeUpdate}> Freeze Update </button>
         <button className="btn" onClick = {unfreezeBoard}> Unfreeze Board </button>
         <button className="btn" onClick = {startGame}> Start Game </button>
         <button className="btn" onClick = {stopGame}> Stop Game </button>

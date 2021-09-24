@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     in_game: false, 
     board_freeze: false,
     freeze_time: null,
+    unfreeze_count: 0,
   },
 }
 

@@ -60,7 +60,7 @@ router.get("/:teamId",async(req,res)=>{
 // randomly unlock new tasks
 router.post("/unlock/:teamId",async(req,res)=>{
     try{
-        const savePost = await unlockTask(req.params.teamId, req.body.locationX, req.body.locationY, 2); // unlockCount = 3
+        const savePost = await unlockTask(req.params.teamId, req.body.locationX, req.body.locationY, 3); // unlockCount = 3
         res.status(200).json(savePost);
     }
     catch(err){
@@ -133,7 +133,7 @@ router.post("/initTask",async(req,res)=>{
         
         const resTeams = await Team.find();
         resTeams.map( async(team) => (
-            await unlockTask(team.id, 0, 0, 2)
+            await unlockTask(team.id, 0, 0, 4)
         ));
 
         res.status(200).json("initial successfully");

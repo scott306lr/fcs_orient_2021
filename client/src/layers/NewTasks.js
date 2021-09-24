@@ -41,13 +41,13 @@ export default function Tasks(props) {
         <motion.div className="flex flex-col w-full h-full overflow-y-scroll pl-4 rounded bg-gray-300">
           <AnimateSharedLayout>
               {tasks.filter(task => !task.done).map((item, i) => (
-                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-yellow-100 rounded my-2 text-center ring-1 ring-yellow-400" initial={{ borderRadius: 25 }}>
+                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-yellow-100 rounded my-2 text-center ring-1 ring-yellow-400">
                 <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
                 </motion.div>
               ))}
 
               {tasks.filter(task => task.done).map((item, i) => (
-                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-yellow-400 rounded my-2 text-center ring-1 ring-yellow-500" initial={{ borderRadius: 25 }}>
+                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-yellow-400 rounded my-2 text-center ring-1 ring-yellow-500">
                 <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
                 </motion.div>
               ))}

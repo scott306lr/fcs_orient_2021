@@ -6,7 +6,7 @@ export default function Admin() {
   const {user} = useContext(AuthContext);
 
   const [tasks, setTasks] = useState([]);
-  const [selId, setSelId] = useState("");
+  const [selId, setSelId] = useState("0");
   const [selTask, setSelTask] = useState({});
 
   useEffect( () => {
@@ -36,16 +36,16 @@ export default function Admin() {
 
 
   return (
-    <div className="z-0">
-      <select id = "selector" onChange = {() => {
+    <div className="flex flex-col">
+      <select className="py-2" id = "selector" onChange = {() => {
         const options = document.getElementById("selector").options;
-        console.log(options);
         const idx = options.selectedIndex;
         setSelId(options[idx].id);
       }}>
         {tasks.map((task) => <option id = {task.taskId}>{task.taskName}</option>)}
       </select>
-      <div>本題答案：{selTask.answer}</div>
+      <div>{selTask && `座標： X = ${selTask.locationX} , Y = ${selTask.locationY}`}</div>
+      <div>{selTask && `答案： ${selTask.answer}`}</div>
     </div>
   );
 }

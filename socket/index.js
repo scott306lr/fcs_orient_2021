@@ -59,6 +59,7 @@ io.on("connection", (socket) => {
 
   socket.on("freeze board", () => {
     GameStatus.board_freeze = true;
+    GameStatus.freeze_time = new Date();
     io.emit("status update", GameStatus);
     console.log(`freeze board!`);
   })

@@ -1,148 +1,118 @@
 [
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae900"},
-        "name":"udchen",
-        "role":"ADMIN",
-        "teamId":"61396de99020fa6032cb83d3"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae901"},
-        "name":"lr",
-        "role":"ADMIN",
-        "teamId":"61396de99020fa6032cb83d1"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae902"},
-        "name":"james",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d2"
-    },
-
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae910"},
+      "_id" : {"$oid":"613468e49020fa6032cae910"},
         "name":"牛排油醃雞",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae911"},
-        "name":"羊排三重奏",
+      "_id" : {"$oid":"613468e49020fa6032cae911"},
+        "name":"金牌啤酒",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae912"},
-        "name":"炸肉排水溝",
+      "_id" : {"$oid":"613468e49020fa6032cae912"},
+        "name":"正電排排",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae913"},
-        "name":"藥燉排古蹟",
+      "_id" : {"$oid":"613468e49020fa6032cae913"},
+        "name":"藥燉排骨雞",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae914"},
-        "name":"雞排列組合",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d1"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae915"},
+      "_id" : {"$oid":"613468e49020fa6032cae914"},
         "name":"巴西龜魚排",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae916"},
-        "name":"豬排蛋吐司",
+      "_id" : {"$oid":"613468e49020fa6032cae915"},
+        "name":"李懿麒",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
 
+
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae920"},
-        "name":"桌別林昀儒",
+      "_id" : {"$oid":"613468e49020fa6032cae920"},
+        "name":"計網概火鍋",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae921"},
-        "name":"捉迷藏壽司",
+      "_id" : {"$oid":"613468e49020fa6032cae921"},
+        "name":"網八但幾勒",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae922"},
-        "name":"桌水溪溪笑",
+      "_id" : {"$oid":"613468e49020fa6032cae922"},
+        "name":"酒精團購網",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae923"},
-        "name":"酌愛瘋林丸",
+      "_id" : {"$oid":"613468e49020fa6032cae923"},
+        "name":"網付學分費",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae924"},
-        "name":"桌猶當球犯",
+      "_id" : {"$oid":"613468e49020fa6032cae924"},
+        "name":"網內互打",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae925"},
-        "name":"桌天剛確診",
+      "_id" : {"$oid":"613468e49020fa6032cae925"},
+        "name":"視網蘑菇王",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae926"},
-        "name":"桌骨神經痛",
+        "name":"詹姆斯網",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
 
     {
     	"_id" : {"$oid":"613468e49020fa6032cae930"},
-        "name":"棒棒冰",
+        "name":"棒棒冰儀館",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae931"},
-        "name":"棒棒糖",
+        "name":"邦妮兔寶寶",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae932"},
-        "name":"牛蒡",
+        "name":"依山傍水牛",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae933"},
-        "name":"金箍棒",
+        "name":"香酥大棒腿",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae934"},
-        "name":"蒸蚌",
+        "name":"大棒槌拉霸",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae935"},
-        "name":"依山傍水",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d3"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae936"},
-        "name":"英鎊",
+        "name":"磅蛋糕爾夫",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
@@ -155,136 +125,38 @@
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae941"},
-        "name":"紅橙黃綠籃",
+        "name":"庶民知識籃",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae942"},
-        "name":"籃溼酪特",
+        "name":"籃梅起司",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae943"},
-        "name":"凱蚊賭籃特",
+        "name":"我就。籃",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae944"},
-        "name":"一籃拉麵",
+        "name":"錒鈽鑭叫鎢",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae945"},
-        "name":"臺灣籃闕",
+        "name":"愛爾籃骨頭",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
     	"_id" : {"$oid":"613468e49020fa6032cae946"},
-        "name":"五十籃真貴",
+        "name":"一籃拉麵壁",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae947"},
-        "name":"荷籃小鬆餅",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d4"
-    },
-
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae950"},
-        "name":"往左",
-        "role":"LEAD",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae951"},
-        "name":"往右",
-        "role":"LEAD",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae952"},
-        "name":"網購",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae953"},
-        "name":"汁妹魍魎",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae954"},
-        "name":"網紅",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae955"},
-        "name":"網帥",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae956"},
-        "name":"網美",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae957"},
-        "name":"網豬",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d5"
-    },
-
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae960"},
-        "name":"霸氣羽生俱來",
-        "role":"LEAD",
-        "teamId":"61396de99020fa6032cb83d6"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae961"},
-        "name":"淋雨唐寶寶",
-        "role":"LEAD",
-        "teamId":"61396de99020fa6032cb83d6"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae962"},
-        "name":"鮭魚公主",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d6"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae963"},
-        "name":"如果羽之後",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d6"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae964"},
-        "name":"宇智波佐助",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d6"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae965"},
-        "name":"鬼話新聞紅羽",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d6"
-    },
-    {
-    	"_id" : {"$oid":"613468e49020fa6032cae966"},
-        "name":"羽女無瓜",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d6"
     }
 ]

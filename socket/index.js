@@ -60,6 +60,7 @@ io.on("connection", (socket) => {
   socket.on("freeze board", () => {
     GameStatus.board_freeze = true;
     GameStatus.freeze_time = new Date();
+    GameStatus.unfreeze_count = 0;
     io.emit("status update", GameStatus);
     console.log(`freeze board!`);
   })
@@ -75,7 +76,7 @@ io.on("connection", (socket) => {
     GameStatus.board_freeze = true;
     GameStatus.unfreeze_count += 1;
     io.emit("status update", GameStatus);
-    console.log(`unfreeze board!`);
+    console.log(`update board! ${GameStatus.unfreeze_count}`);
   })
 })
 

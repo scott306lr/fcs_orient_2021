@@ -37,12 +37,12 @@ export default function ScoreBubble(props) {
         animate={props.isOpen === "score" ? "open" : "closed"}
         className={`flex z-10`}
       >        
-        <AnimatePresence
+        {/* <AnimatePresence
           initial={false}
           exitBeforeEnter={true}
-        >
+        > */}
           { (props.isOpen === "score") && <ShowScore/> }
-        </AnimatePresence>
+        {/* </AnimatePresence> */}
         <motion.button
           className="circle bg-cusorange-500 z-20"
           onTap={() => props.setIsOpen((prev) => ((prev === "score") ? "" : "score"))}

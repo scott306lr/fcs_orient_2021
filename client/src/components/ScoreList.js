@@ -71,10 +71,12 @@ export default function Score(props) {
     var team_score = initTeamScore(teams);
     var over_cnt = 0;
 
+    console.log('Count: ' + gamestatus.unfreeze_count);
     tasksDone.forEach( (doneTask) => {
-      if (doneTask.updatedAt <= gamestatus.freeze_time)
+      console.log(doneTask.updatedAt + " / " + gamestatus.freeze_time);
+      if (!gamestatus.board_freeze || doneTask.updatedAt <= gamestatus.freeze_time)
         addScore(team_score, doneTask);
-      else if (over_cnt < gamestatus.frozen_count) {
+      else if (over_cnt < gamestatus.unfreeze_count) {
         addScore(team_score, doneTask);
         over_cnt += 1;
       }

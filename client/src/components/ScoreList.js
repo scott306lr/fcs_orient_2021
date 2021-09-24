@@ -69,8 +69,15 @@ export default function Score(props) {
 
   const loadScore = useCallback( (tasksDone) => {
     var team_score = initTeamScore(teams);
+    var over_cnt = 0;
+    
     tasksDone.forEach( (doneTask) => {
-      addScore(team_score, doneTask);
+      if (doneTask.updatedAt <= frozen)
+        addScore(team_score, doneTask);
+      else if (over_cnt < gamestatus.frozen_count) {
+        addScore(team_score, doneTask);
+        over_cnt += 1;
+      }
     });
 
     return Object.values(team_score).sort(compareRank);

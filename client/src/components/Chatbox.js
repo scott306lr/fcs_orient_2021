@@ -37,7 +37,7 @@ function WelcomeForm(props){
         bg-blue-400
         text-white
         "
-      > {`${props.message?.content}`} </motion.div>
+      > {`${props.message?.name !== 'WELCOME' ? `${props.message?.name}: ` : "" } ${props.message?.content}`} </motion.div>
     </motion.div>
   )
 }

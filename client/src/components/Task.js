@@ -1,3 +1,4 @@
+import { motion, AnimatePresence  } from "framer-motion";
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from "axios";
@@ -40,20 +41,22 @@ export default function Task(props) {
   }
 
   const completeTask = (
-    <div>
-      <p>{task.question}</p>
-      <img src={`../assets/tasks/${task.taskId}.jpg`} alt = "Task_Image"/>
-      <br />
-      <input placeholder="請輸入答案" ref={answerText}/>
-      <button onClick={() => answerCheck()}> 上傳 </button>
+    <motion.div layout>
+      <motion.p >{task.question}</motion.p>
+      <motion.img src={`../assets/tasks/${task.taskId}.jpg`} alt = "Task_Image"/>
+      <motion.br />
+      <motion.input placeholder="請輸入答案" ref={answerText}/>
+      <motion.button onClick={() => answerCheck()}> 上傳 </motion.button>
       {props.done ? "done!" : "not yet."}
-    </div>
+    </motion.div>
   );
 
   return (
-    <div>
-        <h3 onClick={() => props.setTaskFocus((props.taskFocus === props.id) ? "" : props.id)}> {task.taskName} </h3>
-        { (!props.done && props.taskFocus === props.id) ? completeTask : "" }
-    </div>
+    <motion.div>
+        <motion.h3 layout onClick={() => props.setTaskFocus((props.taskFocus === props.id) ? "" : props.id)}> {task.taskName} </motion.h3>
+        <AnimatePresence>
+          { (!props.done && props.taskFocus === props.id) && completeTask }
+        </AnimatePresence>
+    </motion.div>
   );
 }

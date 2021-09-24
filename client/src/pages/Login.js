@@ -5,7 +5,7 @@ import { useParams  } from "react-router";
 import { useCookies } from 'react-cookie';
 
 export default function Login() {
-  const [cookies, setCookie] = useCookies(['login']);
+  const [cookies, setCookie] = useCookies(['rid']);
   const params = useParams();
   const rid = useRef();
   const { isFetching, error, dispatch } = useContext(AuthContext);
@@ -56,9 +56,9 @@ export default function Login() {
             
       {error ? error : ""}
 
-      <a href="/login/613468e49020fa6032cae900"> UD </a>
-      <a href="/login/613468e49020fa6032cae901"> LR </a>
-      <a href="/login/613468e49020fa6032cae902"> WJ </a>
+      <a href="/login/613468e49020fa6032cae935"> UD </a>
+      <a href="/login/613468e49020fa6032cae914"> LR </a>
+      <a href="/login/613468e49020fa6032cae925"> WJ </a>
     </div>
   );
 }

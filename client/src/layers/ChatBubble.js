@@ -41,7 +41,7 @@ export default function ChatBubble(props) {
           initial={false}
           exitBeforeEnter={true}
         >
-          { props.isOpen === "chat" && <ShowChat/> }
+          { (props.isOpen === "chat") && <ShowChat/> }
         </AnimatePresence>
         <motion.button
           className="circle bg-blue-200 z-20"

@@ -41,7 +41,7 @@ export default function ScoreBubble(props) {
           initial={false}
           exitBeforeEnter={true}
         >
-          { props.isOpen === "score" && <ShowScore/> }
+          { (props.isOpen === "score") && <ShowScore/> }
         </AnimatePresence>
         <motion.button
           className="circle bg-cusorange-500 z-20"

@@ -1,4 +1,4 @@
-import Tasks from "./Tasks";
+import Tasks from "./NewTasks";
 
 export default function Member() {
   return (

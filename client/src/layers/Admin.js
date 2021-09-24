@@ -24,12 +24,14 @@ export default function Admin() {
   };
 
   const initGame = async () => {
-    try {
-      const res = await axios.post("/backend/teamTask/initTask");
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-      return
+    if (window.confirm("initialize game?")){
+      try {
+        const res = await axios.post("/backend/teamTask/initTask");
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+        return
+      }
     }
   }
 

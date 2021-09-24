@@ -12,6 +12,9 @@ const shuffleArray = (array) => {
 }
 
 const unlockTask = async(team_id, x, y, unlockCount) => {
+    x = parseInt(x)
+    y = parseInt(y)
+    
     const teamTasks = await TeamTask.find({teamId: team_id});
     const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId );
     const tasks = await Task.find( {_id: {$nin: teamTaskIds}});
@@ -27,7 +30,7 @@ const unlockTask = async(team_id, x, y, unlockCount) => {
 
             return Math.abs(aMan - reqMan) - Math.abs(bMan - reqMan);
         }   
-    ).slice(0, 5);
+    ).slice(0, 10);
     shuffleArray(randPickedTasks);
 
     randPickedTasks = randPickedTasks.slice(0, unlockCount);

@@ -26,7 +26,7 @@
     {
       "_id" : {"$oid":"613468e49020fa6032cae914"},
         "name":"巴西龜魚排",
-        "role":"MEMBER",
+        "role":"ADMIN",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {

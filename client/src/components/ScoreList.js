@@ -70,9 +70,9 @@ export default function Score(props) {
   const loadScore = useCallback( (tasksDone) => {
     var team_score = initTeamScore(teams);
     var over_cnt = 0;
-    
+
     tasksDone.forEach( (doneTask) => {
-      if (doneTask.updatedAt <= frozen)
+      if (doneTask.updatedAt <= gamestatus.freeze_time)
         addScore(team_score, doneTask);
       else if (over_cnt < gamestatus.frozen_count) {
         addScore(team_score, doneTask);

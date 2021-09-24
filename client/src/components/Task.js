@@ -43,9 +43,9 @@ export default function Task(props) {
   const completeTask = (
     <motion.div>
       <motion.p layout>{task.question}</motion.p>
-      <motion.img className="px-3 py-2" src={`../assets/tasks/${task.taskId}.jpg`} alt = "Task_Image"/>
+      <motion.img className="px-4 py-3" src={`../tasks/${task.taskId}.jpg`} alt = "Task_Image"/>
       <motion.br layout />
-      <motion.div className="flex">      
+      <motion.div className="flex py-2">      
         <motion.input className="my-2 ml-4" layout placeholder="請輸入答案" ref={answerText}/>
         <motion.button className="btn" layout onClick={() => answerCheck()}> 上傳 </motion.button>
       </motion.div>

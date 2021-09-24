@@ -8,6 +8,7 @@ var GameStatus = {
   in_game: false, 
   board_freeze: false,
   freeze_time: null,
+  unfreeze_count: 0,
 }
 
 io.on("connection", (socket) => {
@@ -64,6 +65,14 @@ io.on("connection", (socket) => {
 
   socket.on("unfreeze board", () => {
     GameStatus.board_freeze = false;
+    GameStatus.unfreeze_count = 0;
+    io.emit("status update", GameStatus);
+    console.log(`unfreeze board!`);
+  })
+
+  socket.on("update freezetime", () => {
+    GameStatus.board_freeze = true;
+    GameStatus.unfreeze_count += 1;
     io.emit("status update", GameStatus);
     console.log(`unfreeze board!`);
   })

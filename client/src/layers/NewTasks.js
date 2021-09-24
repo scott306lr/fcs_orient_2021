@@ -38,7 +38,7 @@ export default function Tasks(props) {
         <Map />
       </motion.div>
       <motion.div className={`fixed bottom-0 flex flex-col p-4 w-full overflow-y-hidden rounded bg-gray-400 ${isExpanded ? "h-2/5" : "h-full"}`}>
-        <motion.button className="px-4 w-full mb-2 bg-gray-300 rounded" onClick={() => setIsExpanded((prev) => !prev)} > ^ </motion.button>
+        <motion.button className="px-4 w-full mb-2 bg-gray-300 rounded" onClick={() => setIsExpanded((prev) => !prev)} > {isExpanded ? "^" : "*"} </motion.button>
         <motion.div className="flex flex-col w-full h-full overflow-y-scroll pl-4 rounded bg-gray-300">
           <AnimateSharedLayout>
               {tasks.filter(task => !task.done).map((item, i) => (

@@ -212,8 +212,8 @@
     "question": "和跟任意校犬合照！",
     "answer": "answer.",
     "qtype": "photo",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "11",
+    "locationY": "3"
   },
   {
     "taskId": "308",
@@ -347,8 +347,8 @@
     "question": "找到騎YouBike的工作人員，回答指定問題！",
     "answer": "3.14159265358979323846",
     "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "9",
+    "locationY": "12"
   },
   {
     "taskId": "502",
@@ -356,8 +356,8 @@
     "question": "等公告囉",
     "answer": "咖哩拌飯",
     "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "10",
+    "locationY": "12"
   },
   {
     "taskId": "503",
@@ -365,8 +365,8 @@
     "question": "本營隊的全名？",
     "answer": "2021交大附中山迎新宿營",
     "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "10",
+    "locationY": "9"
   },
   {
     "taskId": "504",
@@ -374,8 +374,8 @@
     "question": ".tamrof DDMMYYYY ni rewsna esaelP ?etad s'yadot si tahW",
     "answer": "20211002",
     "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "12",
+    "locationY": "9"
   },
   {
     "taskId": "505",
@@ -383,8 +383,8 @@
     "question": "你猜啊？！",
     "answer": "優質營隊附中山",
     "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "10",
+    "locationY": "6"
   },
   {
     "taskId": "506",
@@ -392,7 +392,7 @@
     "question": "吃不飽、吃不好、吃太貴、吃到膩...不知道要吃什麼？",
     "answer": "一餐",
     "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
+    "locationX": "13",
+    "locationY": "7"
   }
 ]

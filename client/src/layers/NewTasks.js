@@ -30,6 +30,7 @@ export default function Tasks(props) {
       })));
       setTasks((prev) => [...prev, ...newTasks]);
     })
+    tasks.map(task => console.log(task.qtype));
   }, [socket]);
 
   return (
@@ -42,13 +43,13 @@ export default function Tasks(props) {
         <motion.div className="flex flex-col w-full h-full overflow-y-scroll pl-4 rounded bg-gray-300">
           <AnimateSharedLayout>
               {tasks.filter(task => !task.done).map((item, i) => (
-                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-yellow-100 rounded my-2 text-center ring-1 ring-yellow-400">
+                <motion.div layout key={i} className={`flex flex-col py-2 w-full bg-area${item.qtype} rounded my-2 text-center ring-1 ring-gray-600`}>
                 <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
                 </motion.div>
               ))}
 
               {tasks.filter(task => task.done).map((item, i) => (
-                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-yellow-400 rounded my-2 text-center ring-1 ring-yellow-500">
+                <motion.div layout key={i} className="flex flex-col py-2 w-full bg-gray-500 rounded my-2 text-center ring-1 ring-gray-900">
                 <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
                 </motion.div>
               ))}

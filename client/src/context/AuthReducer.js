@@ -7,7 +7,6 @@ const AuthReducer = (state, action) => {
         isFetching: true,
         error: false,
         gamestatus: state.gamestatus,
-        unfreeze_count: 0,
       };
 
     case "LOGIN_SUCCESS":
@@ -17,7 +16,6 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: false,
         gamestatus: state.gamestatus,
-        unfreeze_count: 0,
       };
 
     case "LOGIN_FAILURE":
@@ -27,7 +25,6 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: action.payload,
         gamestatus: state.gamestatus,
-        unfreeze_count: 0,
       };
 
     case "SOCKET_CONNECT":
@@ -37,7 +34,6 @@ const AuthReducer = (state, action) => {
         isFetching: state.isFetching,
         error: state.error,
         gamestatus: state.gamestatus,
-        unfreeze_count: state.unfreeze_count,
       };
     
     case "GS_UPDATE":
@@ -47,7 +43,6 @@ const AuthReducer = (state, action) => {
         isFetching: state.isFetching,
         error: state.error,
         gamestatus: action.payload,
-        unfreeze_count: state.unfreeze_count,
       };
 
     case "FC_UPDATE":
@@ -57,7 +52,6 @@ const AuthReducer = (state, action) => {
         isFetching: state.isFetching,
         error: state.error,
         gamestatus: state.gamestatus,
-        unfreeze_count: action.payload,
       };
     
     default: 

@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
     GameStatus.freeze_time = new Date();
     unfreeze_count = 0;
     io.emit("status update", GameStatus);
-    io.emit("unfreeze_count update", unfreeze_count);
+    io.emit("ufCount update", unfreeze_count);
     console.log(`freeze board!`);
   })
 
@@ -71,13 +71,13 @@ io.on("connection", (socket) => {
     GameStatus.board_freeze = false;
     unfreeze_count = 0;
     io.emit("status update", GameStatus);
-    io.emit("unfreeze_count update", unfreeze_count);
+    io.emit("ufCount update", unfreeze_count);
     console.log(`unfreeze board!`);
   })
 
   socket.on("update freezetime", () => {
     unfreeze_count += 1;
-    io.emit("unfreeze_count update", unfreeze_count);
+    io.emit("ufCount update", unfreeze_count);
     // console.log(`update board! ${unfreeze_count}`);
   })
 })

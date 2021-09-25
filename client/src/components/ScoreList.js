@@ -13,7 +13,8 @@ import imadal from '../assets/img/medal-4.svg';
 
 
 export default function Score(props) {
-  const {socket, user, gamestatus, unfreeze_count, dispatch} = useContext(AuthContext);
+  const {socket, user, gamestatus} = useContext(AuthContext);
+  const [ufcount, setUfCount] = useState(0);
   const [tasksDone, setTasksDone] = useState([]);
   const [teams, setTeams] = useState([]);
   const [teamScore, setTeamScore] = useState([]);
@@ -37,14 +38,34 @@ export default function Score(props) {
       setTasksDone((prev) => [...prev, doneTask]);
     })
 
-    socket.on("unfreeze_count update", (cnt) => {
-      dispatch(FCUpdate(cnt));
+    socket.on("ufCount update", (cnt) => {
+      setUfCount(cnt);
     })
-  }, [socket, dispatch]);
+  }, [socket]);
+
+  useEffect(() => {
+    console.log(ufcount);
+  }, [ufcount]);
+
+  const loadScore = useCallback( (tasksDone) => {
+    var team_score = initTeamScore(teams);
+    var over_cnt = 0;
+
+    tasksDone.forEach( (doneTask) => {
+      if (!gamestatus.board_freeze || doneTask.updatedAt <= gamestatus.freeze_time)
+        addScore(team_score, doneTask);
+      else if (over_cnt < ufcount) {
+        addScore(team_score, doneTask);
+        over_cnt += 1;
+      }
+    });
+
+    return Object.values(team_score).sort(compareRank);
+  }, [gamestatus, ufcount, teams])
 
   useEffect(() => {
     setTeamScore(loadScore(tasksDone));
-  }, [tasksDone]);
+  }, [tasksDone, loadScore]);
 
   const initTeamScore = (teams) => {
     var team_score = {};
@@ -71,24 +92,6 @@ export default function Score(props) {
     }
     team_score[doneTask.teamId].score += doneTask.score;
   };
-
-
-  const loadScore = useCallback( (tasksDone) => {
-    var team_score = initTeamScore(teams);
-    var over_cnt = 0;
-
-    console.log('Count: ', unfreeze_count);
-    tasksDone.forEach( (doneTask) => {
-      if (!gamestatus.board_freeze || doneTask.updatedAt <= gamestatus.freeze_time)
-        addScore(team_score, doneTask);
-      else if (over_cnt < unfreeze_count) {
-        addScore(team_score, doneTask);
-        over_cnt += 1;
-      }
-    });
-
-    return Object.values(team_score).sort(compareRank);
-  }, [teams])
   
   const compareRank = (a, b) => {
     if (a.score !== b.score)

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import Scoreboard from "./Scoreboard";
-import {FCUpdate} from "../context/AuthActions"
 
 import { AuthContext } from "../context/AuthContext";
 import FlipMove from 'react-flip-move';
@@ -42,10 +41,6 @@ export default function Score(props) {
       setUfCount(cnt);
     })
   }, [socket]);
-
-  useEffect(() => {
-    console.log(ufcount);
-  }, [ufcount]);
 
   const loadScore = useCallback( (tasksDone) => {
     var team_score = initTeamScore(teams);

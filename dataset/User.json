@@ -31,10 +31,23 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cae915"},
-        "name":"李懿麒",
+        "name":"不按排理出",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
+    {
+      "_id" : {"$oid":"613468e49020fa6032cae916"},
+        "name":"1小隊員1",
+        "role":"MEMBER",
+        "teamId":"61396de99020fa6032cb83d1"
+    },
+    {
+      "_id" : {"$oid":"613468e49020fa6032cae917"},
+        "name":"1小隊員2",
+        "role":"MEMBER",
+        "teamId":"61396de99020fa6032cb83d1"
+    },
+
 
 
     {
@@ -70,7 +83,7 @@
     {
       "_id" : {"$oid":"613468e49020fa6032cae925"},
         "name":"視網蘑菇王",
-        "role":"MEMBER",
+        "role":"ADMIN",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
@@ -113,7 +126,7 @@
     {
     	"_id" : {"$oid":"613468e49020fa6032cae935"},
         "name":"磅蛋糕爾夫",
-        "role":"MEMBER",
+        "role":"ADMIN",
         "teamId":"61396de99020fa6032cb83d3"
     },
 
@@ -154,9 +167,21 @@
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
-    	"_id" : {"$oid":"613468e49020fa6032cae946"},
+      "_id" : {"$oid":"613468e49020fa6032cae946"},
         "name":"一籃拉麵壁",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
+    },
+    {
+      "_id" : {"$oid":"613468e49020fa6032cae947"},
+        "name":"4小隊員1",
+        "role":"MEMBER",
+        "teamId":"61396de99020fa6032cb83d1"
+    },
+    {
+      "_id" : {"$oid":"613468e49020fa6032cae948"},
+        "name":"4小隊員2",
+        "role":"MEMBER",
+        "teamId":"61396de99020fa6032cb83d1"
     }
 ]

@@ -44,7 +44,7 @@ export default function Admin() {
       }}>
         {tasks.map((task) => <option id = {task.taskId}>{task.taskName}</option>)}
       </select>
-      <div>{selTask && `座標： X = ${selTask.locationX} , Y = ${selTask.locationY}`}</div>
+      <div>{selTask && `座標： X = ${String.fromCharCode(selTask.locationX + 64)} , Y = ${selTask.locationY}`}</div>
       <div>{selTask && `答案： ${selTask.answer}`}</div>
     </div>
   );

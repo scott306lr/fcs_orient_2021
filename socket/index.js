@@ -8,8 +8,9 @@ var GameStatus = {
   in_game: false, 
   board_freeze: false,
   freeze_time: null,
-  unfreeze_count: 0,
 }
+
+var unfreeze_count = 0;
 
 io.on("connection", (socket) => {
   console.log("a user connected.");
@@ -60,23 +61,24 @@ io.on("connection", (socket) => {
   socket.on("freeze board", () => {
     GameStatus.board_freeze = true;
     GameStatus.freeze_time = new Date();
-    GameStatus.unfreeze_count = 0;
+    unfreeze_count = 0;
     io.emit("status update", GameStatus);
+    io.emit("unfreeze_count update", unfreeze_count);
     console.log(`freeze board!`);
   })
 
   socket.on("unfreeze board", () => {
     GameStatus.board_freeze = false;
-    GameStatus.unfreeze_count = 0;
+    unfreeze_count = 0;
     io.emit("status update", GameStatus);
+    io.emit("unfreeze_count update", unfreeze_count);
     console.log(`unfreeze board!`);
   })
 
   socket.on("update freezetime", () => {
-    GameStatus.board_freeze = true;
-    GameStatus.unfreeze_count += 1;
-    io.emit("status update", GameStatus);
-    console.log(`update board! ${GameStatus.unfreeze_count}`);
+    unfreeze_count += 1;
+    io.emit("unfreeze_count update", unfreeze_count);
+    // console.log(`update board! ${unfreeze_count}`);
   })
 })
 

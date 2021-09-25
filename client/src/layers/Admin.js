@@ -16,11 +16,15 @@ export default function Admin() {
   };
 
   const freezeBoard = () => {
-    socket.emit("freeze board");
+    if (window.confirm("freeze board?")){
+      socket.emit("freeze board");
+    }
   };
 
   const unfreezeBoard = () => {
-    socket.emit("unfreeze board");
+    if (window.confirm("unfreeze board?")){
+      socket.emit("unfreeze board");
+    }
   };
   
   const freezeUpdate = () => {
@@ -72,10 +76,10 @@ export default function Admin() {
         <button className="btn" onClick = {initGame}> Init Game </button>
       </div>
       
-      <div id = "setInputTime">
+      {/* <div id = "setInputTime">
         Set End Time
         <input id = "endTime" type = "time" min="15:00" max="18:00" required/>
-      </div>
+      </div> */}
       <div className="w-full flex p-2 mt-4 items-center bottom-0 bg-red-300" id = "sendAnnounce">
         <textarea
           placeholder="Announce message..."

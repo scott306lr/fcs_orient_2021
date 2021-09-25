@@ -122,7 +122,7 @@
     "question": "請解答張貼在附近的數學題。\n如果答案為分數(ex: 七分之五)，請輸入\"5/7\"\n如果答案帶根號(ex: 二根號三)，請輸入\"2s3",
     "answer": "7500s2",
     "qtype": "math",
-    "locationX": "M",
+    "locationX": "13",
     "locationY": "7"
   },
   {
@@ -273,7 +273,7 @@
     "taskId": "401",
     "taskName": "關主壹(環工、唱交大校歌)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "籃梅起司",
     "qtype": "host",
     "locationX": "13",
     "locationY": "15"
@@ -282,7 +282,7 @@
     "taskId": "402",
     "taskName": "關主貳(體育館、買飲料)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "香酥大棒腿",
     "qtype": "host",
     "locationX": "13",
     "locationY": "12"
@@ -291,7 +291,7 @@
     "taskId": "403",
     "taskName": "關主參(電資大樓、補充能量)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "網付學分費",
     "qtype": "host",
     "locationX": "4",
     "locationY": "8"
@@ -300,7 +300,7 @@
     "taskId": "404",
     "taskName": "關主肆(中正堂、50!)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "大棒槌拉霸",
     "qtype": "host",
     "locationX": "8",
     "locationY": "11"
@@ -309,7 +309,7 @@
     "taskId": "405",
     "taskName": "關主伍(工五後門、找東西)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "網內互打牌",
     "qtype": "host",
     "locationX": "11",
     "locationY": "7"
@@ -318,7 +318,7 @@
     "taskId": "406",
     "taskName": "關主陸(竹湖、團康)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "正電排排",
     "qtype": "host",
     "locationX": "6",
     "locationY": "10"
@@ -327,7 +327,7 @@
     "taskId": "408",
     "taskName": "關主捌(小木屋、送東西)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "依山傍水牛",
     "qtype": "host",
     "locationX": "10",
     "locationY": "10"
@@ -336,7 +336,7 @@
     "taskId": "409",
     "taskName": "關主玖(二餐、成語接龍)",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "答案。",
+    "answer": "酒精團購網",
     "qtype": "host",
     "locationX": "11",
     "locationY": "13"
@@ -345,7 +345,7 @@
     "taskId": "501",
     "taskName": "YouBike",
     "question": "找到騎YouBike的工作人員，回答指定問題！",
-    "answer": "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679",
+    "answer": "3.14159265358979323846",
     "qtype": "easy",
     "locationX": "26",
     "locationY": "0"
@@ -354,7 +354,7 @@
     "taskId": "502",
     "taskName": "Announcement",
     "question": "等公告囉",
-    "answer": "This is an announcement.",
+    "answer": "咖哩拌飯",
     "qtype": "easy",
     "locationX": "26",
     "locationY": "0"
@@ -382,15 +382,6 @@
     "taskName": "七個字？",
     "question": "你猜啊？！",
     "answer": "優質營隊附中山",
-    "qtype": "easy",
-    "locationX": "26",
-    "locationY": "0"
-  },
-  {
-    "taskId": "506",
-    "taskName": "找OO就對了！",
-    "question": "吃不飽、吃不好、吃太貴、吃到膩...不知道要吃什麼？",
-    "answer": "一餐",
     "qtype": "easy",
     "locationX": "26",
     "locationY": "0"

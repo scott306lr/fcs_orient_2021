@@ -26,29 +26,29 @@ export default function ScoreBubble(props) {
   const ShowScore = () => {
     return(
       <>
-        <motion.div className="fixed top-0 left-0 h-screen w-screen bg-cusorange-500" variants={"sidebar"} />
+        <div className="fixed top-0 left-0 h-screen w-screen bg-cusorange-500" variants={sidebar}/>
         <ScoreList/>
       </>
   )}
 
   return(
-      <motion.nav
+      <nav
         initial={false}
         animate={props.isOpen === "score" ? "open" : "closed"}
         className={`flex z-10`}
       >        
-        {/* <AnimatePresence
+        <AnimatePresence
           initial={false}
           exitBeforeEnter={true}
-        > */}
+        >
           { (props.isOpen === "score") && <ShowScore/> }
-        {/* </AnimatePresence> */}
+        </AnimatePresence>
         <motion.button
           className="circle bg-cusorange-500 z-20"
           onTap={() => props.setIsOpen((prev) => ((prev === "score") ? "" : "score"))}
         >
           {props.isOpen === "score" ? "X" : <img className="m-auto" src="https://img.icons8.com/fluency-systems-regular/32/000000/trophy.png" alt="score"/>}
         </motion.button>
-      </motion.nav>
+      </nav>
   )
 }

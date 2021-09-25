@@ -21,3 +21,8 @@ export const GSUpdate = (game_status) => ({
   type: "GS_UPDATE",
   payload: game_status,
 });
+
+export const FCUpdate = (unfreeze_count) => ({
+  type: "FC_UPDATE",
+  payload: unfreeze_count,
+});

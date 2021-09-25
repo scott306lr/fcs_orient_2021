@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import Scoreboard from "./Scoreboard";
+import {FCUpdate} from "../context/AuthActions"
+
 import { AuthContext } from "../context/AuthContext";
 import FlipMove from 'react-flip-move';
 import axios from "axios";
@@ -11,7 +13,7 @@ import imadal from '../assets/img/medal-4.svg';
 
 
 export default function Score(props) {
-  const {socket, user, gamestatus} = useContext(AuthContext);
+  const {socket, user, gamestatus, unfreeze_count, dispatch} = useContext(AuthContext);
   const [tasksDone, setTasksDone] = useState([]);
   const [teams, setTeams] = useState([]);
   const [teamScore, setTeamScore] = useState([]);
@@ -34,7 +36,11 @@ export default function Score(props) {
     socket.on("update record", (doneTask) => {
       setTasksDone((prev) => [...prev, doneTask]);
     })
-  }, [socket]);
+
+    socket.on("unfreeze_count update", (cnt) => {
+      dispatch(FCUpdate(cnt));
+    })
+  }, [socket, dispatch]);
 
   useEffect(() => {
     setTeamScore(loadScore(tasksDone));
@@ -71,12 +77,11 @@ export default function Score(props) {
     var team_score = initTeamScore(teams);
     var over_cnt = 0;
 
-    console.log('Count: ' + gamestatus.unfreeze_count);
+    console.log('Count: ', unfreeze_count);
     tasksDone.forEach( (doneTask) => {
-      console.log(doneTask.updatedAt + " / " + gamestatus.freeze_time);
       if (!gamestatus.board_freeze || doneTask.updatedAt <= gamestatus.freeze_time)
         addScore(team_score, doneTask);
-      else if (over_cnt < gamestatus.unfreeze_count) {
+      else if (over_cnt < unfreeze_count) {
         addScore(team_score, doneTask);
         over_cnt += 1;
       }
@@ -132,8 +137,6 @@ export default function Score(props) {
         leaveAnimation='accordionVertical'>
         {iterList}
       </FlipMove>
-      <button onClick = {() => {console.log(tasksDone);
-        console.log(tasksDone.length)}}>Test log</button>
     </div>
   );
 }

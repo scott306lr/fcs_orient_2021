@@ -10,8 +10,8 @@ const INITIAL_STATE = {
     in_game: false, 
     board_freeze: false,
     freeze_time: null,
-    unfreeze_count: 0,
   },
+  unfreeze_count: 0,
 }
 
 export const AuthContext = createContext(INITIAL_STATE)
@@ -27,6 +27,7 @@ export const AuthContextProvider = ({children}) => {
         isFetching: state.isFetching, 
         error: state.error, 
         gamestatus: state.gamestatus,
+        unfreeze_count: state.unfreeze_count,
         dispatch
       }}
     >

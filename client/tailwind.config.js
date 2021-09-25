@@ -52,6 +52,13 @@ module.exports = {
           800: '#53390B',
           900: '#261A05',
         },
+        areaA: '#fff',
+        areaC: '#27bbff',
+        areaE: '#fb874a',
+        areaN: '#ebc235',
+        areaS: '#ff7d75',
+        areaW: '#22e3ac',
+        silver: '#c0c0c0',
       }
     },
   },

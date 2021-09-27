@@ -28,14 +28,14 @@ export default function Task(props) {
         console.log(res.data)
         socket.emit("answered correct", user.teamId, newTasks.data, res.data);
         answerText.current.value = "";
+
+        alert (`回答正確! 獲得${newTasks.score}分`);
       }catch(err){
         console.log(err);
         return;
       }
-      
-      alert ('YES!');
     } else {
-      alert ('NO');
+      alert ('回答錯誤!');
     }
   }
 

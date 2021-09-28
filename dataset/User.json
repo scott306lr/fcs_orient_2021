@@ -164,55 +164,55 @@
     
     {
       "_id" : {"$oid":"613468e49020fa6032cab010"},
-        "name":"蔡淳伊",
+        "name":"淳伊",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab011"},
-        "name":"賀茂庭",
+        "name":"茂庭",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab012"},
-        "name":"徐安妤",
+        "name":"安妤",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab013"},
-        "name":"林永祥",
+        "name":"永祥",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab014"},
-        "name":"張容綺",
+        "name":"容綺",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab015"},
-        "name":"陳卓琦",
+        "name":"卓琦",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab016"},
-        "name":"蕭禮英",
+        "name":"禮英",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab017"},
-        "name":"張佑禕",
+        "name":"佑禕",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab018"},
-        "name":"田松翰",
+        "name":"松翰",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
@@ -221,49 +221,49 @@
     
     {
       "_id" : {"$oid":"613468e49020fa6032cab020"},
-        "name":"林彧安",
+        "name":"彧安",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab021"},
-        "name":"王諭民",
+        "name":"諭民",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab022"},
-        "name":"張博凱",
+        "name":"博凱",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab023"},
-        "name":"林孟璇",
+        "name":"孟璇",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab024"},
-        "name":"陳穎宣",
+        "name":"穎宣",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab025"},
-        "name":"陳宛萱",
+        "name":"宛萱",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab026"},
-        "name":"曾昱凱",
+        "name":"瑞和",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab027"},
-        "name":"謝尚哲",
+        "name":"尚哲",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
@@ -271,55 +271,55 @@
     
     {
       "_id" : {"$oid":"613468e49020fa6032cab030"},
-        "name":"蔡昀芸",
+        "name":"昀芸",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab031"},
-        "name":"孫上媛",
+        "name":"上媛",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab032"},
-        "name":"徐煜宸",
+        "name":"煜宸",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab033"},
-        "name":"黃壬煜",
+        "name":"壬煜",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab034"},
-        "name":"陳安婕",
+        "name":"安婕",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab035"},
-        "name":"江應非",
+        "name":"應非",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab036"},
-        "name":"林廷宇",
+        "name":"廷宇",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab037"},
-        "name":"呂季寰",
+        "name":"季寰",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab038"},
-        "name":"陳上綸",
+        "name":"上綸",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d3"
     },
@@ -327,55 +327,55 @@
     
     {
       "_id" : {"$oid":"613468e49020fa6032cab040"},
-        "name":"尹紋庭",
+        "name":"紋庭",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab041"},
-        "name":"韓明俊",
+        "name":"明俊",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab042"},
-        "name":"羅俊璋",
+        "name":"俊璋",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab043"},
-        "name":"黃麗穎",
+        "name":"麗穎",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab044"},
-        "name":"管培勛",
+        "name":"培勛",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab045"},
-        "name":"陳卉穎",
+        "name":"卉穎",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab046"},
-        "name":"魏秭翊",
+        "name":"秭翊",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab047"},
-        "name":"陳垣皓",
+        "name":"垣皓",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab048"},
-        "name":"王翊安",
+        "name":"翊安",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     }

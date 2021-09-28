@@ -35,18 +35,6 @@
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
-    {
-      "_id" : {"$oid":"613468e49020fa6032cae916"},
-        "name":"1小隊員1",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d1"
-    },
-    {
-      "_id" : {"$oid":"613468e49020fa6032cae917"},
-        "name":"1小隊員2",
-        "role":"MEMBER",
-        "teamId":"61396de99020fa6032cb83d1"
-    },
 
 
 
@@ -76,7 +64,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cae924"},
-        "name":"網內互打",
+        "name":"網內互打排",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
@@ -101,7 +89,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cae931"},
-        "name":"邦妮兔寶寶",
+        "name":"棒棒糖寶寶",
         "role":"LEAD",
         "teamId":"61396de99020fa6032cb83d3"
     },
@@ -150,7 +138,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cae943"},
-        "name":"我就。籃",
+        "name":"凱蚊賭籃特",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
@@ -162,7 +150,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cae945"},
-        "name":"愛爾籃骨頭",
+        "name":"五十嵐真貴",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },
@@ -228,6 +216,7 @@
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
+    
     
     
     {

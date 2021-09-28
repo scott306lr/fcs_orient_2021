@@ -3,8 +3,10 @@ import React, { useContext } from 'react';
 
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+import Lock from './pages/Lock';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
+
 
 /*
  * Frontend flow: 
@@ -37,6 +39,9 @@ function App() {
         </Route>
         <Route path="/login/:rid">
           {user ? <Redirect to="/" /> : <Login />}
+        </Route>
+        <Route path="/lock/:num">
+          <Lock />
         </Route>
       </Switch>
     </Router>

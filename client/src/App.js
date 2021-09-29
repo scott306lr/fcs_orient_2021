@@ -40,7 +40,7 @@ function App() {
         <Route path="/login/:rid">
           {user ? <Redirect to="/" /> : <Login />}
         </Route>
-        <Route path="/lock/:num">
+        <Route path="/lock/:id">
           <Lock />
         </Route>
       </Switch>

@@ -11,8 +11,8 @@
   {
     "taskId": "102",
     "taskName": "ATM",
-    "question": "後面的提款機是哪家銀行的？\n答案共4個字",
-    "answer": "玉山銀行",
+    "question": "該餐廳旁邊的提款機是哪家銀行的？\n答案共4個字",
+    "answer": "中華郵政",
     "qtype": "S",
     "locationX": "11",
     "locationY": "4"
@@ -20,7 +20,7 @@
   {
     "taskId": "103",
     "taskName": "裝置藝術",
-    "question": "這座裝置藝術的名稱？\n答案共4個字",
+    "question": "工程六館附近這座裝置藝術的名稱？\n答案共4個字",
     "answer": "鳳凌霄漢",
     "qtype": "C",
     "locationX": "13",
@@ -47,7 +47,7 @@
   {
     "taskId": "106",
     "taskName": "花",
-    "question": "請問大樓附近的池塘中主要有什麼花？",
+    "question": "請問活動中心正門對面的池塘中主要有什麼花？",
     "answer": "荷花",
     "qtype": "E",
     "locationX": "5",
@@ -56,7 +56,7 @@
   {
     "taskId": "107",
     "taskName": "氣體",
-    "question": "輸入圖片中高壓氣體的英文名稱？\n請以小寫字母回答",
+    "question": "輸入科學三館旁高壓氣體的英文名稱(非化學式)，以小寫字母回答",
     "answer": "nitrogen",
     "qtype": "C",
     "locationX": "14",
@@ -65,7 +65,7 @@
   {
     "taskId": "108",
     "taskName": "噴泉",
-    "question": "獅子噴泉之上，由左到右的三個英文字母？",
+    "question": "飲水思源噴泉之上，由左到右的三個英文字母？",
     "answer": "ESA",
     "qtype": "E",
     "locationX": "8",
@@ -74,7 +74,7 @@
   {
     "taskId": "109",
     "taskName": "English",
-    "question": "請問馬兒附近的英文字？\n答案為4個大寫字母，注意馬兒位置有些許變動",
+    "question": "請問馬兒附近餐廳中，打燈顯示的英文字？\n答案為4個大寫字母，注意馬兒位置有些許變動",
     "answer": "NOLA",
     "qtype": "E",
     "locationX": "7",
@@ -83,7 +83,7 @@
   {
     "taskId": "110",
     "taskName": "百年樹人",
-    "question": "拍攝地點旁的青楓樹由什麼系幾級的校友捐贈？\n請以六個字\"OO系xx級\"回答",
+    "question": "圖書館附近，本照片拍攝地點旁的青楓樹由什麼系幾級的校友捐贈？\n請以六個字\"OO系xx級\"回答",
     "answer": "電物系59級",
     "qtype": "C",
     "locationX": "8",
@@ -92,7 +92,7 @@
   {
     "taskId": "111",
     "taskName": "Fantastic Pork Chops and Where to Find Them",
-    "question": "試問該店家豬肉的產地？",
+    "question": "奶油廚房使用的豬肉產地？",
     "answer": "西班牙",
     "qtype": "S",
     "locationX": "10",
@@ -119,8 +119,8 @@
   {
     "taskId": "203",
     "taskName": "吉歐．魅特力",
-    "question": "請解答張貼在附近的數學題。\n如果答案為分數(ex: 七分之五)，請輸入\"5/7\"\n如果答案帶根號(ex: 二根號三)，請輸入\"2s3",
-    "answer": "7500s2",
+    "question": "請解答張貼在工程六館的數學題。\n如果答案為分數(ex: 七分之五)，請輸入\"5/7\"\n如果答案帶根號(ex: 二根號三)，請輸入\"2s3",
+    "answer": "4s2",
     "qtype": "S",
     "locationX": "13",
     "locationY": "7"
@@ -155,7 +155,7 @@
   {
     "taskId": "207",
     "taskName": "停車場",
-    "question": "該停車場所在的大樓，地上+地下共有幾層？",
+    "question": "該停車場所在的大樓，地上+地下共有幾層？\n請以數字回答。",
     "answer": "13",
     "qtype": "S",
     "locationX": "11",
@@ -165,7 +165,7 @@
     "taskId": "302",
     "taskName": "世界のヒカリ",
     "question": "和校園中任意\"BE THE LIGHT OF THE WORLD\"合照！",
-    "answer": "answer.",
+    "answer": "為世界之光",
     "qtype": "A",
     "locationX": "26",
     "locationY": "0"
@@ -174,7 +174,7 @@
     "taskId": "303",
     "taskName": "門把",
     "question": "這是人社二館的門把。小隊派出2人以類似的姿勢拍照！",
-    "answer": "answer.",
+    "answer": "瓦力",
     "qtype": "E",
     "locationX": "7",
     "locationY": "9"
@@ -183,7 +183,7 @@
     "taskId": "304",
     "taskName": "トレール",
     "question": "在圖片拍攝地點拍一張合照！",
-    "answer": "answer.",
+    "answer": "一徑各表沒有共識",
     "qtype": "N",
     "locationX": "14",
     "locationY": "15"
@@ -192,7 +192,7 @@
     "taskId": "305",
     "taskName": "跳網合照",
     "question": "小隊派出3人拍跳網照，三個人頭都要比網子高！",
-    "answer": "answer.",
+    "answer": "進擊的巨人",
     "qtype": "W",
     "locationX": "15",
     "locationY": "10"
@@ -201,7 +201,7 @@
     "taskId": "306",
     "taskName": "迎竹",
     "question": "小隊派出4人，和門市外的吉祥物合照！",
-    "answer": "answer.",
+    "answer": "OPEN",
     "qtype": "S",
     "locationX": "12",
     "locationY": "3"
@@ -210,7 +210,7 @@
     "taskId": "307",
     "taskName": "可愛的狗勾",
     "question": "和跟任意校犬合照！",
-    "answer": "answer.",
+    "answer": "狗勾啊啊啊",
     "qtype": "A",
     "locationX": "26",
     "locationY": "0"
@@ -219,7 +219,7 @@
     "taskId": "308",
     "taskName": "竹湖",
     "question": "在湖畔合照！",
-    "answer": "answer.",
+    "answer": "我悄悄地走了",
     "qtype": "E",
     "locationX": "5",
     "locationY": "12"
@@ -228,7 +228,7 @@
     "taskId": "309",
     "taskName": "逐風",
     "question": "在逐風廣場拍攝一張合照！",
-    "answer": "answer.",
+    "answer": "新竹貢丸",
     "qtype": "E",
     "locationX": "7",
     "locationY": "5"
@@ -237,7 +237,7 @@
     "taskId": "310",
     "taskName": "涼亭",
     "question": "到碑文附近的涼亭裡拍攝一張合照！",
-    "answer": "answer.",
+    "answer": "庭院深深深幾許的排列組合",
     "qtype": "E",
     "locationX": "8",
     "locationY": "8"
@@ -246,7 +246,7 @@
     "taskId": "311",
     "taskName": "嚴禁機車進入",
     "question": "小隊派出1人，在圖片拍攝地點用相同的pose拍一張獨照！",
-    "answer": "answer.",
+    "answer": "巧克力牛奶巧克力",
     "qtype": "W",
     "locationX": "15",
     "locationY": "14"
@@ -255,7 +255,7 @@
     "taskId": "312",
     "taskName": "公共電話",
     "question": "請拍攝離這棵樹最近的公共電話！",
-    "answer": "answer.",
+    "answer": "您播的號碼是空號請查明後再播",
     "qtype": "C",
     "locationX": "11",
     "locationY": "9"
@@ -264,79 +264,79 @@
     "taskId": "313",
     "taskName": "繞樹三匝",
     "question": "圍繞這棵樹坐下，拍一張合照！",
-    "answer": "answer.",
+    "answer": "歪頭燦笑www",
     "qtype": "S",
     "locationX": "8",
     "locationY": "6"
   },
   {
     "taskId": "401",
-    "taskName": "關主壹(環工、唱交大校歌)",
+    "taskName": "蚊子很多快點過來",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "籃梅起司",
+    "answer": "快走不要打擾我追劇",
     "qtype": "N",
     "locationX": "13",
     "locationY": "15"
   },
   {
     "taskId": "402",
-    "taskName": "關主貳(體育館、買飲料)",
+    "taskName": "楊學長不能喝酒改喝什麼",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "香酥大棒腿",
+    "answer": "楊學長的電臀好翹",
     "qtype": "N",
     "locationX": "13",
     "locationY": "12"
   },
   {
     "taskId": "403",
-    "taskName": "關主參(電資大樓、補充能量)",
+    "taskName": "甲霸ㄍㄧㄣ困不要喝酒",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "網付學分費",
+    "answer": "楊學長喝酒喝到付不起暑修費",
     "qtype": "E",
     "locationX": "4",
     "locationY": "8"
   },
   {
     "taskId": "404",
-    "taskName": "關主肆(中正堂、50!)",
+    "taskName": "50懶",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "大棒槌拉霸",
+    "answer": "onceyouwatchtwicetwiceyouwillbecomeoneofonce",
     "qtype": "C",
     "locationX": "8",
     "locationY": "11"
   },
   {
     "taskId": "405",
-    "taskName": "關主伍(工五後門、找東西)",
+    "taskName": "打完疫苗XX不見了",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "網內互打牌",
+    "answer": "楊學長打完疫苗不可以喝酒",
     "qtype": "S",
     "locationX": "11",
     "locationY": "7"
   },
   {
     "taskId": "406",
-    "taskName": "關主陸(竹湖、團康)",
+    "taskName": "蹦蹦蹦蹦蹦",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "正電排排",
+    "answer": "好可憐的楊學長普物差一分就過了",
     "qtype": "E",
     "locationX": "6",
     "locationY": "10"
   },
   {
     "taskId": "408",
-    "taskName": "關主捌(小木屋、送東西)",
+    "taskName": "駱學姊的錢都去哪裡了",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "依山傍水牛",
+    "answer": "駱學姊把錢都拿去買酒了",
     "qtype": "C",
     "locationX": "10",
     "locationY": "10"
   },
   {
     "taskId": "409",
-    "taskName": "關主玖(二餐、成語接龍)",
+    "taskName": "誰的微積分被當了",
     "question": "到這附近尋找工作人員，出示本圖片並完成指定任務！",
-    "answer": "酒精團購網",
+    "answer": "好醜的楊學長微積分被當了",
     "qtype": "N",
     "locationX": "11",
     "locationY": "13"
@@ -353,8 +353,8 @@
   {
     "taskId": "502",
     "taskName": "Announcement",
-    "question": "等公告囉",
-    "answer": "This is an announcement.",
+    "question": "",
+    "answer": "咖喱拌飯",
     "qtype": "A",
     "locationX": "26",
     "locationY": "0"
@@ -372,7 +372,7 @@
     "taskId": "504",
     "taskName": "ETAD",
     "question": ".tamrof DDMMYYYY ni rewsna esaelP ?etad s'yadot si tahW",
-    "answer": "20211002",
+    "answer": "20011202",
     "qtype": "A",
     "locationX": "26",
     "locationY": "0"
@@ -380,7 +380,7 @@
   {
     "taskId": "505",
     "taskName": "七個字？",
-    "question": "你猜啊？！",
+    "question": "你猜啊",
     "answer": "優質營隊附中山",
     "qtype": "A",
     "locationX": "26",

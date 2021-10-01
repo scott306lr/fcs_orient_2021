@@ -200,7 +200,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab016"},
-        "name":"禮英",
+        "name":"品廷",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d1"
     },
@@ -239,7 +239,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab023"},
-        "name":"孟璇",
+        "name":"彥蓉",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
@@ -264,6 +264,12 @@
     {
       "_id" : {"$oid":"613468e49020fa6032cab027"},
         "name":"尚哲",
+        "role":"MEMBER",
+        "teamId":"61396de99020fa6032cb83d2"
+    },
+    {
+      "_id" : {"$oid":"613468e49020fa6032cab028"},
+        "name":"杰樺",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d2"
     },
@@ -363,7 +369,7 @@
     },
     {
       "_id" : {"$oid":"613468e49020fa6032cab046"},
-        "name":"秭翊",
+        "name":"忻妤",
         "role":"MEMBER",
         "teamId":"61396de99020fa6032cb83d4"
     },

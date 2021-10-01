@@ -191,7 +191,7 @@
   {
     "taskId": "305",
     "taskName": "跳網合照",
-    "question": "小隊派出3人拍跳網照，三個人頭都要比網子高！",
+    "question": "小隊派出3人到排球場拍跳網照，三個人頭都要比網子高！",
     "answer": "進擊的巨人",
     "qtype": "W",
     "locationX": "15",
@@ -218,7 +218,7 @@
   {
     "taskId": "308",
     "taskName": "竹湖",
-    "question": "在湖畔合照！",
+    "question": "在竹湖湖畔木板區合照！",
     "answer": "我悄悄地走了",
     "qtype": "E",
     "locationX": "5",
@@ -245,7 +245,7 @@
   {
     "taskId": "311",
     "taskName": "嚴禁機車進入",
-    "question": "小隊派出1人，在圖片拍攝地點用相同的pose拍一張獨照！",
+    "question": "小隊派出1人，在操場旁小徑路口用相同的pose拍一張獨照！",
     "answer": "巧克力牛奶巧克力",
     "qtype": "W",
     "locationX": "15",

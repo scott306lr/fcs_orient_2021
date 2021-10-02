@@ -5,6 +5,14 @@ const TeamSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    teamEmoji:{
+        type:String,
+        required:true,
+    },
+    teamColor:{
+        type:String,
+        required:true,
+    },
 },
 {timestamps:true}
 );

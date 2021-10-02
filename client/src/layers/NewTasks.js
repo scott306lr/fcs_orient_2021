@@ -38,17 +38,17 @@ export default function Tasks(props) {
         <Map />
       </div>
       <div className={`fixed bottom-0 flex flex-col p-4 w-full overflow-y-hidden rounded bg-gray-400 ${isExpanded ? "h-full" : "h-1/3"}`}>
-        <button className="px-4 w-full mb-2 bg-gray-300 rounded" onClick={() => setIsExpanded((prev) => !prev)}> {`Tasks ${isExpanded ? "collapse" : "expand"}`} </button>
+        <button className="px-4 w-full mb-2 bg-gray-300 rounded" onClick={() => setIsExpanded((prev) => !prev)}> {`${isExpanded ? "收起" : "展開"}`} </button>
         <div className="flex flex-col w-full h-full overflow-y-scroll pl-4 rounded bg-gray-300">
           {tasks.filter(task => !task.done).map((item, i) => (
-            <div layout key={i} className={`flex flex-col py-2 w-full bg-area${item.qtype} rounded my-2 text-center ring-1 ring-gray-600`}>
-            <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
+            <div key={i} className={`flex flex-col py-2 w-full rounded my-2 text-center ring-1 ring-gray-600 ${item.qtype === "A" ? "bg-areaA-400" : ""}${item.qtype === "C" ? "bg-areaC-400" : ""}${item.qtype === "E" ? "bg-areaE-400" : ""}${item.qtype === "N" ? "bg-areaN-400" : ""}${item.qtype === "S" ? "bg-areaS-400" : ""}${item.qtype === "W" ? "bg-areaW-400" : ""}`}>
+              <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
             </div>
           ))}
 
           {tasks.filter(task => task.done).map((item, i) => (
-            <div layout key={i} className="flex flex-col py-2 w-full bg-gray-500 rounded my-2 text-center ring-1 ring-gray-900">
-            <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
+            <div key={i} className={`flex flex-col py-2 w-full bg-gray-500 rounded my-2 text-center ring-1 ring-gray-900 ${item.qtype === "A" ? "bg-areaA-800" : ""}${item.qtype === "C" ? "bg-areaC-800" : ""}${item.qtype === "E" ? "bg-areaE-800" : ""}${item.qtype === "N" ? "bg-areaN-800" : ""}${item.qtype === "S" ? "bg-areaS-800" : ""}${item.qtype === "W" ? "bg-areaW-800" : ""}`}>
+              <Item task={item} taskFocus={taskFocus} setTaskFocus={setTaskFocus}/>
             </div>
           ))}
         </div>

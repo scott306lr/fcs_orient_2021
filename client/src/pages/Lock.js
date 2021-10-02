@@ -46,7 +46,7 @@ export default function Lock() {
   }
 
   return (
-    <div className="flex">      
+    <div className="fixed h-screen w-screen grid place-content-center">      
       <form className="py-3 px-4 rounded-lg" onSubmit={checkAns}>
         <input 
           className="w-36 my-2 ml-4" 

@@ -26,7 +26,7 @@ export default function Home() {
         return(
           <>
             <Admin />
-            {gamestatus.in_game ? <Member /> : "Game hasen't started"}
+            {gamestatus.in_game ? <Member /> : "遊戲尚未開始"}
           </>
         )
 
@@ -34,14 +34,14 @@ export default function Home() {
         return(
           <>
             <Lead />
-            {gamestatus.in_game ? <Member /> : "Game hasen't started"}
+            {gamestatus.in_game ? <Member /> : "遊戲尚未開始"}
           </>
         );
 
       case "MEMBER":
         return(
           <>
-            {gamestatus.in_game ? <Member /> : "Game isn't started"}
+            {gamestatus.in_game ? <Member /> : "遊戲尚未開始"}
           </>
         );
 

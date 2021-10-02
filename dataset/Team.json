@@ -1,18 +1,26 @@
 [
     {
-    	"_id": { "$oid": "61396de99020fa6032cb83d1"},
-        "teamName":"一小"
+        "_id": { "$oid": "61396de99020fa6032cb83d1"},
+        "teamName":"一小",
+        "teamEmoji":"🏐",
+        "teamColor":"#006BB0"
     },
     {
-    	"_id": { "$oid": "61396de99020fa6032cb83d2"},
-        "teamName":"二小"
+        "_id": { "$oid": "61396de99020fa6032cb83d2"},
+        "teamName":"二小",
+        "teamEmoji":"🎾",
+        "teamColor":"#EFA90D"
     },
     {
-    	"_id": { "$oid": "61396de99020fa6032cb83d3"},
-        "teamName":"三小"
+        "_id": { "$oid": "61396de99020fa6032cb83d3"},
+        "teamName":"三小",
+        "teamEmoji":"⚾",
+        "teamColor":"#059341"
     },
     {
-    	"_id": { "$oid": "61396de99020fa6032cb83d4"},
-        "teamName":"四小"
+        "_id": { "$oid": "61396de99020fa6032cb83d4"},
+        "teamName":"四小",
+        "teamEmoji":"🏀",
+        "teamColor":"#DC2F1F"
     }
 ]

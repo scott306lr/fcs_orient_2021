@@ -11,18 +11,15 @@ const shuffleArray = (array) => {
     }
 }
 
-const unlockTask = async(team_id, x, y, unlockCount) => {
-    x = parseInt(x)
-    y = parseInt(y)
-    
+const unlockTask = async(team_id, x, y, unlockCount, range) => {
     const teamTasks = await TeamTask.find({teamId: team_id});
-    const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId );
+    const teamTaskIds = teamTasks.map((teamTask) => teamTask.taskId);
     const tasks = await Task.find( {_id: {$nin: teamTaskIds}});
 
     // console.log(teamTaskIds);
     // console.log(tasks.map((t) => ({taskId: t._id})));
 
-    const reqMan = x + y;
+    const reqMan = parseInt(x) + parseInt(y);
     var randPickedTasks = tasks.sort(
         function(a, b){
             const aMan = a.locationX + a.locationY;
@@ -30,7 +27,7 @@ const unlockTask = async(team_id, x, y, unlockCount) => {
 
             return Math.abs(aMan - reqMan) - Math.abs(bMan - reqMan);
         }   
-    ).slice(0, 10);
+    ).slice(0, range);
     shuffleArray(randPickedTasks);
 
     randPickedTasks = randPickedTasks.slice(0, unlockCount);
@@ -63,7 +60,7 @@ router.get("/:teamId",async(req,res)=>{
 // randomly unlock new tasks
 router.post("/unlock/:teamId",async(req,res)=>{
     try{
-        const savePost = await unlockTask(req.params.teamId, req.body.locationX, req.body.locationY, 3); // unlockCount = 3
+        const savePost = await unlockTask(req.params.teamId, req.body.locationX, req.body.locationY, 3, 12); // unlockCount = 3
         res.status(200).json(savePost);
     }
     catch(err){
@@ -93,8 +90,6 @@ router.post("/done",async(req,res)=>{
         res.status(500).json(err);
     }
 })
-
-
 
 
 // add a new teamTask
@@ -136,7 +131,7 @@ router.post("/initTask",async(req,res)=>{
         
         const resTeams = await Team.find();
         resTeams.map( async(team) => (
-            await unlockTask(team.id, 0, 0, 4)
+            await unlockTask(team.id, 11, 9, 4, 20)
         ));
 
         res.status(200).json("initial successfully");

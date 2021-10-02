@@ -1,7 +1,7 @@
 export default function ScoreBoard(props) {
   return (
     <div className="grid grid-cols-6 place-items-center">
-      <div className="text-center align-middle uppercase font-bold">{props.teamName}</div>
+      <div className="text-center align-middle uppercase font-bold m-auto"><div>{props.teamEmoji}</div>{props.teamName}</div>
       <Scoreitem text={props.gold} />
       <Scoreitem text={props.silver} />
       <Scoreitem text={props.bronze} />

@@ -45,7 +45,7 @@ function WelcomeForm(props){
 function LeftForm(props){
   return(
     <motion.div className="flex space-x-2 px-1 py-2 float-left">
-      <motion.div className="rounded">{props.message?.name}</motion.div>
+      <motion.div className="rounded">{props.team?.teamEmoji} {props.message?.name}</motion.div>
       <motion.div 
         className="
         mx-2
@@ -76,7 +76,7 @@ function RightForm(props){
         "
       > {props.message?.content} </motion.div>
 
-      <motion.div className="rounded">{props.message?.name}</motion.div>
+      <motion.div className="rounded">{props.message?.name} {props.team?.teamEmoji} </motion.div>
     </motion.div>
   )
 }
@@ -93,9 +93,9 @@ function ShowForm(props){
         return <SystemForm message={props.message}/>
       else
         if (props?.me === props?.message.name)
-          return <RightForm message={props.message}/>
+          return <RightForm message={props.message} team={props.team}/>
         else
-          return <LeftForm message={props.message}/>
+          return <LeftForm message={props.message} team={props.team}/>
     default:
       return ""
   }
@@ -108,7 +108,7 @@ export default function Chatbox(props) {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      {props?.message && <ShowForm message={props.message} me={props.me} mode={props.mode}/>}
+      {props?.message && <ShowForm message={props.message} me={props.me} mode={props.mode} team={props.team}/>}
     </motion.div>
   );
 }

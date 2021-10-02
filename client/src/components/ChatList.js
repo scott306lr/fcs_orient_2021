@@ -7,6 +7,7 @@ import axios from "axios";
 export default function ChatList() {
   const {socket, user} = useContext(AuthContext)
   const [messages, setMessages] = useState([]);
+  const [teamJson, setTeamJson] = useState([]);
   const [arriveMessage, setArriveMessage] = useState("");
   const newMessage = useRef();
   const scrollRef = useRef();
@@ -14,12 +15,20 @@ export default function ChatList() {
   useEffect( () => {
     const fetchData = async() => {
       try {
-        const res = await axios.get("/backend/message");
-        setMessages(res.data);
+        const res1 = await axios.get("/backend/message");
+        setMessages(res1.data);
+
+        const res2 = await axios.get("/backend/team");
+        var teamjs = {};
+        res2.data.forEach(team => {
+          teamjs[team._id] = team;
+        });
+        setTeamJson(teamjs);
+        console.log(teamjs);
       } catch (err) {
         console.log(err);
       }
-      //console.log(messages);
+      
     }
     fetchData();
   }, []);
@@ -105,7 +114,7 @@ export default function ChatList() {
           }
         }}
       > 
-        <Chatbox message={msg} me={user.name} mode={"CHAT"}/>
+        <Chatbox message={msg} me={user.name} mode={"CHAT"} team={teamJson[msg.teamId]}/>
       </motion.li>
     );
   });
@@ -114,7 +123,7 @@ export default function ChatList() {
   return (
     
     <motion.div className="fixed flex flex-col h-full w-full left-0 top-0" >
-      <motion.h2 initial={{opacity: 0}} animate={{ opacity: 1 }} exit={{opacity: 0}} className="mt-6 mb-4 text-2xl overflow-hidden text-center"> Chat </motion.h2>
+      <motion.h2 initial={{opacity: 0}} animate={{ opacity: 1 }} exit={{opacity: 0}} className="mt-6 mb-4 text-2xl text-center"> 聊天室 </motion.h2>
       
       <motion.div className="p-4 flex flex-col h-full w-full place-items-center overflow-y-auto overflow-x-hidden">
         <motion.div className="flex flex-col h-full w-full overflow-y-auto overflow-x-hidden">

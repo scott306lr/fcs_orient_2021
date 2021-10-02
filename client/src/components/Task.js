@@ -29,7 +29,7 @@ export default function Task(props) {
         socket.emit("answered correct", user.teamId, newTasks.data, res.data);
         answerText.current.value = "";
 
-        alert (`回答正確! 獲得${newTasks.score}分`);
+        alert (`回答正確! 獲得${res.data.score}分`);
       }catch(err){
         console.log(err);
         return;

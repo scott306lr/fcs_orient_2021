@@ -55,10 +55,6 @@ export default function Login() {
       </form>
             
       {error ? error : ""}
-
-      <a href="/login/613468e49020fa6032cae935"> UD </a>
-      <a href="/login/613468e49020fa6032cae914"> LR </a>
-      <a href="/login/613468e49020fa6032cae925"> WJ </a>
     </div>
   );
 }

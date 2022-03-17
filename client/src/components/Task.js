@@ -44,7 +44,7 @@ export default function Task(props) {
       <p>{task.question}</p>
       <img className="px-4 py-3" src={`../tasks/${task.taskId}.jpg`} alt = "Task_Image"/>
       <br/>
-      <div className="flex w-full py-2">      
+      <div className="flex w-full py-2">
         <input className="my-2 ml-4" placeholder="請輸入答案" ref={answerText}/>
         <button className="btn" onClick={() => answerCheck()}> 上傳 </button>
       </div>

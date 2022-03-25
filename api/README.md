@@ -4,8 +4,7 @@ mangoDB + mongoose
 
 ### 安裝
 ```
-npm install mongodb
-npm install express mongoose dotenv helmet morgan nodemon
+npm install
 ```
 
 ### 啟動
@@ -17,5 +16,5 @@ npm start
 - Run this outside the mongo shell
 - Modify **tableName** and **path**
 ```
-mongoimport --collection='tableName' --file='path' --jsonArray
+mongoimport --collection=<tableName>' --file=<path> --jsonArray
 ```
